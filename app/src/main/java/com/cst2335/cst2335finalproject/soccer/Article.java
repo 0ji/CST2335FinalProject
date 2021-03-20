@@ -10,12 +10,23 @@ public class Article {
         this.pubDate = pubDate;
         this.id = 1;
     }
+    public Article(){}
     public String getTitle(){return this.title;}
     public String getLink(){return this.link;}
     public String getDescription(){return this.description;}
     public String getPubDate(){return this.pubDate;}
     public String toString(){
         return title;
+    }
+    public void setTitle(String title){this.title=title;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setLink(String link) {
+        this.link = link;
+    }
+    public void setDate(String pubDate) {
+        this.pubDate = pubDate;
     }
 
     public long getId() {

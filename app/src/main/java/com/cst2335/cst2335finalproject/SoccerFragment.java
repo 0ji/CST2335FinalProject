@@ -1,5 +1,7 @@
 package com.cst2335.cst2335finalproject;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +34,7 @@ public class SoccerFragment extends Fragment {
     private Bundle dataFromChat;
     private long id;
     private String soccer_title, soccer_url, soccer_description, soccer_date;
+    private Button soccer_saveButton, soccer_urlButton;
     private AppCompatActivity prevActivity;
 
     public SoccerFragment() {
@@ -83,16 +86,22 @@ public class SoccerFragment extends Fragment {
         TextView descriptionText = (TextView) view.findViewById(R.id.soccer_description);
         TextView dateText = (TextView) view.findViewById(R.id.soccer_date);
 
-        Button soccer_saveButton = (Button) view.findViewById(R.id.soccer_saveButton);
-
         idText.setText("ID= "+id);
         titleText.setText(soccer_title);
         urlText.setText(soccer_url);
         descriptionText.setText(soccer_description);
         dateText.setText(soccer_date);
 
+        soccer_saveButton = (Button) view.findViewById(R.id.soccer_saveButton);
+        soccer_urlButton = (Button) view.findViewById(R.id.soccer_urlButton);
+
         soccer_saveButton.setOnClickListener(c->{
 
+        });
+        soccer_urlButton.setOnClickListener(c->{
+            Uri uri = Uri.parse(soccer_url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         });
         return view;
     }

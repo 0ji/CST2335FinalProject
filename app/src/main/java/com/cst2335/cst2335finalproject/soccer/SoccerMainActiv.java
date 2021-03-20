@@ -40,7 +40,7 @@ import java.util.List;
 
 public class SoccerMainActiv extends AppCompatActivity {
 
-    TextView test1;
+    TextView progressStatus;
 
     ArrayList<Article> list = new ArrayList();
     ProgressBar pgBar;
@@ -60,8 +60,8 @@ public class SoccerMainActiv extends AppCompatActivity {
         setContentView(R.layout.activity_soccer_main);
         pgBar = (ProgressBar) findViewById(R.id.pgBar);
         pgBar.setVisibility(View.VISIBLE);
-        test1 = (TextView) findViewById(R.id.test1);
-        test1.setVisibility(View.VISIBLE);
+        progressStatus = (TextView) findViewById(R.id.progressStatus);
+        progressStatus.setVisibility(View.VISIBLE);
 
         ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         SoccerAccessLayer soccerAccessLayer = new SoccerAccessLayer(address,connMgr);
@@ -141,14 +141,16 @@ public class SoccerMainActiv extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            test1.setText("Prepare to extract data...");
+            progressStatus.setText("Start accessing to the web...");
             onProgressUpdate(10);
         }
         @Override
         protected void onPostExecute(String e) {
             super.onPostExecute(e);
+            progressStatus.setText("This is the end!");
+            onProgressUpdate(100);
             pgBar.setVisibility(View.INVISIBLE);
-            test1.setVisibility(View.INVISIBLE);
+            progressStatus.setVisibility(View.INVISIBLE);
 
             Log.d("---------------",""+list.size());
             Log.d("-----", this.getStatus().toString());
@@ -161,7 +163,7 @@ public class SoccerMainActiv extends AppCompatActivity {
             super.onProgressUpdate(values);
             pgBar.setVisibility(View.VISIBLE);
             pgBar.setProgress(values[0]);
-            test1.setVisibility(View.VISIBLE);
+            progressStatus.setVisibility(View.VISIBLE);
 
         }
 
@@ -176,7 +178,7 @@ public class SoccerMainActiv extends AppCompatActivity {
             }
             else{ Log.e(this.toString(), "No network connection is available"); }
 
-            test1.setText("Start to connect to the web...");
+            progressStatus.setText("Make a connection...");
             onProgressUpdate(15);
             try{
                 URL url = new URL(address);
@@ -187,7 +189,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                 Log.d(this.toString(), "url connection starts");
 
                 conn.connect();
-                test1.setText("Reading a packet of stream...");
+                progressStatus.setText("Read data from the xml...");
                 onProgressUpdate(25);
                 Log.d(this.toString(), "reading a stream");
 
@@ -196,16 +198,12 @@ public class SoccerMainActiv extends AppCompatActivity {
                 factory.setNamespaceAware(false);
                 XmlPullParser parser = factory.newPullParser();
                 parser.setInput(stream, "UTF-8");
-                test1.setText("Data extraction starts...");
+                progressStatus.setText("Start extracting data...");
                 onProgressUpdate(45);
                 boolean insideItem = false;
                 int eventType = parser.getEventType();
 
-
-                ArrayList<String> listTitle = new ArrayList<>();
-                ArrayList<String> listLink = new ArrayList<>();
-                ArrayList<String> listDesc = new ArrayList<>();
-                ArrayList<String> listDate = new ArrayList<>();
+                Article article = new Article();
                 while(eventType != XmlPullParser.END_DOCUMENT){
 
                     if(eventType == XmlPullParser.START_TAG){
@@ -214,41 +212,37 @@ public class SoccerMainActiv extends AppCompatActivity {
                         }
                         else if(parser.getName().equalsIgnoreCase("title")){
                             if(insideItem){
-                                listTitle.add(parser.nextText());
+                                article.setTitle(parser.nextText());
                             }
                         }
                         else if(parser.getName().equalsIgnoreCase("link")){
                             if(insideItem){
-                                listLink.add(parser.nextText());
+                                article.setLink(parser.nextText());
                             }
                         }
                         else if(parser.getName().equalsIgnoreCase("pubDate")){
                             if(insideItem){
-                                listDate.add(parser.nextText());
+                                article.setDate(parser.nextText());
                             }
                         }
                         else if(parser.getName().equalsIgnoreCase("description")){
                             if(insideItem){
-                                listDesc.add(parser.nextText());
+                                article.setDescription(parser.nextText());
                             }
                         }
                     }
                     else if(eventType == XmlPullParser.END_TAG && parser.getName().equalsIgnoreCase("item")){
+                        Log.d("item added", "doInBackground: "+article.toString());
+                        list.add(article);
                         insideItem = false;
+                        article = new Article();
                     }
                     eventType = parser.next();
-                    test1.setText("Almost done ...");
+                    progressStatus.setText("Almost done ...");
                     onProgressUpdate(70);
                 }
-                for(int i = 0; i<listTitle.size(); i++){
-                    list.add(new Article(listTitle.get(i),listLink.get(i),listDesc.get(i),listDate.get(i)));
-                    if(i==listTitle.size()/2){
-                        test1.setText("Store the data...");
-                        onProgressUpdate(90);
-                    }
-                }
-                test1.setText("Process has been done...");
-                onProgressUpdate(100);
+                progressStatus.setText("Wait a moment...");
+                onProgressUpdate(90);
                 Log.d(this.toString(), "extracting data process has been ended..");
             } catch (MalformedURLException e) {
                 e.printStackTrace();

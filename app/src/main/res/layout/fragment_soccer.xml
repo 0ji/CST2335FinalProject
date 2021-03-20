@@ -40,9 +40,28 @@
         android:layout_below="@+id/soccer_description"
         android:hint="date"/>
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:text="SAVE"
-        android:id="@+id/soccer_saveButton"/>
+        android:id="@+id/soccer_saveButton"
+        android:layout_toLeftOf="@id/strut"
+        />
+    <TextView
+        android:id="@+id/strut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text=" "/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/soccer_urlButton"
+        android:layout_toRightOf="@+id/strut"
+        android:text="GO TO WEB"
+        />
 </RelativeLayout>
