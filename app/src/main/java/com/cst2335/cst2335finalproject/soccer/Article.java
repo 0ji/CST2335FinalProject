@@ -3,12 +3,12 @@ package com.cst2335.cst2335finalproject.soccer;
 public class Article {
     private long id;
     private String title, link, description, pubDate;
-    public Article(String title, String link, String description, String pubDate) {
+    public Article(String title, String link, String description, String pubDate, int id) {
         this.title = title;
         this.link = link;
         this.description = description;
         this.pubDate = pubDate;
-        this.id = 1;
+        this.id = id;
     }
     public Article(){}
     public String getTitle(){return this.title;}

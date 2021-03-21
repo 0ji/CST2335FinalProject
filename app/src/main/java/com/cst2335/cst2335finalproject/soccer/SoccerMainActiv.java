@@ -1,5 +1,6 @@
 package com.cst2335.cst2335finalproject.soccer;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,8 +11,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
@@ -19,6 +25,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,7 +68,10 @@ public class SoccerMainActiv extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_soccer_main);
+
         pgBar = (ProgressBar) findViewById(R.id.pgBar);
         pgBar.setVisibility(View.VISIBLE);
         progressStatus = (TextView) findViewById(R.id.progressStatus);
@@ -96,8 +110,44 @@ public class SoccerMainActiv extends AppCompatActivity {
             }
         });
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.soccer_toolbar);
+        setSupportActionBar(toolbar);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.soccer_toolbar_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.soccer_search);
+        SearchView soccer_searchView = (SearchView) searchItem.getActionView();
+        soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Toast.makeText(getApplicationContext(),newText,Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.soccer_about:
+                Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.soccer_search:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     class MyAdapter extends BaseAdapter{
 
         @Override
@@ -195,20 +245,22 @@ public class SoccerMainActiv extends AppCompatActivity {
 
                 stream = conn.getInputStream();
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-                factory.setNamespaceAware(false);
+                //factory.setNamespaceAware(false);
                 XmlPullParser parser = factory.newPullParser();
                 parser.setInput(stream, "UTF-8");
                 progressStatus.setText("Start extracting data...");
                 onProgressUpdate(45);
                 boolean insideItem = false;
                 int eventType = parser.getEventType();
-
+                int i = 0;
                 Article article = new Article();
                 while(eventType != XmlPullParser.END_DOCUMENT){
 
                     if(eventType == XmlPullParser.START_TAG){
                         if(parser.getName().equalsIgnoreCase("item")){
                             insideItem = true;
+                            article.setId(i);
+                            i++;
                         }
                         else if(parser.getName().equalsIgnoreCase("title")){
                             if(insideItem){
