@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">CST2335 Final Project</string>
+    <string name="difficultyLabel">Please enter your difficulty:</string>
+    <string name="typeLabel">Please enter the Type:</string>
+    <string name="questionLabel">Enter the # of questions: </string>
+    <string name="questionHint"># of questions</string>
+    <string name="typeHint">boolean, multiple</string>
+    <string name="difficultyHint">easy, medium, hard</string>
+    <string name="createGameString"> create your game</string>
+    <string name="goToTrivia">TRIVIA GAME</string>
+
+    <string-array name="difficulty_array">
+        <item>Any Difficulty</item>
+        <item>easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+    <string-array name="type_array">
+        <item>Any Type</item>
+        <item>boolean</item>
+        <item>multiple</item>
+    </string-array>
 </resources>

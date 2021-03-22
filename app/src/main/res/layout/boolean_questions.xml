@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:longClickable="true"
+    android:layout_width="match_parent"
+    android:weightSum="2"
+    android:layout_height="fill_parent"
+    android:id="@+id/send"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:text="Question is here "
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/trueRadio"
+            android:layout_width="482dp"
+            android:layout_height="76dp"
+            android:layout_weight="1"
+            android:text="True" />
+
+        <RadioButton
+            android:id="@+id/falseRadio"
+            android:layout_width="487dp"
+            android:layout_height="76dp"
+            android:layout_weight="1"
+            android:text="False" />
+
+    </LinearLayout>
+</LinearLayout>
