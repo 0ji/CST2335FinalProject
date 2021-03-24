@@ -9,11 +9,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335FinalProject">
-        <activity android:name=".soccer.SoccerDetailActivity"></activity>
+        <activity android:name=".soccer.SoccerFavorites" android:label="@string/title_activity_soccer_favorites"></activity>
+        <activity android:name=".soccer.SoccerDetailActivity"
+            android:label="@string/title_activity_soccer_detail">
+
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +29,7 @@
             android:label="@string/title_activity_soccer_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

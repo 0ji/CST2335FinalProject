@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CST2335 Final Project</string>
-    <string name="title_activity_soccer_main">SoccerMainActiv</string>
+    <string name="title_activity_soccer_main">Soccer Articles</string>
+    <string name="title_activity_soccer_detail">Article</string>
+    <string name="title_activity_soccer_favorites">Soccer Favorites</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

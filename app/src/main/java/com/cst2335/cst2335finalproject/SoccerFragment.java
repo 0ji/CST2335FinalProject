@@ -1,17 +1,30 @@
 package com.cst2335.cst2335finalproject;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cst2335.cst2335finalproject.soccer.Article;
+import com.cst2335.cst2335finalproject.soccer.BitmapUtility;
+import com.cst2335.cst2335finalproject.soccer.SoccerDetailActivity;
+import com.cst2335.cst2335finalproject.soccer.SoccerFavorites;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.w3c.dom.Text;
 
@@ -32,10 +45,9 @@ public class SoccerFragment extends Fragment {
     private String mParam2;
 
     private Bundle dataFromChat;
-    private long id;
-    private String soccer_title, soccer_url, soccer_description, soccer_date;
+    private Article tArticle;
     private Button soccer_saveButton, soccer_urlButton;
-    private AppCompatActivity prevActivity;
+
 
     public SoccerFragment() {
         // Required empty public constructor
@@ -73,11 +85,7 @@ public class SoccerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         dataFromChat = getArguments();
-        id = dataFromChat.getLong("Id");
-        soccer_title = dataFromChat.getString("Title");
-        soccer_url = dataFromChat.getString("Link");
-        soccer_description = dataFromChat.getString("Description");
-        soccer_date = dataFromChat.getString("Date");
+        tArticle = (Article) dataFromChat.getSerializable("Article");
 
         View view = inflater.inflate(R.layout.fragment_soccer, container, false);
         TextView idText = (TextView) view.findViewById(R.id.soccer_id);
@@ -85,24 +93,44 @@ public class SoccerFragment extends Fragment {
         TextView urlText = (TextView) view.findViewById(R.id.soccer_link);
         TextView descriptionText = (TextView) view.findViewById(R.id.soccer_description);
         TextView dateText = (TextView) view.findViewById(R.id.soccer_date);
+        ImageView soccer_thumbnailImage = (ImageView) view.findViewById(R.id.soccer_fragment_headlineImage);
 
-        idText.setText("ID= "+id);
-        titleText.setText(soccer_title);
-        urlText.setText(soccer_url);
-        descriptionText.setText(soccer_description);
-        dateText.setText(soccer_date);
+        idText.setText("ID= "+tArticle.getId());
+        titleText.setText(tArticle.getTitle());
+        urlText.setText(tArticle.getLink());
+        descriptionText.setText(tArticle.getDescription());
+        dateText.setText(tArticle.getPubDate());
+        soccer_thumbnailImage.setImageBitmap(BitmapUtility.getBitmapImage(tArticle.getThumbnailUrl()));
+
+        Toolbar toolbar =(Toolbar) view.findViewById(R.id.soccer_toolbar_menu_general);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         soccer_saveButton = (Button) view.findViewById(R.id.soccer_saveButton);
         soccer_urlButton = (Button) view.findViewById(R.id.soccer_urlButton);
 
         soccer_saveButton.setOnClickListener(c->{
+            
+            Snackbar snackbar = Snackbar.make(view,"Saved!",Snackbar.LENGTH_LONG);
+            snackbar.setAction("Undo", click->{
 
+            }).show();
         });
+        /**
+         * Reference: Johan Jurrius, 33-Reading data from RSS feed(Android), Aug 20 2017, https://www.youtube.com/watch?v=Lnan_DJU7DI
+         * */
         soccer_urlButton.setOnClickListener(c->{
-            Uri uri = Uri.parse(soccer_url);
+            Uri uri = Uri.parse(tArticle.getLink());
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });
+
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater = (requireActivity()).getMenuInflater();
+        inflater.inflate(R.menu.soccer_toolbar_menu_general, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

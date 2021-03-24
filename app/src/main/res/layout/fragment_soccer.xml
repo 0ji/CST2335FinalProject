@@ -4,13 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SoccerFragment">
-
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Article"
+        android:id="@+id/soccer_toolbar_menu_general"/>
     <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/soccer_fragment_headlineImage"
+        android:layout_below="@+id/soccer_toolbar_menu_general"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/soccer_title"
         android:hint="Title here"
+        android:layout_below="@+id/soccer_fragment_headlineImage"
         />
 
     <TextView

@@ -15,7 +15,6 @@ public class SoccerDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soccer_detail);
 
-
         Bundle dataFromChat = getIntent().getExtras();
         SoccerFragment detailsFragment = new SoccerFragment();
         detailsFragment.setArguments(dataFromChat);
