@@ -1,5 +1,8 @@
 package com.cst2335.cst2335finalproject;
 
+/**
+ * CarItem class to hold a car object and it's details.
+ */
 public class CarItem {
     private int _id;
     private int makeID;

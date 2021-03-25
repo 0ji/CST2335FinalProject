@@ -89,12 +89,7 @@ public class CarDBActivity extends AppCompatActivity {
         Button btnDB = findViewById(R.id.btnDatabase);
         // TODO: change functionality to view database fragment
         btnDB.setOnClickListener( e -> {
-            Snackbar.make(findViewById(R.id.constraintView), "Added to database.",
-                    Snackbar.LENGTH_LONG)
-                    .setAction("Undo", e2 -> {
-                        // TODO: remove car from database
-                    })
-                    .show();
+
         });
 
         // help button
@@ -102,7 +97,6 @@ public class CarDBActivity extends AppCompatActivity {
         btnHelp.setOnClickListener(e -> {
             helpAlert.show();
         });
-        // temporarily inflate list TODO: remove this
 
         // car list view
         carListView.setOnItemClickListener( (parent, view, pos, id) -> {
@@ -115,6 +109,12 @@ public class CarDBActivity extends AppCompatActivity {
 
                 .setPositiveButton("Add", (click, arg) -> {
                    // add item to database
+                    Snackbar.make(findViewById(R.id.constraintView), "Added to database.",
+                            Snackbar.LENGTH_LONG)
+                            .setAction("Undo", e2 -> {
+                                // TODO: remove car from database
+                            })
+                            .show();
                 })
 
                 .setNegativeButton("Close", (click, arg) -> {})
@@ -139,14 +139,30 @@ public class CarDBActivity extends AppCompatActivity {
      * CarsListAdapter is made to show a list of cars, for search.
      */
     private class CarListAdapter extends BaseAdapter {
-
+        /**
+         * @return the size of the cars database (arrayList).
+         */
         public int getCount() { return carsList.size();}
 
+        /**
+         * @return the carItem is returned at the specific position.
+         */
         public Object getItem(int position) { return carsList.get(position);
         }
 
+        /**
+         * @param position the position of the item selected in the list.
+         * @return position in type long.
+         */
         public long getItemId(int position) { return (long) position; }
 
+        /**
+         * creates the view for a specific item.
+         * @param position
+         * @param old
+         * @param parent
+         * @return
+         */
         public View getView(int position, View old, ViewGroup parent)
         {
             View newView = old;
