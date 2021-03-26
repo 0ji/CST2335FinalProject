@@ -5,6 +5,7 @@ import java.io.Serializable;
  * Article class
  * This class is a container to store data related to soccer articles
  * This class inherits Serializable interface.
+ * {@link Serializable}
  * */
 public class Article implements Serializable {
 

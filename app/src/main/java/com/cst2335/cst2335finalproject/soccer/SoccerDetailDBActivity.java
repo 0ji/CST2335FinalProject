@@ -24,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar;
  * Button soccer_urlButton_db is a class member to provide article's url connection through a web application.
  * Button soccer_backToDBList is a button to lead a user to previous activity.
  * Toolbar toolbar is a class member that provide a tool bar.
+ * {@link AppCompatActivity}
  * */
 public class SoccerDetailDBActivity extends AppCompatActivity {
     private Button soccer_urlButton_db, soccer_backToDBList;

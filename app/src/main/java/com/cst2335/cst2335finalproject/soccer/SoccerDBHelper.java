@@ -5,10 +5,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 /**
  * SoccerDBHelper
  * This class inherits properties from SQLiteOpenHelper class
  * This class contains static values to set database properties.
+ * {@link SQLiteOpenHelper}
  * */
 public class SoccerDBHelper extends SQLiteOpenHelper {
     protected final static String DATABASE_NAME = "messageDB";

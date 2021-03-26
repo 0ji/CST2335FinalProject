@@ -27,14 +27,30 @@ import com.cst2335.cst2335finalproject.SoccerFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-
+/**
+ * SoccerFavorites
+ * This class is a main class of my part of this project.
+ * This activity provides users an interface which contains listview, toolbar and navigation view.
+ * ImageView soccer_headlineImage will be the top article's thumbnail of all the articles.
+ * The progressBar will be showed up as the first and the list will come up after that.
+ * {@link AppCompatActivity}
+ * */
 public class SoccerFavorites extends AppCompatActivity {
     protected ArrayList<Article> articleList = new ArrayList();
     private Toolbar toolbar;
     private ImageView soccer_headlineImage_db;
+    /**
+     * dbAdapter
+     * this class member is an instance of DBAdapter which class helps to get connected to SQLiteDatabase.
+     * */
     DBAdapter dbAdapter;
     SQLiteDatabase db;
-    //SoccerFragment dbFragment;
+    /**
+     * onCreate
+     * @param savedInstanceState
+     * This method creates essential components of this activity.
+     * progress bar, ImageView, listView and navigation View has come up.
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,19 +120,38 @@ public class SoccerFavorites extends AppCompatActivity {
         soccer_headlineImage_db = (ImageView) findViewById(R.id.soccer_headlineImage_db);
 
     }
-
+    /**
+     * DBAdapter class
+     * This class is designed to give a view to the listView in this layout.
+     * This class takes a list which contains contents that should be showed up on the list.
+     * This class is a subclass of {@link BaseAdapter}
+     * */
     class DBAdapter extends BaseAdapter{
-
+        /**
+         * getCount
+         * This method returns the size of the list.
+         * @return list.size()
+         * */
         @Override
         public int getCount() {
             return articleList.size();
         }
-
+        /**
+         * getItem
+         * This method returns a specific object inside the list by a position.
+         * @param position is a location of an object in the list.
+         * @return list.get(position)
+         * */
         @Override
         public Object getItem(int position) {
             return articleList.get(position);
         }
-
+        /**
+         * getItemId
+         * This method returns a long value which is an id of an object.
+         * @param position
+         * @return container.getId() is an id of the object in the list.
+         * */
         @Override
         public long getItemId(int position) {
             Article container = null;
@@ -128,7 +163,14 @@ public class SoccerFavorites extends AppCompatActivity {
             }
             return container.getId();
         }
-
+        /**
+         * getView
+         * This method returns a view which replaces the current listview in the layout.
+         * @param parent is a parent group of components.
+         * @param convertView is a convert view.
+         * @param position is a position of the object in the list.
+         * @return newView is a view that replace the current list view.
+         * */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
@@ -144,11 +186,17 @@ public class SoccerFavorites extends AppCompatActivity {
 
         }
     }
-
+    /**
+     * loadData
+     * This method is executed in the onStart() which means this occurs before the onCreate function.
+     * This gets article data from the SQLite database and move the data to list as article objects.
+     * */
     private void loadData(){
         SoccerDBHelper dbHelper = new SoccerDBHelper(this);
         db = dbHelper.getWritableDatabase();
-
+        /**
+         * Article data components
+         * */
         String[] columns = {SoccerDBHelper.Id, SoccerDBHelper.COL_TITLE, SoccerDBHelper.COL_LINK,SoccerDBHelper.COL_DATE,SoccerDBHelper.COL_DESCRIPTION,SoccerDBHelper.COL_THUMBNAIL};
         Cursor results = db.query(false, SoccerDBHelper.TABLE_NAME, columns, null,null,null,null,null,null);
 
@@ -159,7 +207,9 @@ public class SoccerFavorites extends AppCompatActivity {
         int descriptionColumnIndex = results.getColumnIndex(SoccerDBHelper.COL_DESCRIPTION);
         int thumbnailColumnIndex = results.getColumnIndex(SoccerDBHelper.COL_THUMBNAIL);
 
-
+        /**
+         * The process to move data to list as new article objects
+         * */
         while (results.moveToNext()){
 
             long idPrimary = results.getLong(idPrimaryColumnIndex);
@@ -174,7 +224,11 @@ public class SoccerFavorites extends AppCompatActivity {
        //printCursor(results, db.getVersion());
         Log.e("SOCCER DATABASE", "loadData: "+articleList.size());
     }
-
+    /**
+     * onStart
+     * This method is executed before the onCreate().
+     * This method invokes loadData().
+     * */
     @Override
     protected void onStart() {
         super.onStart();

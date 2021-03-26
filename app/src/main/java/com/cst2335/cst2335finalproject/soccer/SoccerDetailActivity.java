@@ -31,6 +31,7 @@ import com.google.android.material.snackbar.Snackbar;
 /**
  * SoccerDetailActivity is a class which inherits AppCompactActivity class.
  * This class is designed for showing details of one soccer article.
+ * {@link AppCompatActivity}
  * */
 public class SoccerDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
