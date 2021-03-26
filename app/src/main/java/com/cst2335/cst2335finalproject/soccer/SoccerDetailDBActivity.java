@@ -43,12 +43,16 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.soccer_toolbar_db_detail);
         setSupportActionBar(toolbar);
-
+        /**
+         * This drawer and toggle are created for the navigationView.
+         * */
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.soccer_drawer_layout_db_detail);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open,R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        /**
+         * This code block is creating a navigation functionality which provides a different functions when a user click each items.
+         * */
         NavigationView navigationView = (NavigationView) findViewById(R.id.soccer_nav_view_db_detail);
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -75,7 +79,10 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
             return true;
         });
 
-
+        /**
+         * dataFromChat is a bundle which contains an article object.
+         * the bundle will be passed through setArguments by detailsFragment.
+         * */
         Bundle dataFromChat = getIntent().getExtras();
         SoccerFragment detailsFragment = new SoccerFragment();
         detailsFragment.setArguments(dataFromChat);
@@ -92,6 +99,11 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SoccerFavorites.class);
             startActivity(intent);
         });
+        /**
+         * uri is a Uri class object.
+         * the intent will get internet browser applications
+         * Reference: Johan Jurrius, 33-Reading data from RSS feed(Android), Aug 20 2017, https://www.youtube.com/watch?v=Lnan_DJU7DI
+         * */
         soccer_urlButton_db.setOnClickListener(c->{
             Uri uri = Uri.parse(article.getLink());
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);

@@ -62,7 +62,9 @@ public class SoccerDetailActivity extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open,R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        /**
+         * This code block is creating a navigation functionality which provides a different functions when a user click each items.
+         * */
         NavigationView navigationView = (NavigationView) findViewById(R.id.soccer_nav_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
