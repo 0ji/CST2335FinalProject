@@ -4,7 +4,6 @@
     android:id="@+id/soccer_toolbar_menu"
     android:title="Soccer"
     android:orderInCategory="10"
-    app:showAsAction="always|ifRoom|never"
     >
     <!--android:icon="@drawable/ic_launcher_background"-->
 
@@ -13,10 +12,12 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:icon="@android:drawable/ic_search_category_default"
         app:showAsAction="always|collapseActionView"
-        android:title="Search" />
+        android:title="Search"
+        />
     <item
         android:id="@+id/soccer_about"
         android:title="About"
+        app:showAsAction="never"
         />
 
 </menu>

@@ -28,14 +28,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.SoccerFragment;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -109,12 +115,45 @@ public class SoccerMainActiv extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.soccer_toolbar);
         setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.soccer_drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open,R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.soccer_nav_view);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            switch (id) {
+                case R.id.soccer_goToMain:
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.soccer_goToTrivia:
+                    Intent intent2 = new Intent(this, MainActivity.class);
+                    startActivity(intent2);
+                    break;
+                case R.id.soccer_goToCarDB:
+                    Intent intent3 = new Intent(this, MainActivity.class);
+                    setResult(500, intent3);
+                    finish();
+                    break;
+                case R.id.soccer_goToSoccerMain:
+                    Intent intent4 = new Intent(this, SoccerMainActiv.class);
+                    startActivity(intent4);
+                    break;
+            }
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        });
+
         goToFavorite = (Button) findViewById(R.id.goToFavorite);
         goToFavorite.setOnClickListener(c-> {
             Intent intent = new Intent(this, SoccerFavorites.class);
             startActivity(intent);
         });
 
+        /*
         myList.setOnItemLongClickListener((parent, view, pos, id)->{
             AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
             alterBuilder.setTitle("Do you want to delete this?").setMessage("This is :"+list.get(pos).getTitle())
@@ -127,6 +166,7 @@ public class SoccerMainActiv extends AppCompatActivity {
 
             return true;
         });
+         */
     }
 
     @Override
@@ -190,6 +230,7 @@ public class SoccerMainActiv extends AppCompatActivity {
             Article container = (Article) getItem(position);
             View newView = inflater.inflate(R.layout.soccer_row_layout, parent, false);
             TextView tView = newView.findViewById(R.id.tViewSend);
+
             tView.setText(container.getTitle());
             return newView;
         }
@@ -333,7 +374,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                 }
 
                 if(list.size()>0){
-                    headlineImage = BitmapUtility.getBitmapImage(list.get(list.size()-1).getThumbnailUrl());
+                    headlineImage = BitmapUtility.getBitmapImage(list.get(0).getThumbnailUrl());
                 }
 
                 progressStatus.setText("Wait a moment...");
@@ -356,23 +397,3 @@ public class SoccerMainActiv extends AppCompatActivity {
         }
     }
 }
-
-
-
-
- /*
-                if(list.size()>0) {
-                    String urlString = list.get(list.size()-1).getThumbnailUrl();
-                    URL newUrl = new URL(urlString);
-                    conn = (HttpURLConnection) newUrl.openConnection();
-                    conn.connect();
-                    int responseCode = conn.getResponseCode();
-                    if(responseCode == 200){
-                        headlineImage = BitmapFactory.decodeStream(conn.getInputStream());
-                    }
-                    FileOutputStream outputStream = openFileOutput("headlineImage", Context.MODE_PRIVATE);
-                    headlineImage.compress(Bitmap.CompressFormat.JPEG,80,outputStream);
-                    outputStream.flush();
-                    outputStream.close();
-                }
-                */

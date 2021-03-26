@@ -46,7 +46,7 @@ public class SoccerFragment extends Fragment {
 
     private Bundle dataFromChat;
     private Article tArticle;
-    private Button soccer_saveButton, soccer_urlButton;
+    //private Button soccer_saveButton, soccer_urlButton;
 
 
     public SoccerFragment() {
@@ -79,7 +79,14 @@ public class SoccerFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    /**
+     *onCreateView is a method to create a new view.
+     * @param inflater is an inflater.
+     * @param container is a view group.
+     * @param savedInstanceState is a bundle to pass data.
+     * This method is used for placing data of an article object to proper components.
+     * @return view.
+     * */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -102,35 +109,7 @@ public class SoccerFragment extends Fragment {
         dateText.setText(tArticle.getPubDate());
         soccer_thumbnailImage.setImageBitmap(BitmapUtility.getBitmapImage(tArticle.getThumbnailUrl()));
 
-        Toolbar toolbar =(Toolbar) view.findViewById(R.id.soccer_toolbar_menu_general);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-
-        soccer_saveButton = (Button) view.findViewById(R.id.soccer_saveButton);
-        soccer_urlButton = (Button) view.findViewById(R.id.soccer_urlButton);
-
-        soccer_saveButton.setOnClickListener(c->{
-            
-            Snackbar snackbar = Snackbar.make(view,"Saved!",Snackbar.LENGTH_LONG);
-            snackbar.setAction("Undo", click->{
-
-            }).show();
-        });
-        /**
-         * Reference: Johan Jurrius, 33-Reading data from RSS feed(Android), Aug 20 2017, https://www.youtube.com/watch?v=Lnan_DJU7DI
-         * */
-        soccer_urlButton.setOnClickListener(c->{
-            Uri uri = Uri.parse(tArticle.getLink());
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
-        });
-
         return view;
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater = (requireActivity()).getMenuInflater();
-        inflater.inflate(R.menu.soccer_toolbar_menu_general, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
 }

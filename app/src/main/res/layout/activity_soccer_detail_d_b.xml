@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/soccer_detail">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".soccer.SoccerDetailDBActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/soccer_toolbar"/>
+        android:id="@+id/soccer_toolbar_db_detail"/>
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/soccer_drawer_layout"
-        android:layout_below="@id/soccer_toolbar"
+        android:id="@+id/soccer_drawer_layout_db_detail"
+        android:layout_below="@id/soccer_toolbar_db_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
@@ -20,8 +22,8 @@
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/frame"
-                android:layout_above="@+id/soccer_saveButton">
+                android:id="@+id/frame_db"
+                android:layout_above="@+id/soccer_urlButton_db">
 
             </FrameLayout>
             <Button
@@ -29,12 +31,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="SAVE"
-                android:id="@+id/soccer_saveButton"
-                android:layout_toLeftOf="@id/strut"
+                android:text="Back To List"
+                android:id="@+id/soccer_backToDBList"
+                android:layout_toLeftOf="@id/strut_db"
                 />
             <TextView
-                android:id="@+id/strut"
+                android:id="@+id/strut_db"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -45,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:id="@+id/soccer_urlButton"
-                android:layout_toRightOf="@+id/strut"
+                android:id="@+id/soccer_urlButton_db"
+                android:layout_toRightOf="@+id/strut_db"
                 android:text="GO TO WEB"
                 />
         </RelativeLayout>
@@ -55,8 +57,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            android:id="@+id/soccer_nav_view"
+            android:id="@+id/soccer_nav_view_db_detail"
             app:menu="@menu/soccer_nav_actions"
             />
     </androidx.drawerlayout.widget.DrawerLayout>
+
 </RelativeLayout>

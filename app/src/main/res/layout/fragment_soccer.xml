@@ -4,17 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SoccerFragment">
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Article"
-        android:id="@+id/soccer_toolbar_menu_general"/>
     <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/soccer_fragment_headlineImage"
-        android:layout_below="@+id/soccer_toolbar_menu_general"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         />
@@ -52,29 +46,5 @@
         android:id="@+id/soccer_date"
         android:layout_below="@+id/soccer_description"
         android:hint="date"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="SAVE"
-        android:id="@+id/soccer_saveButton"
-        android:layout_toLeftOf="@id/strut"
-        />
-    <TextView
-        android:id="@+id/strut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text=" "/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:id="@+id/soccer_urlButton"
-        android:layout_toRightOf="@+id/strut"
-        android:text="GO TO WEB"
-        />
+
 </RelativeLayout>

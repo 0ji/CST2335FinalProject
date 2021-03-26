@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/soccer_goToMain"
+
+            android:title="Go To Main Page"/>
+        <item
+            android:id="@+id/soccer_goToTrivia"
+
+            android:title="Go To Trivia"/>
+        <item
+            android:id="@+id/soccer_goToCarDB"
+
+            android:title="Go To CarDB"/>
+        <item
+            android:id="@+id/soccer_goToSoccerMain"
+
+            android:title="Go To Soccer Page"/>
+    </group>
+</menu>
