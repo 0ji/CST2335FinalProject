@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
  * BitmapUtility
  * This class has two static functions which help converting bytes to Bitmap and Bitmap to bytes.
  * The functionality is used for Article class.
+ * reference: Lazy Ninja, Aug 23 '15 at 6:43, https://stackoverflow.com/questions/9357668/how-to-store-image-in-sqlite-database
  * */
 public class BitmapUtility {
     /**

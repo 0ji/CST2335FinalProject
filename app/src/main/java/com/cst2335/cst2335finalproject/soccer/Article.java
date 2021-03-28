@@ -8,7 +8,9 @@ import java.io.Serializable;
  * {@link Serializable}
  * */
 public class Article implements Serializable {
-
+    /**
+     * The class members are components of data from the xml page.
+     * */
     private long id;
     private String title, link, description, pubDate;
     private byte[] thumbnailUrl;
