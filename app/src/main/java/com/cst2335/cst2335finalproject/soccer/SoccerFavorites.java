@@ -7,8 +7,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,8 +20,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.cst2335.cst2335finalproject.MainActivity;
@@ -39,6 +44,7 @@ public class SoccerFavorites extends AppCompatActivity {
     protected ArrayList<Article> articleList = new ArrayList();
     private Toolbar toolbar;
     private ImageView soccer_headlineImage_db;
+    SharedPreferences prefs = null;
     /**
      * dbAdapter
      * this class member is an instance of DBAdapter which class helps to get connected to SQLiteDatabase.
@@ -227,11 +233,63 @@ public class SoccerFavorites extends AppCompatActivity {
     /**
      * onStart
      * This method is executed before the onCreate().
+     * The rating dialog box is provided to make user rates this app.
+     * Once the rating has been finished, sharedpreferences stores the star values and never ask this again.
      * This method invokes loadData().
      * */
     @Override
     protected void onStart() {
         super.onStart();
+        /**
+         * prefs is pre-defined as a class member and invoked here.
+         * */
+        prefs = getSharedPreferences("SOCCER", Context.MODE_PRIVATE);
+        /**
+         * rankDialog contains a soccer_rating layout which has textView, RatingBar, and Button.
+         * */
+        Dialog rankDialog = new Dialog(this, R.style.Theme_AppCompat_DayNight_Dialog);
+        rankDialog.setContentView(R.layout.soccer_rating);
+        rankDialog.setCancelable(true);
+        RatingBar ratingBar = (RatingBar)rankDialog.findViewById(R.id.dialog_ratingbar);
+        /**
+         * set the initial value of the rating bar.
+         * */
+        ratingBar.setRating(2);
+
+        TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
+        text.setText("Rating Soccer App");
+
+        Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float i = ratingBar.getRating();
+                Log.d("Rating count", "onClick: "+i);
+                /**
+                 * This method stores the rating value as "SOCCER_RATE"
+                 * */
+                saveSharedPreference("SOCCER_RATE",i);
+                rankDialog.dismiss();
+            }
+        });
+        /**
+         * If there is a rate value that stored already, then the dialog box does not show up
+         * */
+        float rate = prefs.getFloat("SOCCER_RATE", -1);
+        if(rate < 0){
+            rankDialog.show();
+        }
         loadData();
+    }
+    /**
+     * saveSharedPreference
+     * @param s is a name of the value
+     * @param rate is a value that you want to store
+     * when the editing of sharedPreferences has done, edit will commit the changes.
+     * */
+    private void saveSharedPreference(String s, float rate){
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putFloat(s, rate);
+        edit.commit();
     }
 }
