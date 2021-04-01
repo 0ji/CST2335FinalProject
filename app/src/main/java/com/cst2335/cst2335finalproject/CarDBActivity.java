@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,13 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.File;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -47,16 +55,16 @@ public class CarDBActivity extends AppCompatActivity {
         ListView carListView = findViewById(R.id.listViewCars);
         carListView.setAdapter(carsAdapter);
 
+
+
         loadCarsFromDatabase();
 
         // build the helpAlertBuilder
         // TODO: change alert to be translatable
         AlertDialog.Builder helpAlertBuilder = new AlertDialog.Builder(this);
-        helpAlertBuilder.setTitle("Car database instructions")
-        .setMessage("Enter a car model in the search field. Click search to bring up the list of " +
-                "cars. Select a car in the list to bring up car details, where you can add it to" +
-                "your database or shop for the car.")
-        .setPositiveButton("Understood", (click, arg) -> {});
+        helpAlertBuilder.setTitle(R.string.help_title)
+        .setMessage(R.string.help_details)
+        .setPositiveButton(R.string.help_positive, (click, arg) -> {});
 
         // create the helpAlert alert dialog
         AlertDialog helpAlert = helpAlertBuilder.create();
@@ -127,7 +135,7 @@ public class CarDBActivity extends AppCompatActivity {
      * Function to load cars from existing database, if any.
      */
     private void loadCarsFromDatabase() {
-        // TODO: implement this!! make load from sharedprefs database.
+        // TODO: implement this!! make load from sharedprefs database?
 
         for (int i = 0; i < 15; i++) {
         carsList.add(new CarItem(1, 1, "make_test", 1 + " :model_test"));
@@ -183,5 +191,60 @@ public class CarDBActivity extends AppCompatActivity {
             //return it to be put in the table
             return newView;
         }
+    }
+
+    private class CarQuery extends AsyncTask<String, Integer, String> {
+        String carModel, carMake, carMakeID = null;
+
+        @Override
+        protected String doInBackground(String... args) {
+            try {
+                //TODO: make url based off user brand search
+                // create url
+                URL url = new URL("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/HONDA?format=XML");
+
+                //open the connection
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                //wait for data:
+                InputStream response = urlConnection.getInputStream();
+
+                // create xml pull parser factory
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                factory.setNamespaceAware(false);
+                XmlPullParser xpp = factory.newPullParser();
+                xpp.setInput( response  , "UTF-8");
+
+                //parse through xml
+
+                int eventType = xpp.getEventType();
+
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    if (eventType == XmlPullParser.START_TAG) {
+                        // pointing to start tag
+                        if (xpp.getName().equals("Make_ID")) {
+
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                //TODO: error handling if url not found
+            }
+            return "Finished car Asynctask.";
+        }
+
+        public void onProgressUpdate(Integer ... args) {
+
+        }
+
+        public void onPostExecute(String fromDoInBackground) {
+
+        }
+
+    }
+
+    public boolean fileExistance(String fname) {
+        File file = getBaseContext().getFileStreamPath(fname);
+        return file.exists();
     }
 }

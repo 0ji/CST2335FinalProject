@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CST2335 Final Project</string>
+    <string name="search_car_brand_here">Search car brand here</string>
+    <string name="search">Search</string>
+    <string name="help">HELP</string>
+    <string name="database_view">DATABASE VIEW</string>
+    <string name="help_details">Enter a car model in the search field. Click search to bring up the list of cars. Select a car in the list to bring up car details, where you can add it to your database or shop for the car.</string>
+    <string name="help_title">Car database instructions</string>
+    <string name="help_positive">Understood</string>
 </resources>

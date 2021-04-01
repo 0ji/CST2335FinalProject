@@ -20,7 +20,7 @@
             android:id="@+id/carSearchView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Search car brand here"
+            android:hint="@string/search_car_brand_here"
             android:inputType="textShortMessage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnSearch"
@@ -31,7 +31,7 @@
             android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
+            android:text="@string/search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +69,7 @@
             android:id="@+id/btnHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HELP"
+            android:text="@string/help"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +78,7 @@
             android:id="@+id/btnDatabase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DATABASE VIEW"
+            android:text="@string/database_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

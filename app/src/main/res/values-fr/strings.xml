@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST2335 Final Project</string>
+    <string name="search_car_brand_here">Rechercher la marque de voiture ici</string>
+    <string name="search">Chercher</string>
+    <string name="help">AIDER</string>
+    <string name="database_view">VUE DE LA BASE DE DONNÉES</string>
+    <string name="help_details">Entrez un modèle de voiture dans le champ de recherche. Cliquez sur Rechercher pour afficher la liste des voitures. Sélectionnez une voiture dans la liste pour afficher les détails de la voiture, où vous pouvez l\'ajouter à votre base de données ou acheter la voiture.</string>
+    <string name="help_title">Instructions de base de données de voiture</string>
+    <string name="help_positive">Entendu</string>
+</resources>
