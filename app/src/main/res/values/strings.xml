@@ -12,4 +12,36 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="main_soccer_button">Soccer</string>
+    <string name="soccer_detail_SAVE">SAVE</string>
+    <string name="soccer_detail_GOTOWEB">GO TO WEB</string>
+    <string name="soccer_detail_db_BackToList">Back To List</string>
+    <string name="soccer_detail_db_GOTOWEB">GO TO WEB</string>
+    <string name="soccer_favorite_SoccerArticles">Soccer Articles</string>
+    <string name="soccer_main_button_Favorites">Favorites</string>
+    <string name="soccer_fragment_ID">ID=</string>
+    <string name="soccer_fragment_Link">Link=</string>
+    <string name="soccer_fragment_Description">Descrption=</string>
+    <string name="soccer_fragment_Date">Date=</string>
+    <string name="soccer_fragment_Title">Title here</string>
+    <string name="soccer_rating_submit">Submit</string>
+    <string name="soccer_rating_SoccerArticles">Rating App</string>
+    <string name="soccer_nav_GoToMainPage">Go To Main</string>
+    <string name="soccer_nav_GoToTrivia">Go To Trivia</string>
+    <string name="soccer_nav_GoToCarDB">Go To CarDB</string>
+    <string name="soccer_nav_GoToSoccerPage">Go To Soccer</string>
+    <string name="soccer_toolbar_Search">Search</string>
+    <string name="soccer_toolbar_About">About</string>
+    <string name="soccer_rating_main">Rating App</string>
+    <string name="soccer_main_pg_15">Making a connection ...</string>
+    <string name="soccer_main_pg_25">Start ...</string>
+    <string name="soccer_main_pg_45">Extracting data ...</string>
+    <string name="soccer_main_pg_70">Loading images ...</string>
+    <string name="soccer_save_button">Saved!</string>
+    <string name="soccer_undo_button">Undo</string>
+    <string name="soccer_previous">Go To Previous</string>
+    <string name="soccer_db_delete">Do you want to delete this?</string>
+    <string name="soccer_db_id">The selected row is=</string>
+    <string name="soccer_db_id2">The database id is=</string>
+    <string name="soccer_confirm">Okay</string>
 </resources>

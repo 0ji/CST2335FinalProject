@@ -84,13 +84,15 @@ public class SoccerFavorites extends AppCompatActivity {
                     break;
                 case R.id.soccer_goToCarDB:
                     Intent intent3 = new Intent(this, MainActivity.class);
-                    setResult(500, intent3);
-                    finish();
+                    startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
-
+                case R.id.soccer_previous:
+                    Intent intent5 = new Intent(this, MainActivity.class);
+                    setResult(500, intent5);
+                    finish();
                     break;
             }
             drawer.closeDrawer(GravityCompat.START);
@@ -103,13 +105,14 @@ public class SoccerFavorites extends AppCompatActivity {
 
         myList.setOnItemLongClickListener((parent, view, position, id) ->{
             AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
-            alterBuilder.setTitle("Do you want to delete this?").setMessage("The selected row is:"+(position+1)+"\nThe database id is:"+id)
-                    .setPositiveButton("Yes",(click, arg)->{
+
+            alterBuilder.setTitle(R.string.soccer_db_delete).setMessage(getString(R.string.soccer_db_id)+(position+1)+"\n"+getString(R.string.soccer_db_id2)+id)
+                    .setPositiveButton(R.string.soccer_confirm,(click, arg)->{
                         db.execSQL("DELETE FROM "+SoccerDBHelper.TABLE_NAME+" WHERE "+SoccerDBHelper.Id+" = "+id);
                         articleList.remove(position);
                         dbAdapter.notifyDataSetChanged();
 
-                    }).setNeutralButton("Cancel",(click,arg)->{
+                    }).setNeutralButton(R.string.soccer_undo_button,(click,arg)->{
 
             }).setView(getLayoutInflater().inflate(R.layout.soccer_row_layout,null))
                     .create().show();
@@ -257,7 +260,7 @@ public class SoccerFavorites extends AppCompatActivity {
         ratingBar.setRating(2);
 
         TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
-        text.setText("Rating Soccer App");
+        text.setText(R.string.soccer_rating_main);
 
         Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
         updateButton.setOnClickListener(new View.OnClickListener() {

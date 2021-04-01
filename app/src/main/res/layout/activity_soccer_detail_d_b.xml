@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="Back To List"
+                android:text="@string/soccer_detail_db_BackToList"
                 android:id="@+id/soccer_backToDBList"
                 android:layout_toLeftOf="@id/strut_db"
                 />
@@ -49,7 +49,7 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/soccer_urlButton_db"
                 android:layout_toRightOf="@+id/strut_db"
-                android:text="GO TO WEB"
+                android:text="@string/soccer_detail_db_GOTOWEB"
                 />
         </RelativeLayout>
         <com.google.android.material.navigation.NavigationView

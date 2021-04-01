@@ -78,12 +78,15 @@ public class SoccerDetailActivity extends AppCompatActivity {
                     break;
                 case R.id.soccer_goToCarDB:
                     Intent intent3 = new Intent(this, MainActivity.class);
-                    setResult(500, intent3);
-                    finish();
+                    startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
+                case R.id.soccer_previous:
+                    Intent intent5 = new Intent(this, MainActivity.class);
+                    setResult(500, intent5);
+                    finish();
 
                     break;
             }
@@ -115,8 +118,8 @@ public class SoccerDetailActivity extends AppCompatActivity {
             /**
              * snackbar is a Snacbar which shows the article object is saved in the database.
              * */
-            Snackbar snackbar = Snackbar.make(relativeLayout,"Saved!",Snackbar.LENGTH_LONG);
-            snackbar.setAction("Undo", click->{
+            Snackbar snackbar = Snackbar.make(relativeLayout,R.string.soccer_save_button,Snackbar.LENGTH_LONG);
+            snackbar.setAction(R.string.soccer_undo_button, click->{
 
             }).show();
         });

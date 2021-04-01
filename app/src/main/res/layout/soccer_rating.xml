@@ -5,7 +5,7 @@
     android:padding="2dip">
 
     <TextView
-        android:text="Soccer Articles"
+        android:text="@string/soccer_rating_SoccerArticles"
         android:id="@+id/rank_dialog_text1"
         android:textSize="24dp"
         android:layout_marginTop="10dp"
@@ -29,7 +29,7 @@
     <Button
         android:id="@+id/rank_dialog_button"
         android:layout_height="wrap_content"
-        android:text="Update"
+        android:text="@string/soccer_rating_submit"
         android:focusable="false"
         android:layout_margin="5dip"
         android:textSize="20dip"

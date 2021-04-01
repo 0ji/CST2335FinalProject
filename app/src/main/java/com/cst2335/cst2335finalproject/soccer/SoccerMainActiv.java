@@ -150,12 +150,15 @@ public class SoccerMainActiv extends AppCompatActivity {
                     break;
                 case R.id.soccer_goToCarDB:
                     Intent intent3 = new Intent(this, MainActivity.class);
-                    setResult(500, intent3);
-                    finish();
+                    startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
+                case R.id.soccer_previous:
+                    Intent intent5 = new Intent(this, MainActivity.class);
+                    setResult(500, intent5);
+                    finish();
                     break;
             }
             drawer.closeDrawer(GravityCompat.START);
@@ -224,6 +227,13 @@ public class SoccerMainActiv extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.soccer_about:
                 Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
+                alterBuilder.setTitle("INFORMATION").setMessage("Final Project CST2335\nSoccer Articles is made by Jin\n2021-04-01")
+                        .setPositiveButton("Yes",(click, arg)->{
+
+                        }).setNeutralButton("Cancel",(click,arg)->{
+
+                }).create().show();
                 break;
             case R.id.soccer_search:
                 break;
@@ -368,7 +378,7 @@ public class SoccerMainActiv extends AppCompatActivity {
             }
             else{ Log.e(this.toString(), "No network connection is available"); }
 
-            progressStatus.setText("Make a connection...");
+            progressStatus.setText(R.string.soccer_main_pg_15);
             onProgressUpdate(15);
             try{
                 URL url = new URL(address);
@@ -380,7 +390,7 @@ public class SoccerMainActiv extends AppCompatActivity {
 
                 conn.connect();
 
-                progressStatus.setText("Read data from the xml...");
+                progressStatus.setText(R.string.soccer_main_pg_25);
                 onProgressUpdate(25);
                 Log.d(this.toString(), "reading a stream");
 
@@ -390,7 +400,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                 XmlPullParser parser = factory.newPullParser();
                 parser.setInput(stream, Xml.Encoding.UTF_8.toString());
 
-                progressStatus.setText("Start extracting data...");
+                progressStatus.setText(R.string.soccer_main_pg_45);
                 onProgressUpdate(45);
 
                 boolean insideItem = false;
@@ -458,7 +468,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                         article = new Article();
                     }
                     eventType = parser.next();
-                    progressStatus.setText("Downloading Images ...");
+                    progressStatus.setText(R.string.soccer_main_pg_70);
                     onProgressUpdate(70);
                 }
 

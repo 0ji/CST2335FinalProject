@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="SAVE"
+                android:text="@string/soccer_detail_SAVE"
                 android:id="@+id/soccer_saveButton"
                 android:layout_toLeftOf="@id/strut"
                 />
@@ -47,7 +47,7 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/soccer_urlButton"
                 android:layout_toRightOf="@+id/strut"
-                android:text="GO TO WEB"
+                android:text="@string/soccer_detail_GOTOWEB"
                 />
         </RelativeLayout>
         <com.google.android.material.navigation.NavigationView

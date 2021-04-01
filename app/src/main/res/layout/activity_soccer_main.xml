@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="Favorites"/>
+                android:text="@string/soccer_main_button_Favorites"/>
             <ProgressBar
                 android:id="@+id/pgBar"
                 android:layout_width="match_parent"

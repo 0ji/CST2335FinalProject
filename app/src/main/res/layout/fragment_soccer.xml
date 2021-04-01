@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/soccer_title"
-        android:hint="Title here"
+        android:hint="@string/soccer_fragment_Title"
         android:layout_below="@+id/soccer_fragment_headlineImage"
         />
 
@@ -25,26 +25,26 @@
         android:layout_height="wrap_content"
         android:id="@+id/soccer_id"
         android:layout_below="@id/soccer_title"
-        android:hint="ID="
+        android:hint="@string/soccer_fragment_ID"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/soccer_id"
         android:id="@+id/soccer_link"
-        android:hint="Link"/>
+        android:hint="@string/soccer_fragment_Link"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/soccer_link"
         android:id="@+id/soccer_description"
-        android:hint="Description"
+        android:hint="@string/soccer_fragment_Description"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/soccer_date"
         android:layout_below="@+id/soccer_description"
-        android:hint="date"/>
+        android:hint="@string/soccer_fragment_Date"/>
 
 </RelativeLayout>

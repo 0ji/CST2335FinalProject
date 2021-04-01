@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="Soccer Articles"/>
+                android:text="@string/soccer_favorite_SoccerArticles"/>
 
         </RelativeLayout>
         <com.google.android.material.navigation.NavigationView
