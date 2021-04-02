@@ -3,13 +3,12 @@ package com.cst2335.cst2335finalproject;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +23,13 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -55,8 +56,8 @@ public class CarDBActivity extends AppCompatActivity {
         ListView carListView = findViewById(R.id.listViewCars);
         carListView.setAdapter(carsAdapter);
 
-
-
+        CarQuery query = new CarQuery();
+        query.execute();
         loadCarsFromDatabase();
 
         // build the helpAlertBuilder
@@ -136,10 +137,9 @@ public class CarDBActivity extends AppCompatActivity {
      */
     private void loadCarsFromDatabase() {
         // TODO: implement this!! make load from sharedprefs database?
-
-        for (int i = 0; i < 15; i++) {
-        carsList.add(new CarItem(1, 1, "make_test", 1 + " :model_test"));
-        }
+//        for (int i = 0; i < 15; i++) {
+//            carsList.add(new CarItem(1, 1, 1, "test", "test"));
+//        }
         carsAdapter.notifyDataSetChanged();
     }
 
@@ -185,8 +185,14 @@ public class CarDBActivity extends AppCompatActivity {
             newView = inflater.inflate(R.layout.car_db_item, parent, false);
             TextView inflaterMakeText = newView.findViewById(R.id.carMake);
             TextView inflaterModelText = newView.findViewById(R.id.carModel);
+            TextView inflaterModelIDText = newView.findViewById(R.id.carModelID);
+            TextView inflaterMakeIDText = newView.findViewById(R.id.carMakeID);
+            TextView inflaterCarItemIDText = newView.findViewById(R.id.carItemID);
             inflaterMakeText.setText(newCarItem.getMake());
-            inflaterMakeText.setText(newCarItem.getModel());
+            inflaterModelText.setText(newCarItem.getModel());
+            inflaterModelIDText.setText(Integer.toString(newCarItem.getModelID()));
+            inflaterMakeIDText.setText(Integer.toString(newCarItem.getMakeID()));
+            inflaterCarItemIDText.setText(Integer.toString(newCarItem.get_id()));
 
             //return it to be put in the table
             return newView;
@@ -194,14 +200,13 @@ public class CarDBActivity extends AppCompatActivity {
     }
 
     private class CarQuery extends AsyncTask<String, Integer, String> {
-        String carModel, carMake, carMakeID = null;
 
         @Override
         protected String doInBackground(String... args) {
             try {
                 //TODO: make url based off user brand search
                 // create url
-                URL url = new URL("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/HONDA?format=XML");
+                URL url = new URL("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/HONDA?format=JSON");
 
                 //open the connection
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -209,36 +214,51 @@ public class CarDBActivity extends AppCompatActivity {
                 //wait for data:
                 InputStream response = urlConnection.getInputStream();
 
-                // create xml pull parser factory
-                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-                factory.setNamespaceAware(false);
-                XmlPullParser xpp = factory.newPullParser();
-                xpp.setInput( response  , "UTF-8");
+                // create JSON reader
 
-                //parse through xml
+                BufferedReader reader = new BufferedReader(new InputStreamReader(response, "UTF-8"), 8);
+                StringBuilder sb = new StringBuilder();
 
-                int eventType = xpp.getEventType();
+                String line = null;
+                while ((line = reader.readLine()) != null)
+                {
+                    sb.append(line + "\n");
+                }
 
-                while (eventType != XmlPullParser.END_DOCUMENT) {
-                    if (eventType == XmlPullParser.START_TAG) {
-                        // pointing to start tag
-                        if (xpp.getName().equals("Make_ID")) {
+                String result = sb.toString();
 
-                        }
-                    }
+                // converts string to JSON
+                JSONObject carResult = new JSONObject(result);
+
+                //create array from object
+                JSONArray carArray = carResult.getJSONArray("Results");
+
+                for (int i = 0; i < carArray.length(); i++) { // iterate through car array
+                    JSONObject carObject = carArray.getJSONObject(i);
+                    int makeID = carObject.getInt("Make_ID");
+                    String make = carObject.getString("Make_Name");
+                    int modelID = carObject.getInt("Model_ID");
+                    String model = carObject.getString("Model_Name");
+
+                    // create new car in carsList
+                    carsList.add(new CarItem(i, makeID, modelID, make, model));
                 }
             } catch (Exception e) {
                 //TODO: error handling if url not found
+                e.printStackTrace();
             }
+            Log.i("MainActivity", "Completed Asynctask");
             return "Finished car Asynctask.";
         }
 
         public void onProgressUpdate(Integer ... args) {
-
+            ProgressBar progressBar = findViewById(R.id.progressBar);
+            progressBar.setProgress(args[0]);
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         public void onPostExecute(String fromDoInBackground) {
-
+            carsAdapter.notifyDataSetChanged();
         }
 
     }

@@ -5,13 +5,15 @@ package com.cst2335.cst2335finalproject;
  */
 public class CarItem {
     private int _id;
-    private int makeID;
+    private int makeID; 
+    private int modelID;
     private String make;
     private String model;
 
-    public CarItem(int _id, int makeID, String make, String model) {
+    public CarItem(int _id, int makeID, int modelID, String make, String model) {
         this._id = _id;
         this.makeID = makeID;
+        this.modelID = modelID;
         this.make = make;
         this.model = model;
     }
@@ -23,6 +25,8 @@ public class CarItem {
     public int getMakeID() {
         return makeID;
     }
+    
+    public int getModelID() { return modelID; }
 
     public String getMake() {
         return make;

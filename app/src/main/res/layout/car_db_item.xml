@@ -5,18 +5,42 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/carModel"
-        android:layout_width="wrap_content"
+        android:id="@+id/carItemID"
+        android:layout_width="1dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#56717171"
-        android:text="carModel" />
+        android:background="#6AC3BBBB" />
+<!--        android:text="itemID"-->
+
+    <TextView
+        android:id="@+id/carModel"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#6AC3BBBB" />
+<!--        android:text="carModel"-->
+
+    <TextView
+        android:id="@+id/carModelID"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#6AC3BBBB" />
+<!--        android:text="carID" -->
 
     <TextView
         android:id="@+id/carMake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#56717171"
-        android:text="carMake" />
+        android:background="#6AC3BBBB" />
+<!--        android:text="carMake" -->
+
+    <TextView
+        android:id="@+id/carMakeID"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#6AC3BBBB" />
+<!--        android:text="carModel" -->
 </LinearLayout>

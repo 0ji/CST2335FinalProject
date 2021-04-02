@@ -53,10 +53,59 @@
         app:layout_constraintBottom_toTopOf="@id/constraintBottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintSearchBar"
+        app:layout_constraintTop_toBottomOf="@id/listHeader"
         tools:layout_constraintBottom_toTopOf="@id/constraintBottomBar">
 
     </ListView>
+
+    <LinearLayout
+        android:id="@+id/listHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/listViewCars"
+        app:layout_constraintTop_toBottomOf="@+id/constraintSearchBar">
+
+        <TextView
+            android:id="@+id/carItemID"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#56717171"
+            android:text="itemID" />
+
+        <TextView
+            android:id="@+id/carModel"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#56717171"
+            android:text="carModel" />
+
+        <TextView
+            android:id="@+id/carModelID"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#56717171"
+            android:text="carID" />
+
+        <TextView
+            android:id="@+id/carMake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#56717171"
+            android:text="carMake" />
+
+        <TextView
+            android:id="@+id/carMakeID"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#56717171"
+            android:text="carModel" />
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintBottomBar"
