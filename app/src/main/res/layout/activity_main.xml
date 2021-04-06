@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/goToSoccer"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="319dp"
-        android:text="@string/main_soccer_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/soccer_toolbar_main"/>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/soccer_drawer_layout_main"
+        android:layout_below="@id/soccer_toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageButton
+                    android:id="@+id/goToSoccer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/soccer_image_button2"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+                <ImageButton
+                    android:id="@+id/goToSoccer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goToSoccer1"
+                    android:src="@drawable/soccer_image_button2"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+                <ImageButton
+                    android:id="@+id/goToSoccer3"
+                    android:layout_below="@+id/goToSoccer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/soccer_image_button2"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+                <ImageButton
+                    android:id="@+id/goToSoccer"
+                    android:layout_below="@+id/goToSoccer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/soccer_image_button2"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+            </RelativeLayout>
+        </ScrollView>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:id="@+id/soccer_nav_view"
+            app:menu="@menu/soccer_nav_actions"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</RelativeLayout>
