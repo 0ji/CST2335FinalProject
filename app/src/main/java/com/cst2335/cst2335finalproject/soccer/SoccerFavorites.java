@@ -1,5 +1,6 @@
 package com.cst2335.cst2335finalproject.soccer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -25,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
@@ -129,6 +134,46 @@ public class SoccerFavorites extends AppCompatActivity {
         soccer_headlineImage_db = (ImageView) findViewById(R.id.soccer_headlineImage_db);
 
     }
+
+    /**
+     * onCreateOptionsMenu
+     * This method creates and gives functionality to each menu item.
+     * @param menu is a Menu instance
+     * @return true
+     * */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.soccer_toolbar_menu, menu);
+
+        return true;
+    }
+    /**
+     * onOptionsItemSelected
+     * This method indicates how each item works when items are clicked.
+     * @param item
+     * @return true
+     * */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.soccer_about:
+
+                AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
+                alterBuilder.setTitle("How To Use")
+                        .setMessage("-Click one of items in list to check Articles\n\n" +
+                                "-Soccer Articles button heads to Soccer Main\n\n" +
+                                "-Soccer Icon is for heading to the soccer main")
+                        .setPositiveButton("Okay",(click, arg)->{}).create().show();
+                break;
+            case R.id.soccer_activity_main:
+                Intent intent = new Intent(this, SoccerMainActiv.class);
+                startActivity(intent);
+                break;
+        }
+        return true;//super.onOptionsItemSelected(item);
+    }
+
     /**
      * DBAdapter class
      * This class is designed to give a view to the listView in this layout.

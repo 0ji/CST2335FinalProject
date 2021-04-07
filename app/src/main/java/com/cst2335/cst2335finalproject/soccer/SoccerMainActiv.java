@@ -199,21 +199,7 @@ public class SoccerMainActiv extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.soccer_toolbar_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.soccer_search);
-        SearchView soccer_searchView = (SearchView) searchItem.getActionView();
-        soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getApplicationContext(),"Searching: "+query.toString(),Toast.LENGTH_SHORT).show();
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                return false;
-            }
-        });
         return true;
     }
     /**
@@ -226,16 +212,17 @@ public class SoccerMainActiv extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.soccer_about:
-                Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+
                 AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
-                alterBuilder.setTitle("INFORMATION").setMessage("Final Project CST2335\nSoccer Articles is made by Jin\n2021-04-01")
-                        .setPositiveButton("Yes",(click, arg)->{
-
-                        }).setNeutralButton("Cancel",(click,arg)->{
-
-                }).create().show();
+                alterBuilder.setTitle("How To Use")
+                        .setMessage("-Click one of items in list to check Articles\n\n" +
+                                "-Favorites button shows stored articles\n\n" +
+                                "-Soccer Icon is for heading to the soccer main")
+                        .setPositiveButton("Okay",(click, arg)->{}).create().show();
                 break;
-            case R.id.soccer_search:
+            case R.id.soccer_activity_main:
+                Intent intent = new Intent(this, SoccerMainActiv.class);
+                startActivity(intent);
                 break;
         }
         return true;//super.onOptionsItemSelected(item);
@@ -500,3 +487,23 @@ public class SoccerMainActiv extends AppCompatActivity {
         }
     }
 }
+
+
+
+/*
+MenuItem searchItem = menu.findItem(R.id.soccer_search);
+        SearchView soccer_searchView = (SearchView) searchItem.getActionView();
+        soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getApplicationContext(),"Searching: "+query.toString(),Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return false;
+            }
+        });
+*/

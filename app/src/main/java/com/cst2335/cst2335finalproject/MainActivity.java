@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }).create().show();
                 break;
-            case R.id.soccer_helper_menu:
-                Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+            case R.id.soccer_activity:
+                changePage(SoccerMainActiv.class);
                 break;
         }
         return true;//super.onOptionsItemSelected(item);

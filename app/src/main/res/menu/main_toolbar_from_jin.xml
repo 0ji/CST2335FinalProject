@@ -5,10 +5,10 @@
     android:title="Soccer"
     android:orderInCategory="10">
     <item
-        android:id="@+id/soccer_helper_menu"
+        android:id="@+id/soccer_activity"
         app:showAsAction="always"
-        android:title="Help"
-        android:icon="@drawable/help_menu"
+        android:title="soccer"
+        android:icon="@drawable/soccer_ball"
         />
     <item
         android:id="@+id/soccer_about"

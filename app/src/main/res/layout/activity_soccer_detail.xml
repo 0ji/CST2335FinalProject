@@ -57,6 +57,7 @@
             android:fitsSystemWindows="true"
             android:id="@+id/soccer_nav_view"
             app:menu="@menu/soccer_nav_actions"
+            app:headerLayout="@layout/soccer_nav_head_layout"
             />
     </androidx.drawerlayout.widget.DrawerLayout>
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.cst2335.cst2335finalproject.soccer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -164,9 +165,10 @@ public class SoccerDetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.soccer_toolbar_menu, menu);
+        /*
         MenuItem searchItem = menu.findItem(R.id.soccer_search);
         searchItem.setVisible(false);
-        /*
+
         SearchView soccer_searchView = (SearchView) searchItem.getActionView();
         soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -193,9 +195,16 @@ public class SoccerDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.soccer_about:
-                Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+
+                AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
+                alterBuilder.setTitle("How To Use")
+                        .setMessage("-SAVE button saves the current article\n\n" +
+                                "-GO To WEB button shows the article of this\n\n" +
+                                "-Soccer Icon is for heading to the soccer main")
+                        .setPositiveButton("Okay",(click, arg)->{}).create().show();
                 break;
-            case R.id.soccer_search:
+            case R.id.soccer_activity_main:
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
