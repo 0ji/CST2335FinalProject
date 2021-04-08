@@ -3,6 +3,8 @@ package com.cst2335.cst2335finalproject;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.graphics.Color;
@@ -16,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -43,6 +46,7 @@ public class CarDBActivity extends AppCompatActivity {
     private ArrayList<CarItem> carsList = new ArrayList<>();
     private CarListAdapter carsAdapter = new CarListAdapter();
     SQLiteDatabase db;
+    SharedPreferences prefs = null;
 
     /**
      * Create function for when the instance is created
@@ -59,6 +63,12 @@ public class CarDBActivity extends AppCompatActivity {
         CarQuery query = new CarQuery();
         query.execute();
         loadCarsFromDatabase();
+
+        // load any old query preferences, if any
+        prefs = getSharedPreferences("CarViewPrefs", Context.MODE_PRIVATE);
+        String savedSearch = prefs.getString("Search", "");
+        EditText searchField = findViewById(R.id.carSearchView);
+        searchField.setText(savedSearch);
 
         // build the helpAlertBuilder
         // TODO: change alert to be translatable
@@ -89,8 +99,9 @@ public class CarDBActivity extends AppCompatActivity {
             String searchText = searchView.getText().toString();
 
             // toast to show something
-            Toast.makeText(getApplicationContext(), "You searched `" + searchText + "`",
-                    Toast.LENGTH_SHORT).show();
+            saveSharedPrefs(searchText);
+//            Toast.makeText(getApplicationContext(), "You searched `" + searchText + "`",
+//                    Toast.LENGTH_SHORT).show();
             searchProgBar.setProgress(100);
         });
 
@@ -130,6 +141,16 @@ public class CarDBActivity extends AppCompatActivity {
 
                 .create().show();
         });
+    }
+
+    /** Saves and loads most recent search query string.
+     *
+     * @param searchText the searched text
+     */
+    private void saveSharedPrefs(String searchText) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Search", searchText);
+        editor.commit();
     }
 
     /**
@@ -199,6 +220,9 @@ public class CarDBActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Asynctask for the car list. Loads from online json database.
+     */
     private class CarQuery extends AsyncTask<String, Integer, String> {
 
         @Override
