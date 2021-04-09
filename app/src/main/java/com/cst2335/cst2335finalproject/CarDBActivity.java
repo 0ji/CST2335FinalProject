@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -23,9 +22,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,10 +39,15 @@ import java.util.ArrayList;
  */
 public class CarDBActivity extends AppCompatActivity {
 
+    public static final String CAR_MAKE = "MAKE";
+    public static final String CAR_MODEL = "MODEL";
+    public static final String CAR_MAKE_ID = "MAKE_ID";
+    public static final String CAR_MODEL_ID = "MODEL_ID";
+    public static final String CAR_ID = "ID";
+
     String[] carBrands = {"Honda", "Toyota", "Tesla", "Ford"};
     private ArrayList<CarItem> carsList = new ArrayList<>();
     private CarListAdapter carsAdapter = new CarListAdapter();
-    SQLiteDatabase db;
     SharedPreferences prefs = null;
 
     /**
@@ -113,10 +114,13 @@ public class CarDBActivity extends AppCompatActivity {
         // database view button
         Button btnDB = findViewById(R.id.btnDatabase);
         btnDB.setOnClickListener( e -> {
-            // TODO: create bundle
+            // TODO: pass something if needed?
 
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString("DB", "yes");
             // go to database view intent
-            Intent nextActivity = new Intent(CarDBActivity.this, DatabaseView.class);
+            Intent nextActivity = new Intent(CarDBActivity.this, FragmentView.class);
+            nextActivity.putExtras(dataToPass);
             startActivity(nextActivity);
         });
 
@@ -128,26 +132,17 @@ public class CarDBActivity extends AppCompatActivity {
 
         // car list view
         carListView.setOnItemClickListener( (parent, view, pos, id) -> {
-            AlertDialog.Builder carDialogBuilder = new AlertDialog.Builder(this);
             CarItem selectedItem = carsList.get(pos);
+            Bundle dataToPass = new Bundle();
+            dataToPass.putInt(CAR_ID, selectedItem.get_id());
+            dataToPass.putInt(CAR_MAKE_ID, selectedItem.getMakeID());
+            dataToPass.putInt(CAR_MODEL_ID, selectedItem.getModelID());
+            dataToPass.putString(CAR_MAKE, selectedItem.getMake());
+            dataToPass.putString(CAR_MODEL, selectedItem.getModel());
 
-            carDialogBuilder.setTitle("Car details")
-
-                .setMessage("The selected row is " + pos)
-
-                .setPositiveButton("Add", (click, arg) -> {
-                   // add item to database
-                    Snackbar.make(findViewById(R.id.constraintView), "Added to database.",
-                            Snackbar.LENGTH_LONG)
-                            .setAction("Undo", e2 -> {
-                                // TODO: remove car from database
-                            })
-                            .show();
-                })
-
-                .setNegativeButton("Close", (click, arg) -> {})
-
-                .create().show();
+            Intent nextActivity = new Intent(CarDBActivity.this, FragmentView.class);
+            nextActivity.putExtras(dataToPass);
+            startActivity(nextActivity);
         });
     }
 
@@ -159,13 +154,6 @@ public class CarDBActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("Search", searchText);
         editor.commit();
-    }
-
-    /**
-     * Function to load cars from existing database, if any.
-     */
-    private void loadCarsFromDatabase() {
-        carsAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -210,14 +198,14 @@ public class CarDBActivity extends AppCompatActivity {
             newView = inflater.inflate(R.layout.car_db_item, parent, false);
             TextView inflaterMakeText = newView.findViewById(R.id.carMake);
             TextView inflaterModelText = newView.findViewById(R.id.carModel);
-            TextView inflaterModelIDText = newView.findViewById(R.id.carModelID);
-            TextView inflaterMakeIDText = newView.findViewById(R.id.carMakeID);
-            TextView inflaterCarItemIDText = newView.findViewById(R.id.carItemID);
+//            TextView inflaterModelIDText = newView.findViewById(R.id.carModelID);
+//            TextView inflaterMakeIDText = newView.findViewById(R.id.carMakeID);
+//            TextView inflaterCarItemIDText = newView.findViewById(R.id.carItemID);
             inflaterMakeText.setText(newCarItem.getMake());
             inflaterModelText.setText(newCarItem.getModel());
-            inflaterModelIDText.setText(Integer.toString(newCarItem.getModelID()));
-            inflaterMakeIDText.setText(Integer.toString(newCarItem.getMakeID()));
-            inflaterCarItemIDText.setText(Integer.toString(newCarItem.get_id()));
+//            inflaterModelIDText.setText(Integer.toString(newCarItem.getModelID()));
+//            inflaterMakeIDText.setText(Integer.toString(newCarItem.getMakeID()));
+//            inflaterCarItemIDText.setText(Integer.toString(newCarItem.get_id()));
 
             //return it to be put in the table
             return newView;

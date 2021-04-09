@@ -64,31 +64,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/listViewCars"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintSearchBar">
 
         <TextView
-            android:id="@+id/carItemID"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#56717171"
-            android:text="itemID" />
-
-        <TextView
             android:id="@+id/carModel"
-            android:layout_width="1dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#56717171"
-            android:text="carModel" />
-
-        <TextView
-            android:id="@+id/carModelID"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#56717171"
-            android:text="modelID" />
+            android:text="Model" />
 
         <TextView
             android:id="@+id/carMake"
@@ -96,15 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#56717171"
-            android:text="carMake" />
+            android:text="Make / Brand" />
 
-        <TextView
-            android:id="@+id/carMakeID"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#56717171"
-            android:text="carMakeID" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

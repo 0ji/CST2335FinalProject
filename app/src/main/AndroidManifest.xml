@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335FinalProject">
-        <activity android:name=".FragmentDatabase"></activity>
-        <activity android:name=".DatabaseView" />
+        <activity android:name=".FragmentView" />
         <activity android:name=".CarDBActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
