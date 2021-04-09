@@ -11,13 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_alignParentTop="true"
-        android:layout_alignTop="@id/finishButton">
+        android:layout_alignParentBottom="true">
     </ListView>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/back_to_car_view"
-        android:id="@+id/finishButton"/>
 </RelativeLayout>

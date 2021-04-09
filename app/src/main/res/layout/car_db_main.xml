@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#56717171"
-            android:text="carID" />
+            android:text="modelID" />
 
         <TextView
             android:id="@+id/carMake"
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#56717171"
-            android:text="carModel" />
+            android:text="carMakeID" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

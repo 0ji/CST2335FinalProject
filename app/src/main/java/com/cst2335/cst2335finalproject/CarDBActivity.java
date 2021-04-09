@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -60,9 +61,7 @@ public class CarDBActivity extends AppCompatActivity {
         ListView carListView = findViewById(R.id.listViewCars);
         carListView.setAdapter(carsAdapter);
 
-        CarQuery query = new CarQuery();
-        query.execute();
-        loadCarsFromDatabase();
+
 
         // load any old query preferences, if any
         prefs = getSharedPreferences("CarViewPrefs", Context.MODE_PRIVATE);
@@ -90,26 +89,35 @@ public class CarDBActivity extends AppCompatActivity {
         searchView.setAdapter(carBrandAdapter);
         searchView.setTextColor(Color.GRAY);
 
+        searchView.setOnClickListener(e -> {
+            searchView.showDropDown();
+        });
+
         // set onClickListeners for buttons
         ProgressBar searchProgBar = findViewById(R.id.progressBar);
 
         // search Button
         Button btnSearch = findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener( e -> {
+            CarQuery query = new CarQuery();
             String searchText = searchView.getText().toString();
-
             // toast to show something
             saveSharedPrefs(searchText);
 //            Toast.makeText(getApplicationContext(), "You searched `" + searchText + "`",
 //                    Toast.LENGTH_SHORT).show();
+            query.execute("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/" + searchText + "?format=JSON");
+            carsAdapter.notifyDataSetChanged();
             searchProgBar.setProgress(100);
         });
 
         // database view button
         Button btnDB = findViewById(R.id.btnDatabase);
-        // TODO: change functionality to view database fragment
         btnDB.setOnClickListener( e -> {
+            // TODO: create bundle
 
+            // go to database view intent
+            Intent nextActivity = new Intent(CarDBActivity.this, DatabaseView.class);
+            startActivity(nextActivity);
         });
 
         // help button
@@ -157,10 +165,6 @@ public class CarDBActivity extends AppCompatActivity {
      * Function to load cars from existing database, if any.
      */
     private void loadCarsFromDatabase() {
-        // TODO: implement this!! make load from sharedprefs database?
-//        for (int i = 0; i < 15; i++) {
-//            carsList.add(new CarItem(1, 1, 1, "test", "test"));
-//        }
         carsAdapter.notifyDataSetChanged();
     }
 
@@ -228,9 +232,9 @@ public class CarDBActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... args) {
             try {
-                //TODO: make url based off user brand search
+                carsList.clear();
                 // create url
-                URL url = new URL("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/HONDA?format=JSON");
+                URL url = new URL(args[0]);
 
                 //open the connection
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
