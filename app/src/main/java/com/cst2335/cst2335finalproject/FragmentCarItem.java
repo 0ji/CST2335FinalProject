@@ -20,6 +20,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * car item class responsible for any loaded car items.
+ */
 public class FragmentCarItem extends Fragment {
     private Bundle dataFromActivity;
     private int model_id, make_id, _id;
@@ -27,6 +30,13 @@ public class FragmentCarItem extends Fragment {
     private AppCompatActivity parentActivity;
     private SQLiteDatabase db;
 
+    /**
+     * creates the item view. checks if it's a remove or add item fragment.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // inflate fragment with view
@@ -79,6 +89,11 @@ public class FragmentCarItem extends Fragment {
         return result;
     }
 
+    /**
+     * button method to add appropriate onclicklistener code. (add/remove)
+     * @param option the option passed through a bundle
+     * @param newRowValues the new row values (selected item)
+     */
     public void databaseBtnOption(String option, ContentValues newRowValues) {
         // TODO: add to database function
         CarOpener dbOpener = new CarOpener(parentActivity);
@@ -134,6 +149,10 @@ public class FragmentCarItem extends Fragment {
         }
     }
 
+    /**
+     * method to open a URL.
+     * @param url
+     */
     protected void openWebPage(String url) {
         Uri webpage = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);

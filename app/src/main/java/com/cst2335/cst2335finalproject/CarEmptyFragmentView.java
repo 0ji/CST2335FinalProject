@@ -15,6 +15,10 @@ import com.google.android.material.snackbar.Snackbar;
  */
 public class CarEmptyFragmentView extends AppCompatActivity {
 
+    /**
+     * loads appropriate fragment based on the data passed -- add/remove/dbview.
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +51,6 @@ public class CarEmptyFragmentView extends AppCompatActivity {
         }
 
         Button finishButton = findViewById(R.id.finishButton);
-        finishButton.setOnClickListener(x -> {
-            finish();
-        });
+        finishButton.setOnClickListener(x -> finish());
     }
 }

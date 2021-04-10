@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +26,9 @@ import static com.cst2335.cst2335finalproject.CarDBActivity.CAR_MODEL;
 import static com.cst2335.cst2335finalproject.CarDBActivity.CAR_MODEL_ID;
 import static com.cst2335.cst2335finalproject.CarOpener.TABLE_NAME;
 
+/**
+ * fragment that loads the database.
+ */
 public class FragmentDatabase extends Fragment {
 
     private Bundle dataFromActivity;
@@ -35,6 +37,13 @@ public class FragmentDatabase extends Fragment {
     private CarListAdapter carsAdapterDB;
     private SQLiteDatabase db;
 
+    /**
+     * creates view of the database.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // inflate fragment with view
@@ -95,6 +104,9 @@ public class FragmentDatabase extends Fragment {
 
     }
 
+    /**
+     * whenever the fragment layout is loaded again, e.g. from deleting a car item in database view.
+     */
     @Override
     public void onResume() {
         loadCarsFromDatabase();
