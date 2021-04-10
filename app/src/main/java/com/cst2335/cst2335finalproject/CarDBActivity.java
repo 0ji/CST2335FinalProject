@@ -278,9 +278,4 @@ public class CarDBActivity extends AppCompatActivity {
         }
 
     }
-
-    public boolean fileExistance(String fname) {
-        File file = getBaseContext().getFileStreamPath(fname);
-        return file.exists();
-    }
 }
