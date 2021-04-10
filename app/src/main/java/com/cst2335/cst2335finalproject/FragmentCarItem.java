@@ -1,7 +1,9 @@
 package com.cst2335.cst2335finalproject;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ public class FragmentCarItem extends Fragment {
     private int model_id, make_id, _id;
     private String model, make;
     private AppCompatActivity parentActivity;
+    private SQLiteDatabase db;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,26 +54,49 @@ public class FragmentCarItem extends Fragment {
         Button shopBtn = result.findViewById(R.id.btnShop);
         Button detailBtn = result.findViewById(R.id.btnDetail);
         Button databaseBtn = result.findViewById(R.id.btnDB);
+        String dbOption = dataFromActivity.getString("DB");
+        if (dbOption.contains("add")) {
+            databaseBtn.setText("Add to database");
+        } else if (dbOption.contains("remove")) {
+            databaseBtn.setText("Remove from database");
+        }
 
-        detailBtn.setOnClickListener( e -> {
-            openWebPage("http://www.google.com/search?q=" + make + "+" + model);
-        });
-        shopBtn.setOnClickListener( e -> {
-            openWebPage("https://www.autotrader.ca/cars/?mdl=" + model + "&make=" + make + "&loc=K2G1V8");
-        });
         databaseBtn.setOnClickListener( e -> {
-            // TODO: add to database function
+            ContentValues newRowValues = new ContentValues();
+            newRowValues.put(CarOpener.COL_ID, _id);
+            newRowValues.put(CarOpener.COL_MAKE_ID, make_id);
+            newRowValues.put(CarOpener.COL_MODEL_ID, model_id);
+            newRowValues.put(CarOpener.COL_MAKE, make);
+            newRowValues.put(CarOpener.COL_MODEL, model);
+
+            databaseBtnOption(dbOption, newRowValues);
+        });
+
+        detailBtn.setOnClickListener( e -> openWebPage("http://www.google.com/search?q=" + make + "+" + model));
+        shopBtn.setOnClickListener( e -> openWebPage("https://www.autotrader.ca/cars/?mdl=" + model + "&make=" + make + "&loc=K2G1V8"));
+
+        // return view
+        return result;
+    }
+
+    public void databaseBtnOption(String option, ContentValues newRowValues) {
+        // TODO: add to database function
+        CarOpener dbOpener = new CarOpener(parentActivity);
+        db = dbOpener.getWritableDatabase();
+
+        if (option.contains("add")) {
             AlertDialog.Builder carDialogBuilder = new AlertDialog.Builder(parentActivity);
 
-            carDialogBuilder.setTitle("Add to database")
+            carDialogBuilder.setTitle("Add to database?")
 
                 .setPositiveButton("Yes", (click, arg) -> {
-                   // TODO: add item to database
+                    db.insert(CarOpener.TABLE_NAME, null, newRowValues);
 
                     Snackbar.make(parentActivity.findViewById(R.id.fragmentLayout), "Added to database.",
                             Snackbar.LENGTH_LONG)
                             .setAction("Undo", e2 -> {
                                 // TODO: remove car from database
+                                db.delete(CarOpener.TABLE_NAME, CarOpener.COL_ID + "= ?", new String[] {newRowValues.getAsString(CarOpener.COL_ID)});
                             })
                             .show();
                 })
@@ -78,13 +104,31 @@ public class FragmentCarItem extends Fragment {
                 .setNegativeButton("No", (click, arg) -> {})
 
                 .create().show();
-        });
-        // return view
-        return result;
+        } else if (option.contains("remove")) {
+            AlertDialog.Builder carDialogBuilder = new AlertDialog.Builder(parentActivity);
+
+            carDialogBuilder.setTitle("Remove from database?")
+
+                    .setPositiveButton("Yes", (click, arg) -> {
+                        // TODO: remove item from database
+                        db.delete(CarOpener.TABLE_NAME, CarOpener.COL_ID + "= ?", new String[] {newRowValues.getAsString(CarOpener.COL_ID)});
+
+                        Snackbar.make(parentActivity.findViewById(R.id.fragmentLayout), "Removed from database.",
+                                Snackbar.LENGTH_LONG)
+                                .setAction("Undo", e2 -> {
+                                    // TODO: add car to database
+                                    db.insert(CarOpener.TABLE_NAME, null, newRowValues);
+                                })
+                                .show();
+                    })
+
+                    .setNegativeButton("No", (click, arg) -> {})
+
+                    .create().show();
+        }
     }
 
-    public void
-    public void openWebPage(String url) {
+    protected void openWebPage(String url) {
         Uri webpage = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         if (intent.resolveActivity(parentActivity.getPackageManager()) != null) {

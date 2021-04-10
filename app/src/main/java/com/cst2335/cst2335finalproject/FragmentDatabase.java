@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,23 +39,25 @@ public class FragmentDatabase extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // inflate fragment with view
         View result = inflater.inflate(R.layout.fragment_db_view, container, false);
-        ListView carListView = parentActivity.findViewById(R.id.dbListViewCars);
-        loadCarsFromDatabase();
+        ListView carListView = result.findViewById(R.id.dbListViewCars);
+        //carsListDB.add(new CarItem(0, 0, 0, "test", "test"));
+
 
         carsAdapterDB = new CarListAdapter();
         carListView.setAdapter(carsAdapterDB);
 
         carListView.setOnItemClickListener( (parent, view, pos, id) -> {
             CarItem selectedItem = carsListDB.get(pos);
-            Bundle dataToPass = new Bundle();
-            dataToPass.putInt(CAR_ID, selectedItem.get_id());
-            dataToPass.putInt(CAR_MAKE_ID, selectedItem.getMakeID());
-            dataToPass.putInt(CAR_MODEL_ID, selectedItem.getModelID());
-            dataToPass.putString(CAR_MAKE, selectedItem.getMake());
-            dataToPass.putString(CAR_MODEL, selectedItem.getModel());
+            dataFromActivity = getArguments();
+            dataFromActivity.putInt(CAR_ID, selectedItem.get_id());
+            dataFromActivity.putInt(CAR_MAKE_ID, selectedItem.getMakeID());
+            dataFromActivity.putInt(CAR_MODEL_ID, selectedItem.getModelID());
+            dataFromActivity.putString(CAR_MAKE, selectedItem.getMake());
+            dataFromActivity.putString(CAR_MODEL, selectedItem.getModel());
+            dataFromActivity.putString("DB", "remove");
 
-            Intent nextActivity = new Intent(parentActivity, FragmentView.class);
-            nextActivity.putExtras(dataToPass);
+            Intent nextActivity = new Intent(parentActivity, CarEmptyFragmentView.class);
+            nextActivity.putExtras(dataFromActivity);
             startActivity(nextActivity);
         });
         // return view
@@ -78,6 +81,7 @@ public class FragmentDatabase extends Fragment {
         int makeColIndex = results.getColumnIndex(CarOpener.COL_MAKE);
         int modelColIndex = results.getColumnIndex(CarOpener.COL_MODEL);
 
+        carsListDB.clear();
         while (results.moveToNext()) {
             int id = results.getInt(idColIndex);
             int makeId = results.getInt(makeIdColIndex);
@@ -87,6 +91,14 @@ public class FragmentDatabase extends Fragment {
 
             carsListDB.add(new CarItem(id, makeId, modelId, make, model));
         }
+        carsAdapterDB.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onResume() {
+        loadCarsFromDatabase();
+        super.onResume();
     }
 
     @Override
@@ -152,4 +164,5 @@ public class FragmentDatabase extends Fragment {
             return newView;
         }
     }
+
 }

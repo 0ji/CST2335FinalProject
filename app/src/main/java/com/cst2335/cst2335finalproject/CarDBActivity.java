@@ -115,11 +115,10 @@ public class CarDBActivity extends AppCompatActivity {
         Button btnDB = findViewById(R.id.btnDatabase);
         btnDB.setOnClickListener( e -> {
             // TODO: pass something if needed?
-
             Bundle dataToPass = new Bundle();
-            dataToPass.putString("DB", "yes");
+            dataToPass.putString("DB", "dbview");
             // go to database view intent
-            Intent nextActivity = new Intent(CarDBActivity.this, FragmentView.class);
+            Intent nextActivity = new Intent(CarDBActivity.this, CarEmptyFragmentView.class);
             nextActivity.putExtras(dataToPass);
             startActivity(nextActivity);
         });
@@ -139,8 +138,9 @@ public class CarDBActivity extends AppCompatActivity {
             dataToPass.putInt(CAR_MODEL_ID, selectedItem.getModelID());
             dataToPass.putString(CAR_MAKE, selectedItem.getMake());
             dataToPass.putString(CAR_MODEL, selectedItem.getModel());
+            dataToPass.putString("DB", "add");
 
-            Intent nextActivity = new Intent(CarDBActivity.this, FragmentView.class);
+            Intent nextActivity = new Intent(CarDBActivity.this, CarEmptyFragmentView.class);
             nextActivity.putExtras(dataToPass);
             startActivity(nextActivity);
         });
