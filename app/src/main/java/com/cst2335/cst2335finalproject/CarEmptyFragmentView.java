@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.google.android.material.snackbar.Snackbar;
+
 /**
  * empty activity to load either database or car details.
  */

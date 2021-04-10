@@ -90,15 +90,20 @@ public class FragmentCarItem extends Fragment {
             carDialogBuilder.setTitle("Add to database?")
 
                 .setPositiveButton("Yes", (click, arg) -> {
-                    db.insert(CarOpener.TABLE_NAME, null, newRowValues);
-
+                    if (db.insert(CarOpener.TABLE_NAME, null, newRowValues) != -1) {
                     Snackbar.make(parentActivity.findViewById(R.id.fragmentLayout), "Added to database.",
-                            Snackbar.LENGTH_LONG)
+                            Snackbar.LENGTH_SHORT)
                             .setAction("Undo", e2 -> {
                                 // TODO: remove car from database
                                 db.delete(CarOpener.TABLE_NAME, CarOpener.COL_ID + "= ?", new String[] {newRowValues.getAsString(CarOpener.COL_ID)});
                             })
                             .show();
+                    } else {
+                        Snackbar.make(parentActivity.findViewById(R.id.fragmentLayout), "This is already in your database!",
+                            Snackbar.LENGTH_LONG)
+                            .setAction("OK", e2 -> {})
+                            .show();
+                    }
                 })
 
                 .setNegativeButton("No", (click, arg) -> {})
@@ -111,15 +116,16 @@ public class FragmentCarItem extends Fragment {
 
                     .setPositiveButton("Yes", (click, arg) -> {
                         // TODO: remove item from database
-                        db.delete(CarOpener.TABLE_NAME, CarOpener.COL_ID + "= ?", new String[] {newRowValues.getAsString(CarOpener.COL_ID)});
-
-                        Snackbar.make(parentActivity.findViewById(R.id.fragmentLayout), "Removed from database.",
+                        if (db.delete(CarOpener.TABLE_NAME, CarOpener.COL_ID + "= ?", new String[] {newRowValues.getAsString(CarOpener.COL_ID)}) != 0) {
+                            parentActivity.setResult(501);
+                            parentActivity.finish();
+                        } else {
+                            Snackbar.make(parentActivity.findViewById(R.id.fragmentLayout), "Error: no car found. Could you have already deleted it?",
                                 Snackbar.LENGTH_LONG)
-                                .setAction("Undo", e2 -> {
-                                    // TODO: add car to database
-                                    db.insert(CarOpener.TABLE_NAME, null, newRowValues);
-                                })
+                                .setAction("OK", e2 -> {})
                                 .show();
+                        }
+
                     })
 
                     .setNegativeButton("No", (click, arg) -> {})
