@@ -17,6 +17,7 @@ public class TriviaActivity extends AppCompatActivity {
     EditText difficulty;
     EditText type;
 
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -58,7 +59,15 @@ public class TriviaActivity extends AppCompatActivity {
         
        // String triviaUrl = "https:/opentdb.com/api.php?amount=" + amount + "&type=" + type + "&difficulty=" + difficulty;
         createGame.setOnClickListener(v -> {
-            if(TextUtils.isEmpty(amount.toString())){
+            if(TextUtils.isEmpty(difficulty.getText())){
+                Toast.makeText(this, "Difficulty cannot be left empty",
+                        Toast.LENGTH_LONG).show();
+            }
+            if(TextUtils.isEmpty(type.getText())){
+                Toast.makeText(this, "Please type in boolean or multiple make sure there are no spaces ",
+                        Toast.LENGTH_LONG).show();
+            }
+            if(TextUtils.isEmpty(amount.getText())){
                 Toast.makeText(this,
                         "Amount cannot be left empty",
                         Toast.LENGTH_LONG).show();

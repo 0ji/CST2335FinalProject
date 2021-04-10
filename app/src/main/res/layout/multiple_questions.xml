@@ -8,42 +8,39 @@
     android:id="@+id/send"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:text="Question is here "
-        android:textSize="18dp" />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:id="@+id/question_multiple"
+            android:text="Question is here "
+            android:textSize="18dp" />
 
         <RadioButton
             android:id="@+id/Answer1"
             android:layout_width="482dp"
-            android:layout_height="76dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="answer" />
 
         <RadioButton
             android:id="@+id/Answer2"
             android:layout_width="487dp"
-            android:layout_height="76dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="answer" />
 
-    <RadioButton
-        android:id="@+id/Answer3"
-        android:layout_width="487dp"
-        android:layout_height="76dp"
-        android:layout_weight="1"
-        android:text="answer" />
+        <RadioButton
+            android:id="@+id/Answer4"
+            android:layout_width="487dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="answer" />
 
-    <RadioButton
-        android:id="@+id/Answer4"
-        android:layout_width="487dp"
-        android:layout_height="76dp"
-        android:layout_weight="1"
-        android:text="answer" />
-
-
-
+        <RadioButton
+            android:id="@+id/Answer3"
+            android:layout_width="487dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="answer" />
 
 </LinearLayout>

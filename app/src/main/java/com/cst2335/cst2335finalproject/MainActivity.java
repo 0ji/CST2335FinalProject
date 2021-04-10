@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         Button triviaSelection = findViewById(R.id.goToTrivia);
 
         triviaSelection.setOnClickListener(v -> {
-            Intent goToGame = new Intent(this, TriviaActivity.class);
-            startActivity(goToGame);
+            Intent goToTrivia = new Intent(this, TriviaActivity.class);
+            startActivity(goToTrivia);
         });
     }
 }

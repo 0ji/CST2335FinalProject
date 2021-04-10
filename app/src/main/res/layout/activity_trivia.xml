@@ -86,6 +86,8 @@
         android:layout_below="@id/difficulty"
         android:text="@string/createGameString"
         />
+
+
  <!--Can change the text of the button -->
     <ProgressBar
         android:visibility="visible"
@@ -95,4 +97,6 @@
         android:layout_height="50dp"
         style="?android:attr/progressBarStyleHorizontal"
         />
+
+
 </RelativeLayout>

@@ -4,23 +4,23 @@ import android.widget.TextView;
 
 public class Question {
 
-    String question;
-    String category;
-    String difficulty;
-    String correct_answer;
-    String incorrect_answers;
-    String type;
+    private String question;
+    private String category;
+    private String difficulty;
+    private String correct_answer;
+    private String incorrect_answers;
+    private String type;
 
-    long index;
+    private long id;
 
-    public Question(String question, String category, String difficulty, String correct_answer, String incorrect_answers, String type, long index) {
+    public Question(String question, String category, String difficulty, String correct_answer, String incorrect_answers, String type, long id) {
         this.question = question;
         this.category = category;
         this.difficulty = difficulty;
         this.correct_answer = correct_answer;
         this.incorrect_answers = incorrect_answers;
         this.type = type;
-        this.index = index;
+        this.id = id;
     }
 
     public Question(String question, String category, String difficulty, String correct_answer, String incorrect_answers, String type) {
@@ -32,12 +32,12 @@ public class Question {
         this.type = type;
     }
 
-    public long getIndex() {
-        return index;
+    public long getId() {
+        return id;
     }
 
-    public void setIndex(long index) {
-        this.index = index;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getQuestion() {
