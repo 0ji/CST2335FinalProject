@@ -306,7 +306,9 @@ public class SoccerFavorites extends AppCompatActivity {
 
         TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
         text.setText(R.string.soccer_rating_main);
-
+        /**
+         * The updateButton is to transfer submitted ratings from a user to sharedPreferences.
+         * */
         Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override

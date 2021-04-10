@@ -4,6 +4,7 @@
     android:id="@+id/soccer_toolbar_menu"
     android:title="Soccer"
     android:orderInCategory="10">
+
     <item
         android:id="@+id/soccer_activity"
         app:showAsAction="always"
@@ -15,4 +16,5 @@
         android:title="@string/soccer_toolbar_About"
         app:showAsAction="never"
         />
+
 </menu>
