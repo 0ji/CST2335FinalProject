@@ -2,6 +2,7 @@ package com.cst2335.cst2335finalproject.soccer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +32,7 @@ import com.google.android.material.snackbar.Snackbar;
 /**
  * SoccerDetailActivity is a class which inherits AppCompactActivity class.
  * This class is designed for showing details of one soccer article.
+ * {@link AppCompatActivity}
  * */
 public class SoccerDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -79,12 +81,15 @@ public class SoccerDetailActivity extends AppCompatActivity {
                     break;
                 case R.id.soccer_goToCarDB:
                     Intent intent3 = new Intent(this, MainActivity.class);
-                    setResult(500, intent3);
-                    finish();
+                    startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
+                case R.id.soccer_previous:
+                    Intent intent5 = new Intent(this, MainActivity.class);
+                    setResult(500, intent5);
+                    finish();
 
                     break;
             }
@@ -116,8 +121,8 @@ public class SoccerDetailActivity extends AppCompatActivity {
             /**
              * snackbar is a Snacbar which shows the article object is saved in the database.
              * */
-            Snackbar snackbar = Snackbar.make(relativeLayout,"Saved!",Snackbar.LENGTH_LONG);
-            snackbar.setAction("Undo", click->{
+            Snackbar snackbar = Snackbar.make(relativeLayout,R.string.soccer_save_button,Snackbar.LENGTH_LONG);
+            snackbar.setAction(R.string.soccer_undo_button, click->{
 
             }).show();
         });
@@ -162,9 +167,10 @@ public class SoccerDetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.soccer_toolbar_menu, menu);
+        /*
         MenuItem searchItem = menu.findItem(R.id.soccer_search);
         searchItem.setVisible(false);
-        /*
+
         SearchView soccer_searchView = (SearchView) searchItem.getActionView();
         soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -191,9 +197,16 @@ public class SoccerDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.soccer_about:
-                Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+
+                AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
+                alterBuilder.setTitle("How To Use")
+                        .setMessage("-SAVE button saves the current article\n\n" +
+                                "-GO To WEB button shows the article of this\n\n" +
+                                "-Soccer Icon is for heading to the soccer main")
+                        .setPositiveButton("Okay",(click, arg)->{}).create().show();
                 break;
-            case R.id.soccer_search:
+            case R.id.soccer_activity_main:
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

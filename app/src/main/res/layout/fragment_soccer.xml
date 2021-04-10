@@ -16,35 +16,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/soccer_title"
-        android:hint="Title here"
+        android:hint="@string/soccer_fragment_Title"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textAlignment="center"
         android:layout_below="@+id/soccer_fragment_headlineImage"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/soccer_id"
+        android:textSize="15dp"
         android:layout_below="@id/soccer_title"
-        android:hint="ID="
+        android:hint="@string/soccer_fragment_ID"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/soccer_id"
-        android:id="@+id/soccer_link"
-        android:hint="Link"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/soccer_link"
         android:id="@+id/soccer_description"
-        android:hint="Description"
+        android:hint="@string/soccer_fragment_Description"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/soccer_date"
         android:layout_below="@+id/soccer_description"
-        android:hint="date"/>
+        android:hint="@string/soccer_fragment_Date"
+        android:layout_centerHorizontal="true"
+        android:textSize="13dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        />
 
 </RelativeLayout>

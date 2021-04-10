@@ -53,12 +53,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-
+/**
+ * SoccerMainActiv
+ * This class is a main class of my part of this project.
+ * This activity provides users an interface which contains listview, toolbar and navigation view.
+ * ImageView soccer_headlineImage will be the top article's thumbnail of all the articles.
+ * The progressBar will be showed up as the first and the list will come up after that.
+ * {@link AppCompatActivity}
+ * */
 public class SoccerMainActiv extends AppCompatActivity {
 
     private TextView progressStatus;
@@ -70,9 +78,16 @@ public class SoccerMainActiv extends AppCompatActivity {
     private MyAdapter myAdapter;
     private SoccerFragment fragment;
     private ImageView soccer_headlineImage;
-
+    /**
+     * This static final variable is hard coded as the address of xml api.
+     * */
     public static final String ADDRESS = "https://www.goal.com/feeds/en/news";
-
+    /**
+     * onCreate
+     * @param savedInstanceState
+     * This method creates essential components of this activity.
+     * progress bar, ImageView, listView and navigation View has come up.
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,18 +150,24 @@ public class SoccerMainActiv extends AppCompatActivity {
                     break;
                 case R.id.soccer_goToCarDB:
                     Intent intent3 = new Intent(this, MainActivity.class);
-                    setResult(500, intent3);
-                    finish();
+                    startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
+                case R.id.soccer_previous:
+                    Intent intent5 = new Intent(this, MainActivity.class);
+                    setResult(500, intent5);
+                    finish();
                     break;
             }
             drawer.closeDrawer(GravityCompat.START);
             return true;
         });
-
+        /**
+         * Button goToFavorite
+         * this button is used for transferring the current activity to SoccerFavorites class
+         * */
         goToFavorite = (Button) findViewById(R.id.goToFavorite);
         goToFavorite.setOnClickListener(c-> {
             Intent intent = new Intent(this, SoccerFavorites.class);
@@ -168,53 +189,76 @@ public class SoccerMainActiv extends AppCompatActivity {
         });
          */
     }
-
+    /**
+     * onCreateOptionsMenu
+     * This method creates and gives functionality to each menu item.
+     * @param menu is a Menu instance
+     * @return true
+     * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.soccer_toolbar_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.soccer_search);
-        SearchView soccer_searchView = (SearchView) searchItem.getActionView();
-        soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getApplicationContext(),"Searching: "+query.toString(),Toast.LENGTH_SHORT).show();
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                return false;
-            }
-        });
         return true;
     }
-
+    /**
+     * onOptionsItemSelected
+     * This method indicates how each item works when items are clicked.
+     * @param item
+     * @return true
+     * */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.soccer_about:
-                Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+
+                AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
+                alterBuilder.setTitle("How To Use")
+                        .setMessage("-Click one of items in list to check Articles\n\n" +
+                                "-Favorites button shows stored articles\n\n" +
+                                "-Soccer Icon is for heading to the soccer main")
+                        .setPositiveButton("Okay",(click, arg)->{}).create().show();
                 break;
-            case R.id.soccer_search:
+            case R.id.soccer_activity_main:
+                Intent intent = new Intent(this, SoccerMainActiv.class);
+                startActivity(intent);
                 break;
         }
-        return super.onOptionsItemSelected(item);
+        return true;//super.onOptionsItemSelected(item);
     }
-
+    /**
+     * MyAdapter class
+     * This class is designed to give a view to the listView in this layout.
+     * This class takes a list which contains contents that should be showed up on the list.
+     * This class is a subclass of {@link BaseAdapter}
+     * */
     class MyAdapter extends BaseAdapter{
-
+        /**
+         * getCount
+         * This method returns the size of the list.
+         * @return list.size()
+         * */
         @Override
         public int getCount() {
             return list.size();
         }
-
+        /**
+         * getItem
+         * This method returns a specific object inside the list by a position.
+         * @param position is a location of an object in the list.
+         * @return list.get(position)
+         * */
         @Override
         public Object getItem(int position) {
             return list.get(position);
         }
-
+        /**
+         * getItemId
+         * This method returns a long value which is an id of an object.
+         * @param position
+         * @return container.getId() is an id of the object in the list.
+         * */
         @Override
         public long getItemId(int position) {
             Article container = null;
@@ -223,7 +267,14 @@ public class SoccerMainActiv extends AppCompatActivity {
 
             return container.getId();
         }
-
+        /**
+         * getView
+         * This method returns a view which replaces the current listview in the layout.
+         * @param parent is a parent group of components.
+         * @param convertView is a convert view.
+         * @param position is a position of the object in the list.
+         * @return newView is a view that replace the current list view.
+         * */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
@@ -235,21 +286,39 @@ public class SoccerMainActiv extends AppCompatActivity {
             return newView;
         }
     }
+    /**
+     * SoccerAccessLayer class
+     * This class inherits from {@link AsyncTask}
+     * This class takes String, Integer, String variable as values to use in each function.
+     * */
     class SoccerAccessLayer extends AsyncTask <String, Integer, String> {
         private String address;
         private Bitmap headlineImage;
         ConnectivityManager connMgr;
+        /**
+         * The constructor of this class
+         * @param address
+         * @param connMgr
+         *
+         * */
         public SoccerAccessLayer(String address, ConnectivityManager connMgr){
             this.address = address;
             list = new ArrayList<>();
             this.connMgr = connMgr;
         }
+        /**
+         * onPreExceute is a method that occurs as the first in the process.
+         * */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             progressStatus.setText("Start accessing to the web...");
             onProgressUpdate(10);
         }
+        /**
+         * onPostExecute is a method that occurs as the last in the process.
+         * In this method, soccer_headlineImage gets a bitmap object and List set an adapter
+         * */
         @Override
         protected void onPostExecute(String e) {
             super.onPostExecute(e);
@@ -265,6 +334,11 @@ public class SoccerMainActiv extends AppCompatActivity {
             myList.setAdapter(myAdapter);
 
         }
+        /**
+         * onProgressUpdate
+         * This method is used for giving a progress bar's view.
+         * @param values is an integer array
+         * */
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
@@ -273,7 +347,13 @@ public class SoccerMainActiv extends AppCompatActivity {
             progressStatus.setVisibility(View.VISIBLE);
 
         }
-
+        /**
+         * doInBackground
+         * @param params is a String array
+         * In this method, the application pulls and extracts data from the selected xml address.
+         *               the extracted data is stored in the list as article objects.
+         * @return null.
+         * */
         @Override
         protected String doInBackground(String... params) {
 
@@ -285,7 +365,7 @@ public class SoccerMainActiv extends AppCompatActivity {
             }
             else{ Log.e(this.toString(), "No network connection is available"); }
 
-            progressStatus.setText("Make a connection...");
+            progressStatus.setText(R.string.soccer_main_pg_15);
             onProgressUpdate(15);
             try{
                 URL url = new URL(address);
@@ -297,7 +377,7 @@ public class SoccerMainActiv extends AppCompatActivity {
 
                 conn.connect();
 
-                progressStatus.setText("Read data from the xml...");
+                progressStatus.setText(R.string.soccer_main_pg_25);
                 onProgressUpdate(25);
                 Log.d(this.toString(), "reading a stream");
 
@@ -307,7 +387,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                 XmlPullParser parser = factory.newPullParser();
                 parser.setInput(stream, Xml.Encoding.UTF_8.toString());
 
-                progressStatus.setText("Start extracting data...");
+                progressStatus.setText(R.string.soccer_main_pg_45);
                 onProgressUpdate(45);
 
                 boolean insideItem = false;
@@ -317,6 +397,8 @@ public class SoccerMainActiv extends AppCompatActivity {
                 Article article = new Article();
                 /**
                  * Reference: Johan Jurrius, 33-Reading data from RSS feed(Android), Aug 20 2017, https://www.youtube.com/watch?v=Lnan_DJU7DI
+                 * This is how extracts data from different tags in the xml address.
+                 * The format of the xml address is the rss type which is divided by item tags
                  * */
                 while(eventType != XmlPullParser.END_DOCUMENT){
 
@@ -348,6 +430,10 @@ public class SoccerMainActiv extends AppCompatActivity {
                             }
                         }
                         else if(parser.getName().equalsIgnoreCase("media:thumbnail")){
+                            /**
+                             * When the start tag is an item and the thumbnail is the first image out of the sub tags,
+                             * this process gets image bytes from the thumbnali url.
+                             * */
                             if(insideItem && firstImage){
                                 String urlString = parser.getAttributeValue(null,"url");
                                 URL newUrl = new URL(urlString);
@@ -369,7 +455,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                         article = new Article();
                     }
                     eventType = parser.next();
-                    progressStatus.setText("Downloading Images ...");
+                    progressStatus.setText(R.string.soccer_main_pg_70);
                     onProgressUpdate(70);
                 }
 
@@ -390,10 +476,34 @@ public class SoccerMainActiv extends AppCompatActivity {
             Log.d(this.toString(), "end ...");
             return null;
         }
-
+        /**
+         * toString
+         * This method simply returns its name.
+         * @return name of this class.
+         * */
         @Override
         public String toString() {
             return "SoccerAccessLayer";
         }
     }
 }
+
+
+
+/*
+MenuItem searchItem = menu.findItem(R.id.soccer_search);
+        SearchView soccer_searchView = (SearchView) searchItem.getActionView();
+        soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getApplicationContext(),"Searching: "+query.toString(),Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return false;
+            }
+        });
+*/

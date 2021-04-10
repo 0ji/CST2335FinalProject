@@ -1,6 +1,8 @@
 package com.cst2335.cst2335finalproject.soccer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -10,7 +12,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
@@ -24,6 +30,7 @@ import com.google.android.material.snackbar.Snackbar;
  * Button soccer_urlButton_db is a class member to provide article's url connection through a web application.
  * Button soccer_backToDBList is a button to lead a user to previous activity.
  * Toolbar toolbar is a class member that provide a tool bar.
+ * {@link AppCompatActivity}
  * */
 public class SoccerDetailDBActivity extends AppCompatActivity {
     private Button soccer_urlButton_db, soccer_backToDBList;
@@ -67,12 +74,15 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
                     break;
                 case R.id.soccer_goToCarDB:
                     Intent intent3 = new Intent(this, MainActivity.class);
-                    setResult(500, intent3);
-                    finish();
+                    startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
+                case R.id.soccer_previous:
+                    Intent intent5 = new Intent(this, MainActivity.class);
+                    setResult(500, intent5);
+                    finish();
                     break;
             }
             drawer.closeDrawer(GravityCompat.START);
@@ -109,5 +119,42 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });
+    }
+    /**
+     * onCreateOptionsMenu
+     * This method creates and gives functionality to each menu item.
+     * @param menu is a Menu instance
+     * @return true
+     * */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.soccer_toolbar_menu, menu);
+
+        return true;
+    }
+    /**
+     * onOptionsItemSelected
+     * This method indicates how each item works when items are clicked.
+     * @param item
+     * @return true
+     * */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.soccer_about:
+                AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
+                alterBuilder.setTitle("How To Use")
+                        .setMessage("-Back To List button makes you back to the list\n\n" +
+                        "-GO To WEB button shows the article of this\n\n" +
+                                "-Soccer Icon is for heading to the soccer main")
+                        .setPositiveButton("Okay",(click, arg)->{}).create().show();
+                break;
+            case R.id.soccer_activity_main:
+                Intent intent = new Intent(this, SoccerMainActiv.class);
+                startActivity(intent);
+                break;
+        }
+        return true;//super.onOptionsItemSelected(item);
     }
 }

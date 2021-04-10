@@ -97,14 +97,14 @@ public class SoccerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_soccer, container, false);
         TextView idText = (TextView) view.findViewById(R.id.soccer_id);
         TextView titleText = (TextView) view.findViewById(R.id.soccer_title);
-        TextView urlText = (TextView) view.findViewById(R.id.soccer_link);
+
         TextView descriptionText = (TextView) view.findViewById(R.id.soccer_description);
         TextView dateText = (TextView) view.findViewById(R.id.soccer_date);
         ImageView soccer_thumbnailImage = (ImageView) view.findViewById(R.id.soccer_fragment_headlineImage);
 
-        idText.setText("ID= "+tArticle.getId());
+        idText.setText("Article NO. "+tArticle.getId());
         titleText.setText(tArticle.getTitle());
-        urlText.setText(tArticle.getLink());
+
         descriptionText.setText(tArticle.getDescription());
         dateText.setText(tArticle.getPubDate());
         soccer_thumbnailImage.setImageBitmap(BitmapUtility.getBitmapImage(tArticle.getThumbnailUrl()));

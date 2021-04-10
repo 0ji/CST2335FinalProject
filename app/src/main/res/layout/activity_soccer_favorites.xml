@@ -37,6 +37,8 @@
                     android:id="@+id/list_item_db"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     />
             </RelativeLayout>
             <Button
@@ -44,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="Soccer Articles"/>
+                android:text="@string/soccer_favorite_SoccerArticles"/>
 
         </RelativeLayout>
         <com.google.android.material.navigation.NavigationView
@@ -54,6 +56,7 @@
             android:fitsSystemWindows="true"
             android:id="@+id/soccer_nav_view_db"
             app:menu="@menu/soccer_nav_actions"
+            app:headerLayout="@layout/soccer_nav_head_layout"
             />
     </androidx.drawerlayout.widget.DrawerLayout>
 

@@ -5,9 +5,12 @@ import java.io.Serializable;
  * Article class
  * This class is a container to store data related to soccer articles
  * This class inherits Serializable interface.
+ * {@link Serializable}
  * */
 public class Article implements Serializable {
-
+    /**
+     * The class members are components of data from the xml page.
+     * */
     private long id;
     private String title, link, description, pubDate;
     private byte[] thumbnailUrl;

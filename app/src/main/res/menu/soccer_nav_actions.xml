@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/soccer_goToMain"
 
-            android:title="Go To Main Page"/>
+            android:title="@string/soccer_nav_GoToMainPage"/>
         <item
             android:id="@+id/soccer_goToTrivia"
 
-            android:title="Go To Trivia"/>
+            android:title="@string/soccer_nav_GoToTrivia"/>
         <item
             android:id="@+id/soccer_goToCarDB"
 
-            android:title="Go To CarDB"/>
+            android:title="@string/soccer_nav_GoToCarDB"/>
         <item
             android:id="@+id/soccer_goToSoccerMain"
+            android:icon="@drawable/soccer_icon"
+            android:title="@string/soccer_nav_GoToSoccerPage"/>
+        <item
+            android:id="@+id/soccer_previous"
+            android:title="@string/soccer_previous"
+            />
 
-            android:title="Go To Soccer Page"/>
     </group>
 </menu>
