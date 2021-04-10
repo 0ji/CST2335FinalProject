@@ -1,7 +1,9 @@
 package com.cst2335.cst2335finalproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +14,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -22,6 +27,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -50,6 +56,40 @@ public class CarDBActivity extends AppCompatActivity {
     private CarListAdapter carsAdapter = new CarListAdapter();
     SharedPreferences prefs = null;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.app_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String message = null;
+        Intent nextActivity = null;
+        switch(item.getItemId()) {
+            case R.id.itemCar:
+                message = "Launching car app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSoccer:
+                message = "Launching soccer app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSong:
+                message = "Launching song app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemTrivia:
+                message = "Launching trivia app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        startActivity(nextActivity);
+        return true;
+    }
+
     /**
      * Create function for when the instance is created
      * @param savedInstanceState
@@ -62,6 +102,11 @@ public class CarDBActivity extends AppCompatActivity {
         ListView carListView = findViewById(R.id.listViewCars);
         carListView.setAdapter(carsAdapter);
 
+        // create toolbar
+        Toolbar tBar = findViewById(R.id.toolbar);
+        setSupportActionBar(tBar);
+        getSupportActionBar().setTitle("Car app");
+        //create navdrawer
 
 
         // load any old query preferences, if any
@@ -104,8 +149,8 @@ public class CarDBActivity extends AppCompatActivity {
             String searchText = searchView.getText().toString();
             // toast to show something
             saveSharedPrefs(searchText);
-//            Toast.makeText(getApplicationContext(), "You searched `" + searchText + "`",
-//                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "You searched `" + searchText + "`",
+                    Toast.LENGTH_SHORT).show();
             query.execute("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/" + searchText + "?format=JSON");
             carsAdapter.notifyDataSetChanged();
             searchProgBar.setProgress(100);
