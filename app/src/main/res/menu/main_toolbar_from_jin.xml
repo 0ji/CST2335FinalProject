@@ -5,10 +5,26 @@
     android:title="Soccer"
     android:orderInCategory="10">
 
+    <item android:id="@+id/itemCar"
+        android:title="Car app"
+        android:icon="@drawable/car"
+        android:orderInCategory="1"
+        app:showAsAction="always"/>
+    <item android:id="@+id/itemTrivia"
+        android:title="Trivia app"
+        android:icon="@drawable/trivia"
+        android:orderInCategory="3"
+        app:showAsAction="always"/>
+    <item android:id="@+id/itemSong"
+        android:title="Song app"
+        android:icon="@drawable/guitar"
+        android:orderInCategory="4"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/soccer_activity"
         app:showAsAction="always"
         android:title="soccer"
+        android:orderInCategory="2"
         android:icon="@drawable/soccer_ball"
         />
     <item

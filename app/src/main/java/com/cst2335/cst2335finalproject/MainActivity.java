@@ -135,6 +135,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.soccer_activity:
                 changePage(SoccerMainActiv.class);
                 break;
+            case R.id.itemCar:
+                changePage(CarDBActivity.class);
+                break;
+            case R.id.itemSong:
+                break;
+            case R.id.itemTrivia:
+                break;
         }
         return true;//super.onOptionsItemSelected(item);
     }

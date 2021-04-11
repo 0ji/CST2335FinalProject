@@ -153,6 +153,14 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, SoccerMainActiv.class);
                 startActivity(intent);
                 break;
+            case R.id.itemCar:
+                Intent intent1 = new Intent(this, CarDBActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.itemSong:
+                break;
+            case R.id.itemTrivia:
+                break;
         }
         return true;//super.onOptionsItemSelected(item);
     }
