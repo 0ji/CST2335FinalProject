@@ -12,7 +12,7 @@
         android:layout_toRightOf="@+id/SongView"
         android:layout_marginLeft="-2dp"
         android:id="@+id/frameLayout"
-        android:background="@color/rose"
+        android:background="@color/grey"
 
         />
 
