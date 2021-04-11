@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:supportsRtl="true"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/SongView"
+        android:layout_marginLeft="-2dp"
+        android:id="@+id/frameLayout"
+        android:background="@color/rose"
+
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/songster_SongList"
+        android:textSize="20sp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/SongListTitle"
+        android:textColor="@color/black"
+        />
+
+    <ListView
+        android:id="@+id/SongView"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/SongListTitle"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/GoBackButton"
+        android:text="@string/BackButton"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/grey"
+        android:layout_marginStart="10dp"
+
+        />
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@+id/SongView"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toastText"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"></TextView>
+
+
+
+
+
+</RelativeLayout>
