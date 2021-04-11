@@ -16,13 +16,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
-import com.cst2335.cst2335finalproject.SoccerFragment;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+
 /**
  * SoccerDetailDBActivity
  * This class is another version of SoccerDetailActivity but This gets data from the database.

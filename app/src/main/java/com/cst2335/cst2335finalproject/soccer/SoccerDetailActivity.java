@@ -4,9 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -19,14 +17,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
-import com.cst2335.cst2335finalproject.SoccerFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 /**
@@ -123,7 +118,8 @@ public class SoccerDetailActivity extends AppCompatActivity {
              * */
             Snackbar snackbar = Snackbar.make(relativeLayout,R.string.soccer_save_button,Snackbar.LENGTH_LONG);
             snackbar.setAction(R.string.soccer_undo_button, click->{
-
+                Intent intent = new Intent(this, SoccerFavorites.class);
+                startActivity(intent);
             }).show();
         });
         /**

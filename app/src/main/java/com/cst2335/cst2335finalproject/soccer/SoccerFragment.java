@@ -1,32 +1,16 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.soccer;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.cst2335.cst2335finalproject.soccer.Article;
-import com.cst2335.cst2335finalproject.soccer.BitmapUtility;
-import com.cst2335.cst2335finalproject.soccer.SoccerDetailActivity;
-import com.cst2335.cst2335finalproject.soccer.SoccerFavorites;
-import com.google.android.material.snackbar.Snackbar;
-
-import org.w3c.dom.Text;
+import com.cst2335.cst2335finalproject.R;
 
 /**
  * A simple {@link Fragment} subclass.

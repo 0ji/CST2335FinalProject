@@ -9,7 +9,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,11 +28,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
-import com.cst2335.cst2335finalproject.SoccerFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -48,6 +45,7 @@ import java.util.ArrayList;
 public class SoccerFavorites extends AppCompatActivity {
     protected ArrayList<Article> articleList = new ArrayList();
     private Toolbar toolbar;
+    private Button goToSoccerList;
     private ImageView soccer_headlineImage_db;
     SharedPreferences prefs = null;
     /**
@@ -103,7 +101,8 @@ public class SoccerFavorites extends AppCompatActivity {
             drawer.closeDrawer(GravityCompat.START);
             return true;
         });
-
+        goToSoccerList = (Button) findViewById(R.id.goToSoccerList);
+        goToSoccerList.setOnClickListener(c->{Intent intent = new Intent(this, SoccerMainActiv.class); startActivity(intent);});
         ListView myList = findViewById(R.id.list_item_db);
         dbAdapter = new DBAdapter();
         myList.setAdapter(dbAdapter);
