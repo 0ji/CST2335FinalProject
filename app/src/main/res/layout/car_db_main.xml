@@ -138,7 +138,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-
+            app:headerLayout="@layout/header_car"
             app:menu="@menu/app_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
