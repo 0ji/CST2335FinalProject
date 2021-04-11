@@ -8,49 +8,30 @@
     tools:context=".FavouriteList"
     android:supportsRtl="true">
 
-
-
-
-    <LinearLayout
-        android:id="@+id/LinearList"
-        android:layout_width="300dp"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/refresher">
-            <ListView
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/Listid"
-                android:layout_below="@+id/TextHeader"
-                android:clickable="true"
-                />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    </LinearLayout>
-
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/TextHeader"
-    android:layout_centerHorizontal="true"
-    android:text="@string/favouriteList"
-    android:textSize="30sp"
-    android:textColor="@color/black"/>
-    <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_toRightOf="@+id/LinearList"
-    android:layout_marginLeft="-2dp"
-    android:id="@+id/frameLayout"
-    android:background="@color/grey"
-
+        android:id="@+id/GoBackButton"
+        android:text="@string/BackButton"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/teal_200"
+        android:layout_marginStart="10dp"
+        android:layout_centerHorizontal="true"
         />
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextHeader"
+        android:layout_centerHorizontal="true"
+        android:text="@string/favouriteList"
+        android:textSize="30sp"
+        android:textColor="@color/black"/>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Listid"
+        android:layout_below="@+id/TextHeader"
+        />
 
 
 </RelativeLayout>
