@@ -10,19 +10,19 @@
 
     <item android:id="@+id/itemSoccer"
         android:title="Soccer app"
-        android:icon="@drawable/car"
+        android:icon="@drawable/soccer_ball_icon"
         android:orderInCategory="2"
         app:showAsAction="always"/>
 
     <item android:id="@+id/itemTrivia"
         android:title="Trivia app"
-        android:icon="@drawable/car"
+        android:icon="@drawable/trivia"
         android:orderInCategory="3"
         app:showAsAction="always"/>
 
     <item android:id="@+id/itemSong"
         android:title="Song app"
-        android:icon="@drawable/car"
+        android:icon="@drawable/guitar"
         android:orderInCategory="4"
         app:showAsAction="always"/>
 </menu>
