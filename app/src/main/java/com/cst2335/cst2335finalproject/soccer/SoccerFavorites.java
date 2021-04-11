@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
+import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class SoccerFavorites extends AppCompatActivity {
                     startActivity(intent2);
                     break;
                 case R.id.soccer_goToCarDB:
-                    Intent intent3 = new Intent(this, MainActivity.class);
+                    Intent intent3 = new Intent(this, CarDBActivity.class);
                     startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:

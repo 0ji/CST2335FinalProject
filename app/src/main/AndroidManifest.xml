@@ -12,13 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335FinalProject">
-        <activity android:name=".soccer.SoccerDetailDBActivity"></activity>
+        <activity android:name=".carDB.CarEmptyFragmentView"></activity>
+        <activity android:name=".carDB.CarDBActivity">
+
+        </activity>
+
+        <activity android:name=".soccer.SoccerDetailDBActivity" />
         <activity
             android:name=".soccer.SoccerFavorites"
             android:label="@string/title_activity_soccer_favorites" />
         <activity
             android:name=".soccer.SoccerDetailActivity"
-            android:label="@string/title_activity_soccer_detail"></activity>
+            android:label="@string/title_activity_soccer_detail" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

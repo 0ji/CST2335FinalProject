@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
 import com.google.android.material.navigation.NavigationView;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
      * This button is used for moving to the soccer activity
      * */
     ImageButton goToSoccer;
+    ImageButton goToCarDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         goToSoccer = (ImageButton) findViewById(R.id.goToSoccer);
         goToSoccer.setOnClickListener(v->{
             changePage(SoccerMainActiv.class);
+        });
+        goToCarDB = (ImageButton) findViewById(R.id.goToCarDB);
+        goToCarDB.setOnClickListener(v->{
+            changePage(CarDBActivity.class);
         });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.soccer_toolbar_main);
@@ -67,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent2);
                     break;
                 case R.id.soccer_goToCarDB:
-                    Intent intent3 = new Intent(this, MainActivity.class);
+                    Intent intent3 = new Intent(this, CarDBActivity.class);
                     startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:

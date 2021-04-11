@@ -40,4 +40,15 @@
     <string name="soccer_db_id">이 아이템의 행 아이디=</string>
     <string name="soccer_db_id2">이 아이템의 데이터 아이디=</string>
     <string name="soccer_confirm">확인</string>
+
+
+    <string name="search_car_brand_here">Search car brand here</string>
+    <string name="search">Search</string>
+    <string name="help">HELP</string>
+    <string name="database_view">DATABASE VIEW</string>
+    <string name="help_details">Enter a car model in the search field. Click search to bring up the list of cars. Select a car in the list to bring up car details, where you can add it to your database or shop for the car.</string>
+    <string name="help_title">Car database instructions</string>
+    <string name="help_positive">Understood</string>
+    <string name="back_to_car_view" translatable="false">Back</string>
+
 </resources>

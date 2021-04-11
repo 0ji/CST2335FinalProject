@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
+import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 /**
@@ -79,7 +80,7 @@ public class SoccerDetailActivity extends AppCompatActivity {
                     startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
-                    Intent intent4 = new Intent(this, SoccerMainActiv.class);
+                    Intent intent4 = new Intent(this, CarDBActivity.class);
                     startActivity(intent4);
                 case R.id.soccer_previous:
                     Intent intent5 = new Intent(this, MainActivity.class);
