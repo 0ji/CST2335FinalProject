@@ -8,4 +8,6 @@
     <string name="help_title">Car database instructions</string>
     <string name="help_positive">Understood</string>
     <string name="back_to_car_view" translatable="false">Back</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

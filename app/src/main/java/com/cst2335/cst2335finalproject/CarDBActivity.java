@@ -1,9 +1,12 @@
 package com.cst2335.cst2335finalproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +32,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -43,7 +48,7 @@ import java.util.ArrayList;
 /**
  * This class handles all the code in car_db_main.xml.
  */
-public class CarDBActivity extends AppCompatActivity {
+public class CarDBActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String CAR_MAKE = "MAKE";
     public static final String CAR_MODEL = "MODEL";
@@ -55,40 +60,6 @@ public class CarDBActivity extends AppCompatActivity {
     private ArrayList<CarItem> carsList = new ArrayList<>();
     private CarListAdapter carsAdapter = new CarListAdapter();
     SharedPreferences prefs = null;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.app_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        String message = null;
-        Intent nextActivity = null;
-        switch(item.getItemId()) {
-            case R.id.itemCar:
-                message = "Launching car app";
-                nextActivity = new Intent(this, CarDBActivity.class);
-                break;
-            case R.id.itemSoccer:
-                message = "Launching soccer app";
-                nextActivity = new Intent(this, CarDBActivity.class);
-                break;
-            case R.id.itemSong:
-                message = "Launching song app";
-                nextActivity = new Intent(this, CarDBActivity.class);
-                break;
-            case R.id.itemTrivia:
-                message = "Launching trivia app";
-                nextActivity = new Intent(this, CarDBActivity.class);
-                break;
-        }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        startActivity(nextActivity);
-        return true;
-    }
 
     /**
      * Create function for when the instance is created
@@ -106,8 +77,15 @@ public class CarDBActivity extends AppCompatActivity {
         Toolbar tBar = findViewById(R.id.toolbar);
         setSupportActionBar(tBar);
         getSupportActionBar().setTitle("Car app");
-        //create navdrawer
 
+        //create navdrawer
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer, tBar, R.string.open, R.string.close);
+        toggle.syncState();
+
+        NavigationView navView = findViewById(R.id.navView);
+        navView.setNavigationItemSelectedListener(this);
 
         // load any old query preferences, if any
         prefs = getSharedPreferences("CarViewPrefs", Context.MODE_PRIVATE);
@@ -199,6 +177,71 @@ public class CarDBActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("Search", searchText);
         editor.commit();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        String message = null;
+        Intent nextActivity = null;
+        switch(item.getItemId()) {
+            case R.id.itemCar:
+                message = "Launching car app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSoccer:
+                message = "Launching soccer app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSong:
+                message = "Launching song app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemTrivia:
+                message = "Launching trivia app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+        }
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        startActivity(nextActivity);
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.app_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String message = null;
+        Intent nextActivity = null;
+        switch(item.getItemId()) {
+            case R.id.itemCar:
+                message = "Launching car app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSoccer:
+                message = "Launching soccer app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSong:
+                message = "Launching song app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemTrivia:
+                message = "Launching trivia app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        startActivity(nextActivity);
+        return true;
     }
 
     /**
