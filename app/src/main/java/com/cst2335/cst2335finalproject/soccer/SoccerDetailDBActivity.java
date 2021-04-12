@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
@@ -34,6 +35,7 @@ import com.google.android.material.navigation.NavigationView;
 public class SoccerDetailDBActivity extends AppCompatActivity {
     private Button soccer_urlButton_db, soccer_backToDBList;
     private Toolbar toolbar;
+    private ImageView soccerDB_headImage;
     /**
      * onCreate
      * @param savedInstanceState is a bundle to pass data.
@@ -49,6 +51,7 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.soccer_toolbar_db_detail);
         setSupportActionBar(toolbar);
+        soccerDB_headImage = (ImageView) findViewById(R.id.soccerDB_headImage);
         /**
          * This drawer and toggle are created for the navigationView.
          * */
@@ -98,7 +101,7 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_db, detailsFragment).commit();
         Article article = (Article) dataFromChat.getSerializable("Article");
         Log.d("Article title is", "onCreate: "+article.toString());
-
+        soccerDB_headImage.setImageBitmap(BitmapUtility.getBitmapImage(article.getThumbnailUrl()));
         soccer_backToDBList = (Button)findViewById(R.id.soccer_backToDBList);
         soccer_urlButton_db = (Button) findViewById(R.id.soccer_urlButton_db);
         /**

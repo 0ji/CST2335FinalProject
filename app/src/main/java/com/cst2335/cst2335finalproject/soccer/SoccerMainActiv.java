@@ -103,6 +103,7 @@ public class SoccerMainActiv extends AppCompatActivity {
         myList.setOnItemClickListener((parent, view, position, id) -> {
             Bundle data = new Bundle();
             Log.d("Title", "onCreate: "+list.get(position).getTitle());
+
             data.putSerializable("Article", list.get(position));
             if(!isPhone){// tablet
                 fragment = new SoccerFragment();
@@ -433,14 +434,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                              * */
                             if(insideItem && firstImage){
                                 String urlString = parser.getAttributeValue(null,"url");
-                                URL newUrl = new URL(urlString);
-                                HttpURLConnection connImage = (HttpURLConnection) newUrl.openConnection();
-                                connImage.connect();
-                                int responseCode = connImage.getResponseCode();
-                                if(responseCode == 200){
-                                    headlineImage = BitmapFactory.decodeStream(connImage.getInputStream());
-                                }
-                                article.setThumbnailUrl(BitmapUtility.getImageBytes(headlineImage));
+                                article.setImageUrl(urlString);
                                 firstImage = false;
                             }
                         }
@@ -456,8 +450,12 @@ public class SoccerMainActiv extends AppCompatActivity {
                     onProgressUpdate(70);
                 }
 
-                if(list.size()>0){
-                    headlineImage = BitmapUtility.getBitmapImage(list.get(0).getThumbnailUrl());
+                URL newUrl = new URL(list.get(0).getImageUrl());
+                HttpURLConnection connImage = (HttpURLConnection) newUrl.openConnection();
+                connImage.connect();
+                int responseCode = connImage.getResponseCode();
+                if(responseCode == 200){
+                    headlineImage = BitmapFactory.decodeStream(connImage.getInputStream());
                 }
 
                 //progressStatus.setText("Wait a moment...");
@@ -483,24 +481,5 @@ public class SoccerMainActiv extends AppCompatActivity {
             return "SoccerAccessLayer";
         }
     }
+
 }
-
-
-
-/*
-MenuItem searchItem = menu.findItem(R.id.soccer_search);
-        SearchView soccer_searchView = (SearchView) searchItem.getActionView();
-        soccer_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getApplicationContext(),"Searching: "+query.toString(),Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                return false;
-            }
-        });
-*/

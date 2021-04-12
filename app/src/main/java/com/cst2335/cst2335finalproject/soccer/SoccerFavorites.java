@@ -117,7 +117,7 @@ public class SoccerFavorites extends AppCompatActivity {
                         articleList.remove(position);
                         dbAdapter.notifyDataSetChanged();
 
-                    }).setNeutralButton(R.string.soccer_undo_button,(click,arg)->{
+                    }).setNeutralButton(R.string.close,(click,arg)->{
 
             }).setView(getLayoutInflater().inflate(R.layout.soccer_row_layout,null))
                     .create().show();
