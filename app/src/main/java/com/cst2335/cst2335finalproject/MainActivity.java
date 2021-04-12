@@ -123,9 +123,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.soccer_about:
-                Toast.makeText(getApplicationContext(),"soccer_about",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"main_about",Toast.LENGTH_LONG).show();
                 AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
-                alterBuilder.setTitle("INFORMATION").setMessage("Final Project CST2335\nSoccer Articles is made by Jin\n2021-04-01")
+                alterBuilder.setTitle("INFORMATION").setMessage("Final Project CST2335\n" +
+                        "Click any of the app pictures to go to the app, or use the side navigation bar/toolbar.\n\n" +
+                        "Soccer Articles is made by Jin\n" +
+                        "Car database is made by Koji\n" +
+                        "Trivia is made by Akshay\n" +
+                        "Songster is made by Trung\n" +
+                        "2021-04-01")
                         .setPositiveButton("Yes",(click, arg)->{
 
                         }).setNeutralButton("Cancel",(click,arg)->{
