@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/activityTitle"
         android:fontFamily="casual"
-        android:text="Authors: Trung Nguyen, Akshay Gokani, Gwanjin Chun, Akshay Gokani, Koji DIno"
+        android:text="Authors: Trung Nguyen, Akshay Gokani, Gwanjin Chun, Akshay Gokani, Koji Dino"
         android:textColor="#CC2929"
         android:textSize="18sp"
         android:textStyle="bold" />
