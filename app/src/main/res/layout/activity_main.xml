@@ -61,8 +61,8 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             android:id="@+id/soccer_nav_view"
-            app:menu="@menu/soccer_nav_actions"
-            />
+            app:headerLayout="@layout/head_main"
+            app:menu="@menu/soccer_nav_actions" />
     </androidx.drawerlayout.widget.DrawerLayout>
 
 
