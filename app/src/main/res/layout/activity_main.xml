@@ -36,14 +36,15 @@
                     android:src="@drawable/soccer_image_button2"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"/>
+
                 <ImageButton
                     android:id="@+id/goToCarDB"
-                    android:layout_below="@+id/goToSoccer2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/soccer_image_button2"
+                    android:layout_below="@+id/goToSoccer2"
                     android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/car_image_button2" />
                 <ImageButton
                     android:id="@+id/goToSoccer"
                     android:layout_below="@+id/goToCarDB"
