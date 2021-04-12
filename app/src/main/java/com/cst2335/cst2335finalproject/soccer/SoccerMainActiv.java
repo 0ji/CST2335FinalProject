@@ -309,7 +309,7 @@ public class SoccerMainActiv extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressStatus.setText("Start accessing to the web...");
+            //progressStatus.setText("Start accessing to the web...");
             onProgressUpdate(10);
         }
         /**
@@ -362,7 +362,7 @@ public class SoccerMainActiv extends AppCompatActivity {
             }
             else{ Log.e(this.toString(), "No network connection is available"); }
 
-            progressStatus.setText(R.string.soccer_main_pg_15);
+            //progressStatus.setText(R.string.soccer_main_pg_15);
             onProgressUpdate(15);
             try{
                 URL url = new URL(address);
@@ -374,7 +374,7 @@ public class SoccerMainActiv extends AppCompatActivity {
 
                 conn.connect();
 
-                progressStatus.setText(R.string.soccer_main_pg_25);
+                //progressStatus.setText(R.string.soccer_main_pg_25);
                 onProgressUpdate(25);
                 Log.d(this.toString(), "reading a stream");
 
@@ -384,7 +384,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                 XmlPullParser parser = factory.newPullParser();
                 parser.setInput(stream, Xml.Encoding.UTF_8.toString());
 
-                progressStatus.setText(R.string.soccer_main_pg_45);
+                //progressStatus.setText(R.string.soccer_main_pg_45);
                 onProgressUpdate(45);
 
                 boolean insideItem = false;
@@ -452,7 +452,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                         article = new Article();
                     }
                     eventType = parser.next();
-                    progressStatus.setText(R.string.soccer_main_pg_70);
+                    //progressStatus.setText(R.string.soccer_main_pg_70);
                     onProgressUpdate(70);
                 }
 
@@ -460,7 +460,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                     headlineImage = BitmapUtility.getBitmapImage(list.get(0).getThumbnailUrl());
                 }
 
-                progressStatus.setText("Wait a moment...");
+                //progressStatus.setText("Wait a moment...");
                 onProgressUpdate(90);
                 Log.d(this.toString(), "extracting data process has been ended..");
             } catch (MalformedURLException e) {
