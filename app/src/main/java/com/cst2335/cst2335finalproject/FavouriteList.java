@@ -97,11 +97,11 @@ public class FavouriteList extends AppCompatActivity {
                     }).setNegativeButton(R.string.decline,(click,arg)->{
 
                 Toast toast= Toast.makeText(getApplicationContext(), R.string.nothingChanged, Toast.LENGTH_LONG);
-//                View view = toast.getView();
-//                view.setBackgroundColor(Color.parseColor("#FF000000"));
-//                TextView text = (TextView) view.findViewById(android.R.id.message);
-//                text.setTextColor(Color.parseColor("#FFFFFFFF"));
-//                text.setTextSize(20);
+               View view = toast.getView();
+               view.setBackgroundColor(Color.parseColor("#FF000000"));
+               TextView text = (TextView) view.findViewById(android.R.id.message);
+               text.setTextColor(Color.parseColor("#FFFFFFFF"));
+               text.setTextSize(20);
                 toast.show();
 
             }).create().show();
