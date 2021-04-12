@@ -84,14 +84,14 @@ public class SoccerFragment extends Fragment {
 
         TextView descriptionText = (TextView) view.findViewById(R.id.soccer_description);
         TextView dateText = (TextView) view.findViewById(R.id.soccer_date);
-        ImageView soccer_thumbnailImage = (ImageView) view.findViewById(R.id.soccer_fragment_headlineImage);
+
 
         idText.setText("Article NO. "+tArticle.getId());
         titleText.setText(tArticle.getTitle());
 
         descriptionText.setText(tArticle.getDescription());
         dateText.setText(tArticle.getPubDate());
-        soccer_thumbnailImage.setImageBitmap(BitmapUtility.getBitmapImage(tArticle.getThumbnailUrl()));
+
 
         return view;
     }

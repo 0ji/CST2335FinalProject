@@ -9,15 +9,21 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.cst2335.cst2335finalproject.MainActivity;
@@ -25,6 +31,13 @@ import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
 /**
  * SoccerDetailActivity is a class which inherits AppCompactActivity class.
  * This class is designed for showing details of one soccer article.
@@ -35,6 +48,8 @@ public class SoccerDetailActivity extends AppCompatActivity {
     private Button soccer_saveButton, soccer_urlButton;
     RelativeLayout relativeLayout;
     SQLiteDatabase db;
+    private ImageView soccer_headImage;
+    private Article article;
     /**
      * onCreate
      * @param savedInstanceState is a bundle to pass data.
@@ -51,6 +66,7 @@ public class SoccerDetailActivity extends AppCompatActivity {
          * relativeLayout is a layout variable to be used by SnackBar.
          * */
         relativeLayout = (RelativeLayout)findViewById(R.id.soccer_detail);
+        soccer_headImage = (ImageView) findViewById(R.id.soccer_headImage);
         toolbar = (Toolbar) findViewById(R.id.soccer_toolbar);
         setSupportActionBar(toolbar);
         /**
@@ -103,13 +119,18 @@ public class SoccerDetailActivity extends AppCompatActivity {
         /**
          * checking article object.
          * */
-        Article article = (Article) dataFromChat.getSerializable("Article");
+        article = (Article) dataFromChat.getSerializable("Article");
         Log.d("Article title is", "onCreate: "+article.toString());
+        Log.d("Article imageUrl is", "onCreate: "+article.getImageUrl());
+        ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        SoccerArticleImage soccerArticleImage = new SoccerArticleImage(article.getImageUrl(), connMgr);
+        soccerArticleImage.execute();
 
         soccer_saveButton = (Button) findViewById(R.id.soccer_saveButton);
         soccer_urlButton = (Button) findViewById(R.id.soccer_urlButton);
 
         soccer_saveButton.setOnClickListener(c->{
+
             /**
              * insertingData method is called when a user clicks this button
              * */
@@ -133,6 +154,44 @@ public class SoccerDetailActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });
+    }
+    class SoccerArticleImage extends AsyncTask<String, Void, Void>{
+        private String urlString;
+        ConnectivityManager connMgr;
+        Bitmap headlineImage;
+
+        public SoccerArticleImage(String urlString,ConnectivityManager connMgr){
+            this.urlString = urlString;
+            this.connMgr = connMgr;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            soccer_headImage.setImageBitmap(headlineImage);
+            article.setThumbnailUrl(BitmapUtility.getImageBytes(headlineImage));
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            URL newUrl = null;
+            HttpURLConnection connImage = null;
+            headlineImage = null;
+            try{
+                newUrl = new URL(urlString);
+                connImage = (HttpURLConnection) newUrl.openConnection();
+                connImage.connect();
+                int responseCode = connImage.getResponseCode();
+                if(responseCode == 200){
+                    headlineImage = BitmapFactory.decodeStream(connImage.getInputStream());
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
     /**
      * insertingData
@@ -216,4 +275,5 @@ public class SoccerDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -12,7 +12,7 @@ public class Article implements Serializable {
      * The class members are components of data from the xml page.
      * */
     private long id;
-    private String title, link, description, pubDate;
+    private String title, link, description, pubDate, imageUrl;
     private byte[] thumbnailUrl;
     /**
      *The default constructor
@@ -31,6 +31,12 @@ public class Article implements Serializable {
     public Article(long id, String title, String link, String pubDate, String description, byte[] thumbnailUrl){
         this.id=id;this.title=title;this.link=link;this.description=description;this.pubDate=pubDate;this.thumbnailUrl=thumbnailUrl;
     }
+
+    public Article(long id, String title, String link, String pubDate, String description, String imageUrl){
+        this.id=id;this.title=title;this.link=link;this.description=description;this.pubDate=pubDate;this.imageUrl=imageUrl;
+    }
+    public String getImageUrl(){return this.imageUrl;}
+    public void setImageUrl(String imageUrl){this.imageUrl=imageUrl;}
     /**
      *getTitle returns a title of an article instance.
      * @return this.title is a title of this instance.
