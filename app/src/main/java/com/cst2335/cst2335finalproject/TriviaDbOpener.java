@@ -40,7 +40,7 @@ public class TriviaDbOpener extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_PLAYER + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COL_PLAYER + " text," + COL_SCORE  + " INTEGER, "
+                + COL_PLAYER + " text,"
                 + COL_SCORE  + " INTEGER);");
      /*   db.execSQL("CREATE TABLE " + TABLE_QUESTION_STATE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_PLAYER + " text," + COL_SCORE  + " INTEGER, "

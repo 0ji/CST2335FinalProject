@@ -60,9 +60,16 @@ public class ResultsActivity extends GameActivity {
         name_input = findViewById(R.id.name_input);
         TextView score = findViewById(R.id.score);
         TextView user = findViewById(R.id.user);
+        TextView unanswered_results = findViewById(R.id.unanswered_textv);
+        TextView correct_ans_results = findViewById(R.id.correct_answer_textv);
+        TextView incorrect_ans_results = findViewById(R.id.incorrect_answer_textv);
 
         SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         name_input.setText(sp_user.getString("name", ""));
+        unanswered_results.setText(sp_user.getString("unanswered", ""));
+        correct_ans_results.setText(sp_user.getString("correct",""));
+        incorrect_ans_results.setText(sp_user.getString("incorrect","incorrect ans"+ ""));
+
 
         // these are the values we will insert into the database
         ContentValues dbValues = new ContentValues();
@@ -79,6 +86,8 @@ public class ResultsActivity extends GameActivity {
 
         add_button.setOnClickListener(v -> {
             String user_string = name_input.getText().toString();
+            // todo : Change the score so that it takes question.size() and divides but the amount that the user got correct * 100 so that it becomes a percentage
+            //String score_string =
             dbValues.put(TriviaDbOpener.COL_PLAYER, user_string);
             long newId = db.insert(TriviaDbOpener.TABLE_PLAYER, null, dbValues);
             user newUser = new user (user_string, 0 , newId);
@@ -92,14 +101,6 @@ public class ResultsActivity extends GameActivity {
         int playerColIndex = results.getColumnIndex(TriviaDbOpener.COL_PLAYER);
         int idColIndex = results.getColumnIndex(TriviaDbOpener.COL_ID);
 
-    /*    // this is for fragment
-        boolean isTablet = findViewById(R.id.frame_layout) !=null ;*/
-        // setting the sharedPref
-
-        // shared preferences sett
-
-       // difficulty.setText(sp.getString("difficulty", ""));
-       // type.setText(sp.getString("type", ""));
 
 // todo : THIS WORKS BUT BECAUSE I CANT KEEP THE SCORE I HAVE TO HARD CODE A NUMBER INTO SCORE NULL WILL BREAK THE CODEaKSHAY
         for (int i = 0; i < results.getCount(); i++) {
@@ -107,7 +108,7 @@ public class ResultsActivity extends GameActivity {
                 String player = results.getString(playerColIndex);
                 String scorefromDB = results.getString(scoreColIndex);
                 long id = results.getLong(idColIndex);
-                high_score_list.add(new user(player, 8, id));
+                high_score_list.add(new user(player, scorefromDB, id));
                 //controls how the the database info will be displayed on list view
 
             }
@@ -148,13 +149,9 @@ public class ResultsActivity extends GameActivity {
     }
     public void printCursor(Cursor c, int version) {
 
-        // int isMultipleColumnIndex = c.getColumnIndex(MyDbOpener.COL_IS_MULTIPLE);
+
         int user_col_index = c.getColumnIndex(TriviaDbOpener.COL_PLAYER);
-        // int categoryColIndex = c.getColumnIndex(MyDbOpener.COL_CATEGORY);
-        // int difficultyColIndex = c.getColumnIndex(MyDbOpener.COL_DIFFICULTY);
         int score_col_index = c.getColumnIndex(TriviaDbOpener.COL_SCORE);
-        //int correctAnswerColIndex = c.getColumnIndex(MyDbOpener.COL_CORRECT_ANSWER);
-        //int userSelectionColIndex = c.getColumnIndex(MyDbOpener.COL_USER_SELECTION);
         int idColIndex = c.getColumnIndex(TriviaDbOpener.COL_ID);
 
 
@@ -200,16 +197,16 @@ public class ResultsActivity extends GameActivity {
             LayoutInflater inflater = getLayoutInflater();
             // ASK QUESITON WHY THIS NEED
             user thisRow = getItem(position);
+
             TextView unanswered_results = findViewById(R.id.unanswered_textv);
+
+            //unanswered_results.setText();
 
                 View highScore = inflater.inflate(R.layout.activity_add_user, parent, false);
                 TextView user_tv = highScore.findViewById(R.id.user);
                 TextView score_tv = highScore.findViewById(R.id.score);
-                user_tv.setText("player:" + thisRow.getName());
-               // unanswered_results.setText(Integer.parseInt("99"));
-             //   score_tv.setText((int) thisRow.getId());*/
-
-
+                user_tv.setText("player: " + thisRow.getName());
+                score_tv.setText("HighScore: " + thisRow.getScore());
 
             return highScore;
         }

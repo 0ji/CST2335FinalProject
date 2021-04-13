@@ -46,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:text="Unaswered Questions"
+            android:textAlignment="center"
             android:textSize="18dp" />
 
         <TextView
@@ -53,6 +54,7 @@
             android:layout_width="137dp"
             android:layout_height="75dp"
             android:text="Correct Answer"
+            android:textAlignment="center"
             android:textSize="18dp" />
 
         <TextView
@@ -60,9 +62,10 @@
             android:layout_width="wrap_content"
             android:layout_height="75dp"
             android:text="Incorrect Answer"
+            android:textAlignment="center"
             android:textSize="18dp" />
-    </LinearLayout>
 
+    </LinearLayout>
 
     <ListView
         android:id="@+id/results_list_view"

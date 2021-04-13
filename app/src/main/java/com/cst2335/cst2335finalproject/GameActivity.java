@@ -61,7 +61,7 @@ public class GameActivity extends AppCompatActivity {
 
     String pickQuestion;
     String correctAns;
-    String[] incorrectAns;
+    String[] incorrectAnsArray;
     String a;
     String d;
     String t;
@@ -71,7 +71,7 @@ public class GameActivity extends AppCompatActivity {
     QuestionListAdapter listAdapter = new QuestionListAdapter();
 
     private ArrayList<Question> question_list = new ArrayList<>();
-    private ArrayList<Question> counter_list = new ArrayList<>();
+
 
     String trivia_url;
     boolean is_multiple;
@@ -82,8 +82,10 @@ public class GameActivity extends AppCompatActivity {
 
     RadioGroup boolean_group;
     RadioGroup multiple_group;
+
     RadioButton true_radio;
     RadioButton false_radio;
+
     RadioButton answer1;
     RadioButton answer2;
     RadioButton answer3;
@@ -95,15 +97,33 @@ public class GameActivity extends AppCompatActivity {
     String correct_answer_data;
     String incorrect_answers_data;
     String type_data;
+
     // column headers for fquestion database
     public static final String QUESTION_SELECTED = "Question";
     public static final String QUESTION_CORRECT_ANSWER = "ANSWER";
     public static final String QUESTION_ID = "ID";
     public static final String IS_ANSWERED = "is answered";
 
+    private RadioButton listRadioButton = null;
+    int listIndex = -1;
+
     @Override
     protected void onPause() {
         super.onPause();
+        /*amount = findViewById(R.id.numberOfQuestions);
+        difficulty = findViewById(R.id.difficulty);*/
+        TextView unanswered = findViewById(R.id.unanswered);
+        TextView incorrect = findViewById(R.id.correct_answer);
+        TextView correct = findViewById(R.id.incorrect_answer);
+        // TextView score_input = findViewById(R.id.score);
+        SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp_user.edit();
+        editor.putString("unanswered", unanswered.getText().toString());
+        editor.putString("correct", correct.getText().toString());
+        editor.putString("incorrect", incorrect.getText().toString());
+        //editor.putString("score", score_input.getText().toString());
+        editor.commit();
+        Log.i("ResultsActivity", "in onPause ");
     }
 
     @Override
@@ -127,22 +147,21 @@ public class GameActivity extends AppCompatActivity {
             trivia_url = "https://opentdb.com/api.php?amount=" + a + "&difficulty=" + d + "&type=" + t;
         }
 
-        View boolean_view =getLayoutInflater().inflate(R.layout.boolean_questions, null);
-        boolean_group = boolean_view.findViewById(R.id.boolean_group);
+        View boolean_view = getLayoutInflater().inflate(R.layout.boolean_questions, null);
+        // TODO : TOOK OUT FROM XML FOR CHANGING TO BUTTONS
+        //  boolean_group = boolean_view.findViewById(R.id.boolean_group);
         View multiple_View = getLayoutInflater().inflate(R.layout.multiple_questions, null);
         multiple_group = multiple_View.findViewById(R.id.rMultipleGroup);
 
-        View counter = getLayoutInflater().inflate(R.layout.activity_counter, null);
-
-
-
+        //  View counter = getLayoutInflater().inflate(R.layout.activity_counter, null);
 
         TextView tv_unanswered = findViewById(R.id.unanswered);
 
-       // tv_unanswered.setText(String.valueOf(unanswered));
+        // tv_unanswered.setText(String.valueOf(unanswered));
 
         // assign screen view
         ListView lv_trivia = findViewById(R.id.triviaListView);
+
 
         // counter views
         //TextView tv_unanswered = findViewById(R.id.unanswered);
@@ -160,144 +179,32 @@ public class GameActivity extends AppCompatActivity {
         tv_correct.setText(String.valueOf(correctByUser));
         tv_incorrect.setText(String.valueOf(incorrectByUser));
 
-
-
-      /*  boolean_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                Log.d("chk", "id" + checkedId);
-                if(checkedId == R.id.trueRadio){
-                    if(true_radio.isChecked()){
-                        if(correctAns.equals("True")){
-                            Toast toast = Toast.makeText(getApplicationContext(),"Correct!",Toast.LENGTH_LONG);
-                            toast.show();
-                            correctByUser++;
-                            tv_correct.setText(String.valueOf(correctByUser));
-
-                        } else {
-                            incorrectByUser++;
-                            Toast toast = Toast.makeText(getApplicationContext(),"Sorry that one is wrong!",Toast.LENGTH_LONG);
-                            toast.show();
-                            tv_incorrect.setText(String.valueOf(incorrectByUser));
-                        }
-                        unansweredByUser--;
-                        tv_unanswered.setText(String.valueOf(unansweredByUser));
-                        Log.d("TRUE_RADIO", true_radio.getText().toString());
-                    }
-                } else if(checkedId == R.id.falseRadio) {
-                    if(correctAns.equals("False")){
-                        Toast toast = Toast.makeText(getApplicationContext(),"Correct!",Toast.LENGTH_LONG);
-                        toast.show();
-                        correctByUser++;
-                    } else {
-                        Toast toast = Toast.makeText(getApplicationContext(),"Sorry that one is wrong!",Toast.LENGTH_LONG);
-                        toast.show();
-                        incorrectByUser++;
-                    }
-                    Log.d("FALSE_RADIO", false_radio.getText().toString());
-                    unansweredByUser--;
-                    tv_unanswered.setText(String.valueOf(unansweredByUser));
-                }
-
-            }
-        });
-        */
-        // TODO : ************************************************************** THE NEXT 3 ARE ALL TRYING TO COUNT THE CORRECT ANSWERS ******************************************
-  /*      int radioButtonID = boolean_group.getCheckedRadioButtonId();
-        View true_radio = boolean_group.findViewById(R.id.trueRadio);
-        View false_radio = boolean_group.findViewById(R.id.falseRadio);
-        int findex = boolean_group.indexOfChild(true_radio);
-        int tindex = boolean_group.indexOfChild(false_radio);
-        RadioButton r = (RadioButton) boolean_group.getChildAt(findex);
-        String selectedText = r.getText().toString();*/
-
-        /*lv_trivia.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                final int child= lv_trivia.getChildCount();
-                for(int i=0;i<child;i++) {
-                    View rgg = lv_trivia.getChildAt(i);
-
-                    RadioGroup radioGroup = (RadioGroup) rgg.findViewById(R.id.boolean_group);
-
-                    int selectedId=radioGroup.getCheckedRadioButtonId();
-
-                    RadioButton radioButton = (RadioButton) rgg.findViewById(selectedId);
-                    Snackbar snackbar = Snackbar.make(v, "Correct!", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-
-                }
-            }
-        });
-*/
-
-            /*boolean_group.clearCheck();
-            boolean_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-
-                public void onCheckedChanged(RadioGroup group , int checkedId){
-                    if(checkedId == R.id.trueRadio){
-                        Toast toast = Toast.makeText(getApplicationContext(),"Correct!",Toast.LENGTH_LONG);
-                        toast.show();
-                        correctByUser++;
-                        unansweredByUser--;
-                        tv_unanswered.setText(String.valueOf(unansweredByUser));
-                        tv_correct.setText(String.valueOf(correctByUser));
-                    } else {
-                        Toast toast = Toast.makeText(getApplicationContext(),"WRONG!",Toast.LENGTH_LONG);
-                        toast.show();
-                        correctByUser++;
-                        unansweredByUser--;
-                        tv_unanswered.setText(String.valueOf(unansweredByUser));
-                        tv_correct.setText(String.valueOf(correctByUser));
-                    }
-                    if(checkedId == R.id.falseRadio) { //&& correctAns.equals("False")){
-                        Toast toast = Toast.makeText(getApplicationContext(),"Correct!",Toast.LENGTH_LONG);
-                        toast.show();
-                        correctByUser++;
-                        unansweredByUser--;
-                        tv_unanswered.setText(String.valueOf(unansweredByUser));
-                        tv_correct.setText(String.valueOf(correctByUser));
-                    } else {
-                        Toast toast = Toast.makeText(getApplicationContext(),"WRONG!",Toast.LENGTH_LONG);
-                        toast.show();
-                        correctByUser++;
-                        unansweredByUser--;
-                        tv_unanswered.setText(String.valueOf(unansweredByUser));
-                        tv_correct.setText(String.valueOf(correctByUser));
-                    }
-                }
-            });*/
-
         answer1 = multiple_View.findViewById(R.id.Answer1);
         answer2 = multiple_View.findViewById(R.id.Answer2);
         answer3 = multiple_View.findViewById(R.id.Answer3);
         answer4 = multiple_View.findViewById(R.id.Answer4);
+
         true_radio = boolean_view.findViewById(R.id.trueRadio);
 
         lv_trivia.setAdapter(listAdapter);
-        TriviaResults query = new TriviaResults();
 
+        // query
+        TriviaResults query = new TriviaResults();
         // jumps to doInbackgroudn()
         query.execute(trivia_url);
-        //lv_counter.setAdapter(listAdapter);
+
+        // trying to send results to next page
         Button submitB = findViewById(R.id.submit_button);
-        // delete during clean up
-    /*    trueB = findViewById(R.id.trueRadio);
-        falseB = findViewById(R.id.falseRadio);*/
-        Intent go_to_restults = new Intent(this, ResultsActivity.class);
+
+        Intent results_page = new Intent(this, ResultsActivity.class);
         submitB.setOnClickListener(v -> {
-            //Intent go_to_restults = new Intent(this, ResultsActivity.class);
-            //go_to_restults.putExtra("correct" , correct_answer_data)
-            startActivity(go_to_restults);
+            results_page.putExtra("Amount un-asnwered", unansweredByUser);
+            results_page.putExtra("Amount Answered Correct", correctByUser);
+            results_page.putExtra("Amount of incorrect answered", incorrectByUser);
+            startActivity(results_page);
         });
 
-
-
     }
-
 
     public class TriviaResults extends AsyncTask<String, Integer, String> {
 
@@ -344,7 +251,6 @@ public class GameActivity extends AppCompatActivity {
                     Log.i("size", String.valueOf(j_array.length()));
                     publishProgress(25);
 
-
                     // Loads json object
                     for (int i = 0; i < j_array.length(); i++) {
                         JSONObject json_data = j_array.getJSONObject(i);
@@ -355,6 +261,9 @@ public class GameActivity extends AppCompatActivity {
                         publishProgress(50);
                         correct_answer_data = json_data.getString("correct_answer");
                         incorrect_answers_data = json_data.getString("incorrect_answers");
+                        incorrect_answers_data = incorrect_answers_data.substring(2, incorrect_answers_data.length() - 2);
+                        incorrect_answers_data = incorrect_answers_data.replaceAll("\",\"", ",");
+                        incorrectAnsArray = incorrect_answers_data.split(",");
 
                         // create new question in ArrayList
                         question_list.add(new Question(question_data, category_data, difficulty_data, correct_answer_data, incorrect_answers_data, type_data, i));
@@ -369,7 +278,6 @@ public class GameActivity extends AppCompatActivity {
                             is_multiple = true;
                         } else if (type_data.equals("boolean")) {
                             is_multiple = false;
-
                         }
                         publishProgress(75);
                         Log.i("question", question_list.toString());
@@ -382,14 +290,11 @@ public class GameActivity extends AppCompatActivity {
             publishProgress(100);
             return "done";
         }
-
-
-
     }
 
     /*
-    * QuestionListAdapter : shows how to view the question in the list adapter
-    * */
+     * QuestionListAdapter : shows how to view the question in the list adapter
+     * */
     class QuestionListAdapter extends BaseAdapter {
         int selectedPosition = 0;
 
@@ -425,44 +330,28 @@ public class GameActivity extends AppCompatActivity {
             TextView tv_incorrect = findViewById(R.id.incorrect_answer);
             TextView tv_unanswered = findViewById(R.id.unanswered);
 
-            if(!is_multiple){
-                boolean_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-                        if(correct_answer_data.equals("True")){
 
-                        }
+            if (is_multiple) {
+                View multiple = inflater.inflate(R.layout.multiple_questions, parent, false);
+                TextView multiple_tv = multiple.findViewById(R.id.question_multiple);
 
-                    }
-                });
-            } else{
-                multiple_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                    }
-                });
-            }
-
-           if (is_multiple) {
-                    View multiple = inflater.inflate(R.layout.multiple_questions, parent, false);
-                    TextView multiple_tv = multiple.findViewById(R.id.question_multiple);
-
-                    RadioButton answer1_tv = multiple.findViewById(R.id.Answer1);
-                    RadioButton answer2_tv = multiple.findViewById(R.id.Answer2);
-                    RadioButton answer3_tv = multiple.findViewById(R.id.Answer3);
-                    RadioButton answer4_tv = multiple.findViewById(R.id.Answer4);
-                    multiple_tv.setText(thisRow.getQuestion());
-
-                    String[] incorrect_answer_list = thisRow.getIncorrect_answers().split(",");
+                RadioButton answer1_tv = multiple.findViewById(R.id.Answer1);
+                RadioButton answer2_tv = multiple.findViewById(R.id.Answer2);
+                RadioButton answer3_tv = multiple.findViewById(R.id.Answer3);
+                RadioButton answer4_tv = multiple.findViewById(R.id.Answer4);
+                multiple_tv.setText(thisRow.getQuestion());
 
 
-                    if (random == 0) {
+                String[] incorrect_answer_list = thisRow.getIncorrect_answers().split(",");
+
+
+
+                   /* if (random == 0) {*/
                         answer4_tv.setText(thisRow.getCorrect_answer());
                         answer3_tv.setText(incorrect_answer_list[0].trim());
                         answer2_tv.setText(incorrect_answer_list[1].trim());
                         answer1_tv.setText(incorrect_answer_list[2].trim());
-                    } else if (random == 1) {
+                  /*  } else if (random == 1) {
                         answer1_tv.setText(thisRow.getCorrect_answer());
                         answer3_tv.setText(incorrect_answer_list[0].trim());
                         answer2_tv.setText(incorrect_answer_list[1].trim());
@@ -477,66 +366,62 @@ public class GameActivity extends AppCompatActivity {
                         answer3_tv.setText(incorrect_answer_list[0].trim());
                         answer2_tv.setText(incorrect_answer_list[1].trim());
                         answer1_tv.setText(incorrect_answer_list[2].trim());
-                    }
+                    }*/
                     // saves the correctAnswer to correctAns
-               correctAns = thisRow.getCorrect_answer();
+                    correctAns = thisRow.getCorrect_answer();
                     return multiple;
                 } else
                     trueOrFalse = inflater.inflate(R.layout.boolean_questions, parent, false);
-                TextView boolean_tv = trueOrFalse.findViewById(R.id.question_boolean);
+                    TextView boolean_tv = trueOrFalse.findViewById(R.id.question_boolean);
+                    boolean_group = trueOrFalse.findViewById(R.id.boolean_group);
+                    true_radio = trueOrFalse.findViewById(R.id.trueRadio);
+                    false_radio = trueOrFalse.findViewById(R.id.falseRadio);
+                    boolean_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                            RadioButton rb = trueOrFalse.findViewById(checkedId);
+                            if (thisRow.getCorrect_answer().equals("True")){
+                                if(rb.getText() == true_radio.getText()){
+                                    unansweredByUser--;
+                                    correctByUser++;
+                                } else {
+                                    unansweredByUser--;
+                                    incorrectByUser++;
+                                }
+                            } else if(thisRow.getCorrect_answer().equals("False")) {
+                                if(rb.getText() == false_radio.getText()) {
+                                    unansweredByUser--;
+                                    correctByUser++;
+                                } else {
+                                    unansweredByUser--;
+                                    incorrectByUser++;
+                            }
+
+                            }
+
+                        }
+                    });
+
 
                 correctAns = thisRow.getCorrect_answer();
                 boolean_tv.setText(thisRow.getQuestion());
                 return trueOrFalse;
 
+            }
+
         }
 
+
+
+    public void myOnClick(View v) {
+        Log.d("DEBUG", "CLICKED " + v.getId());
+        //unansweredByUser--;
+        TextView tv_unanswered = findViewById(R.id.unanswered);
+        TextView tv_correct_answers = findViewById(R.id.correct_answer);
+        TextView tv_incorrect_answers = findViewById(R.id.incorrect_answer);
+        tv_unanswered.setText(String.valueOf(unansweredByUser));
+        tv_correct_answers.setText(String.valueOf(correctByUser));
+        tv_incorrect_answers.setText(String.valueOf(incorrectByUser));
     }
-   /*  * Counter List ADAPTER : shows how to view the question in the list adapter
-     * */
-    class CounterListAdapter extends BaseAdapter {
-        int selectedPosition = 0;
-
-        // size of the linked list
-        @Override
-        public int getCount() {
-            return question_list.size();
-        }
-
-        // return the question list postiion
-        @Override
-        public Question getItem(int position) {
-            return counter_list.get(position);
-        }
-
-
-        @Override
-        public long getItemId(int position) {
-            return question_list.get(position).getId();
-        }
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = getLayoutInflater();
-
-            View counter = inflater.inflate(R.layout.activity_counter, parent, false);
-
-            TextView unanswered_count = counter.findViewById(R.id.unanswered);
-            unanswered_count.setText(String.valueOf(unansweredByUser));
-
-            TextView correct = counter.findViewById(R.id.correct_answer);
-            correct.setText(correctByUser);
-
-            TextView incorrect = counter.findViewById(R.id.incorrect_answer);
-            incorrect.setText(incorrectByUser);
-            listAdapter.notifyDataSetChanged();
-            return counter;
-
-
-        }
-    }
-    // TODO NEW CODE
-
-
+        // TODO NEW CODE
 }

@@ -10,6 +10,8 @@ public class Question {
     private String correct_answer;
     private String incorrect_answers;
     private String type;
+    public boolean isAnswered;
+    private String state;
 
     private long id;
 
@@ -23,14 +25,6 @@ public class Question {
         this.id = id;
     }
 
-    public Question(String question, String category, String difficulty, String correct_answer, String incorrect_answers, String type) {
-        this.question = question;
-        this.category = category;
-        this.difficulty = difficulty;
-        this.correct_answer = correct_answer;
-        this.incorrect_answers = incorrect_answers;
-        this.type = type;
-    }
 
     public long getId() {
         return id;
