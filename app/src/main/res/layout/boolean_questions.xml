@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:longClickable="true"
     android:layout_width="match_parent"
     android:weightSum="2"
     android:layout_height="fill_parent"
-    android:id="@+id/send"
+    android:id="@+id/booleanLayout"
     android:orientation="vertical">
 
     <TextView
@@ -20,19 +21,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/trueRadio"
-            android:layout_width="482dp"
-            android:layout_height="76dp"
-            android:layout_weight="1"
-            android:text="True" />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/boolean_group"
+            >
 
-        <RadioButton
-            android:id="@+id/falseRadio"
-            android:layout_width="487dp"
-            android:layout_height="76dp"
-            android:layout_weight="1"
-            android:text="False" />
+            <RadioButton
+                android:id="@+id/trueRadio"
+                android:layout_width="300dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:text="True"
+                />
+
+            <RadioButton
+                android:id="@+id/falseRadio"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="76dp"
+                android:layout_weight="0.5"
+                android:text="False" />
+
+
+        </RadioGroup>
+
+
 
     </LinearLayout>
 </LinearLayout>

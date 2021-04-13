@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:weightSum="2"
     android:layout_height="fill_parent"
-    android:id="@+id/send"
+    android:id="@+id/multiple"
     android:orientation="vertical">
 
         <TextView
@@ -15,32 +15,38 @@
             android:text="Question is here "
             android:textSize="18dp" />
 
-        <RadioButton
-            android:id="@+id/Answer1"
-            android:layout_width="482dp"
+        <RadioGroup
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="answer" />
+            android:id="@+id/rMultipleGroup">
 
-        <RadioButton
-            android:id="@+id/Answer2"
-            android:layout_width="487dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="answer" />
+                <RadioButton
+                    android:id="@+id/Answer1"
+                    android:layout_width="482dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="answer" />
 
-        <RadioButton
-            android:id="@+id/Answer4"
-            android:layout_width="487dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="answer" />
+                <RadioButton
+                    android:id="@+id/Answer2"
+                    android:layout_width="487dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="answer" />
 
-        <RadioButton
-            android:id="@+id/Answer3"
-            android:layout_width="487dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="answer" />
+                <RadioButton
+                    android:id="@+id/Answer4"
+                    android:layout_width="487dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="answer" />
 
+                <RadioButton
+                    android:id="@+id/Answer3"
+                    android:layout_width="487dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="answer" />
+
+        </RadioGroup>
 </LinearLayout>

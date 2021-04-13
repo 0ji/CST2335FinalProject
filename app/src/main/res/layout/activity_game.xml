@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:id="@+id/game"
     android:orientation="vertical"
+    android:focusable="false"
+
     >
     <ProgressBar
         android:visibility="invisible"
@@ -12,11 +14,6 @@
         android:layout_height="50dp"
         style="?android:attr/progressBarStyleHorizontal"
         />
-    <ListView
-        android:id="@+id/triviaListView"
-        android:layout_below="@id/progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="600dp" />
 
     <!--<Button
         android:id="@+id/prev_button"
@@ -26,11 +23,62 @@
         android:text="prev"/>
     &lt;!&ndash;android:layout_toEndOf="@id/message_input"
     &ndash;&gt;-->
+    <ListView
+        android:id="@+id/triviaListView"
+        android:layout_width="500dp"
+        android:layout_height="600dp"
+        android:layout_below="@id/progress_bar"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@id/unanswered">
+
+    </ListView>
+
     <Button
         android:id="@+id/submit_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/triviaListView"
         android:text="submit" />
+
+    <TextView
+        android:id="@+id/unanswered"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:layout_below="@+id/progress_bar" />
+    <TextView
+        android:id="@+id/correct_answer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:layout_below="@+id/unanswered" />
+    <TextView
+        android:id="@+id/incorrect_answer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:layout_below="@+id/correct_answer" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/incorrect_answer"
+        android:layout_toLeftOf="@id/triviaListView">
+
+        <ListView
+            android:id="@+id/CounterListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+
+    </RelativeLayout>
+
+
+
 
 </RelativeLayout>

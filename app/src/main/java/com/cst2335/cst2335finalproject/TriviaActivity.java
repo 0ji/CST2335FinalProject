@@ -1,15 +1,21 @@
 package com.cst2335.cst2335finalproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+ import androidx.appcompat.widget.Toolbar;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 
 public class TriviaActivity extends AppCompatActivity {
@@ -23,51 +29,57 @@ public class TriviaActivity extends AppCompatActivity {
         super.onPause();
         amount = findViewById(R.id.numberOfQuestions);
         difficulty = findViewById(R.id.difficulty);
-        type = findViewById(R.id.type);       
+        type = findViewById(R.id.type);
+        // save everything into the shared pref
         SharedPreferences sp = getSharedPreferences("TriviaDetails", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("amount", amount.getText().toString());
         editor.putString("difficulty", difficulty.getText().toString());
         editor.putString("type", type.getText().toString());
         editor.commit();
+    }
 
-    };
+    // inflate the menu when clicked
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
 
+        // get views
         Button createGame = findViewById(R.id.createGame);
-        // need to check if amount is empty is it is cant run
-       // amount = findViewById(R.id.numberOfQuestions);
-        // should be able to run even when difficulty and type is empty
-      //  difficulty = findViewById(R.id.difficulty);
-      //  type = findViewById(R.id.type);
+        Toolbar tb = findViewById(R.id.myToolB);
+        // set action bar
+        setSupportActionBar(tb);
+
         amount = findViewById(R.id.numberOfQuestions);
         difficulty = findViewById(R.id.difficulty);
         type = findViewById(R.id.type);
+
+        // Set the edit texts to the last input it had
         SharedPreferences sp = getSharedPreferences("TriviaDetails", Context.MODE_PRIVATE);
         amount.setText(sp.getString("amount", ""));
         difficulty.setText(sp.getString("difficulty", ""));
         type.setText(sp.getString("type", ""));
 
-        // ONLY NEED THESE VALUES TO BUILD THE STRING FOR THE URL
-        /*String amount = amount.getText().toString();
-        String difficulty = difficulty.getText().toString();
-        String type = type.getText().toString();*/
-        
-       // String triviaUrl = "https:/opentdb.com/api.php?amount=" + amount + "&type=" + type + "&difficulty=" + difficulty;
+        // when you create game none of the edit text can be left empty
         createGame.setOnClickListener(v -> {
-            if(TextUtils.isEmpty(difficulty.getText())){
+            if (TextUtils.isEmpty(difficulty.getText())) {
                 Toast.makeText(this, "Difficulty cannot be left empty",
                         Toast.LENGTH_LONG).show();
             }
-            if(TextUtils.isEmpty(type.getText())){
+            if (TextUtils.isEmpty(type.getText())) {
                 Toast.makeText(this, "Please type in boolean or multiple make sure there are no spaces ",
                         Toast.LENGTH_LONG).show();
             }
-            if(TextUtils.isEmpty(amount.getText())){
+            if (TextUtils.isEmpty(amount.getText())) {
                 Toast.makeText(this,
                         "Amount cannot be left empty",
                         Toast.LENGTH_LONG).show();
@@ -77,4 +89,26 @@ public class TriviaActivity extends AppCompatActivity {
             }
         });
     }
+    // on optionItemSelected for the toolbar
+    public boolean onOptionsItemSelected(MenuItem item) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);//Look at your menu XML file. Put a case for every id in that file:
+
+                switch (item.getItemId()){
+                    case R.id.itemid:
+                        alert.setTitle("How to use Trivia API");
+                        // todo: change message to help with yours **************************************************&&&&&&&&&&&&&&&&&&&&&&&&&*************************^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        alert.setMessage("Please enter the number of question you want, difficulty and the type of questions (Please use the exact words that have been hinted at in the views)." +
+                                "\n\nStart quiz by clicking START TRIVIA button");
+                        alert.setCancelable(false);
+                        alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        alert.show();
+                        break;
+    }
+        return true;
+    }//Look at your menu XML file. Put a case for every id in that file:
 }
