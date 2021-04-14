@@ -40,14 +40,22 @@
     <string name="soccer_db_id">이 아이템의 행 아이디=</string>
     <string name="soccer_db_id2">이 아이템의 데이터 아이디=</string>
     <string name="soccer_confirm">확인</string>
+    <string name="soccer_howToUse">사용법</string>
+    <string name="soccer_howToUse1">- 아이템 중 하나를 클릭해보세요</string>
+    <string name="soccer_howToUse2">- 축구 기사 리스트로 갈 수 있습니다.</string>
+    <string name="soccer_howToUse3">- 축구 아이콘은 축구 메인으로 갑니다.</string>
+    <string name="soccer_howToUse4">- 최애 기사 버튼은 데이터베이스로</string>
+    <string name="soccer_howToUse5">- 웹 페이지 버튼은 기사 전문으로 갑니다.</string>
 
-    <string name="search_car_brand_here">Search car brand here</string>
-    <string name="search">Search</string>
-    <string name="help">HELP</string>
-    <string name="database_view">DATABASE VIEW</string>
-    <string name="help_details">Enter a car model in the search field. Click search to bring up the list of cars. Select a car in the list to bring up car details, where you can add it to your database or shop for the car.</string>
-    <string name="help_title">Car database instructions</string>
-    <string name="help_positive">Understood</string>
-    <string name="back_to_car_view" translatable="false">Back</string>
+    <string name="search_car_brand_here">차 브랜드 검색</string>
+    <string name="search">검색</string>
+    <string name="help">도움</string>
+    <string name="database_view">데이터베이스</string>
+    <string name="help_details">
+        차 모델을 입력하고, 클릭 버튼을 눌러 차 리스트를 받으세요. 리스트 안에 차를 선택해서 세부정보를 확인해요, 차 정보를 저장하고 쇼핑할 수 있습니다.
+    </string>
+    <string name="help_title">차 데이터베이스 설명</string>
+    <string name="help_positive">알겠습니다</string>
+    <string name="back_to_car_view" translatable="false">뒤로</string>
 
 </resources>

@@ -204,10 +204,10 @@ public class SoccerMainActiv extends AppCompatActivity {
             case R.id.soccer_about:
 
                 AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
-                alterBuilder.setTitle("How To Use")
-                        .setMessage("-Click one of items in list to check Articles\n\n" +
-                                "-Favorites button shows stored articles\n\n" +
-                                "-Soccer Icon is for heading to the soccer main")
+                alterBuilder.setTitle(getString(R.string.soccer_howToUse))
+                        .setMessage(getString(R.string.soccer_howToUse1)+"\n\n" +
+                                getString(R.string.soccer_howToUse4)+"\n\n" +
+                                getString(R.string.soccer_howToUse3))
                         .setPositiveButton("Okay",(click, arg)->{}).create().show();
                 break;
             case R.id.soccer_activity_main:

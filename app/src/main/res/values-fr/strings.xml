@@ -54,5 +54,11 @@
     <string name="soccer_db_id">The selected row is=</string>
     <string name="soccer_db_id2">The database id is=</string>
     <string name="soccer_confirm">Okay</string>
+    <string name="soccer_howToUse">How To Use</string>
+    <string name="soccer_howToUse1">- Click one of items in list to check Articles</string>
+    <string name="soccer_howToUse2">- Soccer Articles button heads to Soccer Main</string>
+    <string name="soccer_howToUse3">- Soccer Icon is for heading to the soccer main</string>
+    <string name="soccer_howToUse4">- Favorites button shows stored articles</string>
+    <string name="soccer_howToUse5">- GO To WEB button shows the article of this</string>
 
 </resources>

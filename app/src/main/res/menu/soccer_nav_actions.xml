@@ -5,15 +5,15 @@
 
         <item
             android:id="@+id/soccer_goToMain"
-
+            android:icon="@drawable/main_nav"
             android:title="@string/soccer_nav_GoToMainPage"/>
         <item
             android:id="@+id/soccer_goToTrivia"
-
+            android:icon="@drawable/trivia_nav"
             android:title="@string/soccer_nav_GoToTrivia"/>
         <item
             android:id="@+id/soccer_goToCarDB"
-
+            android:icon="@drawable/car_nav"
             android:title="@string/soccer_nav_GoToCarDB"/>
         <item
             android:id="@+id/soccer_goToSoccerMain"
@@ -22,6 +22,7 @@
         <item
             android:id="@+id/soccer_previous"
             android:title="@string/soccer_previous"
+            android:icon="@drawable/back_nav"
             />
 
     </group>

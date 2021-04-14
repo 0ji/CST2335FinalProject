@@ -111,7 +111,7 @@ public class SoccerFavorites extends AppCompatActivity {
         myList.setOnItemLongClickListener((parent, view, position, id) ->{
             AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
 
-            alterBuilder.setTitle(R.string.soccer_db_delete).setMessage(getString(R.string.soccer_db_id)+(position+1)+"\n"+getString(R.string.soccer_db_id2)+id)
+            alterBuilder.setTitle(R.string.soccer_db_delete).setMessage(getString(R.string.soccer_db_id)+(position+1)+"\n\n"+getString(R.string.soccer_fragment_Title)+":\n"+articleList.get(position).getTitle())
                     .setPositiveButton(R.string.soccer_confirm,(click, arg)->{
                         db.execSQL("DELETE FROM "+SoccerDBHelper.TABLE_NAME+" WHERE "+SoccerDBHelper.Id+" = "+id);
                         articleList.remove(position);
@@ -160,10 +160,10 @@ public class SoccerFavorites extends AppCompatActivity {
             case R.id.soccer_about:
 
                 AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
-                alterBuilder.setTitle("How To Use")
-                        .setMessage("-Click one of items in list to check Articles\n\n" +
-                                "-Soccer Articles button heads to Soccer Main\n\n" +
-                                "-Soccer Icon is for heading to the soccer main")
+                alterBuilder.setTitle(getString(R.string.soccer_howToUse))
+                        .setMessage(getString(R.string.soccer_howToUse1)+"\n\n" +
+                                        getString(R.string.soccer_howToUse2)+"\n\n" +
+                                getString(R.string.soccer_howToUse3))
                         .setPositiveButton("Okay",(click, arg)->{}).create().show();
                 break;
             case R.id.soccer_activity_main:

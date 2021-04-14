@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">CST2335 Final Project</string>
-    <string name="title_activity_soccer_main">Soccer Articles</string>
-    <string name="title_activity_soccer_detail">Article</string>
-    <string name="title_activity_soccer_favorites">Soccer Favorites</string>
+    <string name="title_activity_soccer_main">Soc</string>
+    <string name="title_activity_soccer_detail">Soc</string>
+    <string name="title_activity_soccer_favorites">Soc</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
@@ -23,7 +23,7 @@
     <string name="soccer_fragment_Link">Link=</string>
     <string name="soccer_fragment_Description">Descrption=</string>
     <string name="soccer_fragment_Date">Date=</string>
-    <string name="soccer_fragment_Title">Title here</string>
+    <string name="soccer_fragment_Title">Title</string>
     <string name="soccer_rating_submit">Submit</string>
     <string name="soccer_rating_SoccerArticles">Rating App</string>
     <string name="soccer_nav_GoToMainPage">Go To Main</string>
@@ -44,6 +44,12 @@
     <string name="soccer_db_id">The selected row is=</string>
     <string name="soccer_db_id2">The database id is=</string>
     <string name="soccer_confirm">Okay</string>
+    <string name="soccer_howToUse">How To Use</string>
+    <string name="soccer_howToUse1">- Click one of items in list to check Articles</string>
+    <string name="soccer_howToUse2">- Soccer Articles button heads to Soccer Main</string>
+    <string name="soccer_howToUse3">- Soccer Icon is for heading to the soccer main</string>
+    <string name="soccer_howToUse4">- Favorites button shows stored articles</string>
+    <string name="soccer_howToUse5">- GO To WEB button shows the article of this</string>
 
 
 

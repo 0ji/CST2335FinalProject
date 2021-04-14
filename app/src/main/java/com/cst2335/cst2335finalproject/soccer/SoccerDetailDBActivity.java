@@ -146,10 +146,10 @@ public class SoccerDetailDBActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.soccer_about:
                 AlertDialog.Builder alterBuilder = new AlertDialog.Builder(this);
-                alterBuilder.setTitle("How To Use")
-                        .setMessage("-Back To List button makes you back to the list\n\n" +
-                        "-GO To WEB button shows the article of this\n\n" +
-                                "-Soccer Icon is for heading to the soccer main")
+                alterBuilder.setTitle(getString(R.string.soccer_howToUse))
+                        .setMessage(getString(R.string.soccer_howToUse1)+"\n\n" +
+                                getString(R.string.soccer_howToUse5)+"\n\n" +
+                                getString(R.string.soccer_howToUse3))
                         .setPositiveButton("Okay",(click, arg)->{}).create().show();
                 break;
             case R.id.soccer_activity_main:
