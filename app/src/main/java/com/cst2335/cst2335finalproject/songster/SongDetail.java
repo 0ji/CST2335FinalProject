@@ -1,4 +1,4 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.songster;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.cst2335.cst2335finalproject.R;
 
 
 public class SongDetail extends Fragment {

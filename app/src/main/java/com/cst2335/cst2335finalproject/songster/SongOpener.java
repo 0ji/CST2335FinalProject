@@ -1,4 +1,4 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.songster;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -46,7 +46,7 @@ public  class SongOpener extends SQLiteOpenHelper {
 
     protected void deleteFromDB(String SongId){
         SQLiteDatabase write=getWritableDatabase();
-          write.delete(com.cst2335.cst2335finalproject.SongOpener.TABLE_NAME, com.cst2335.cst2335finalproject.SongOpener.COL_SONGID+ "= ?",new String[]{SongId});
+          write.delete(SongOpener.TABLE_NAME, SongOpener.COL_SONGID+ "= ?",new String[]{SongId});
 
     }
 

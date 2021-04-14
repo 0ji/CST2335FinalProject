@@ -1,5 +1,5 @@
 
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.songster;
 /**
  * @Author: Trung Nguyen
  * Date:11/04/2021
@@ -109,7 +109,7 @@ public class SongsterList extends AppCompatActivity {
                                     .commit();
                         }else {
 
-                            Intent nextActivity = new Intent(this, com.cst2335.cst2335finalproject.FragmentPhoneActivity.class);
+                            Intent nextActivity = new Intent(this, FragmentPhoneActivity.class);
                             nextActivity.putExtras(dataTopass);
                             startActivity(nextActivity); //start activity
                         }

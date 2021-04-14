@@ -1,4 +1,4 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.songster;
 public class Artist {
     private String artistName;
     private String artistId;
