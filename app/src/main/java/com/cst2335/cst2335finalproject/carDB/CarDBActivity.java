@@ -34,6 +34,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -189,7 +190,7 @@ public class CarDBActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.itemSoccer:
                 message = "Launching soccer app";
-                nextActivity = new Intent(this, CarDBActivity.class);
+                nextActivity = new Intent(this, SoccerMainActiv.class);
                 break;
             case R.id.itemSong:
                 message = "Launching song app";
@@ -227,7 +228,7 @@ public class CarDBActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.itemSoccer:
                 message = "Launching soccer app";
-                nextActivity = new Intent(this, CarDBActivity.class);
+                nextActivity = new Intent(this, SoccerMainActiv.class);
                 break;
             case R.id.itemSong:
                 message = "Launching song app";
