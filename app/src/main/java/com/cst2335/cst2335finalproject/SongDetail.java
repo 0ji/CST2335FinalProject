@@ -39,7 +39,7 @@ public class SongDetail extends Fragment {
     String songId;
     String songTitle;
     private static final String SearchSongUrl="http://www.songsterr.com/a/wa/song?id=";
-    private static final String SearchArtistUrl="http://www.songsterr.com/a/wa/song?id=";
+    private static final String SearchArtistUrl="http://www.songsterr.com/a/wa/artist?id=";
     boolean isDeleteButton;
     boolean isTablet;
 
@@ -82,7 +82,7 @@ public class SongDetail extends Fragment {
         );
 
         searchArtist.setOnClickListener(d->{
-                    String urlArtist=SearchArtistUrl+songId;
+                    String urlArtist=SearchArtistUrl+artistId;
                     Intent searchGoogleArtist=new Intent(Intent.ACTION_VIEW, Uri.parse(urlArtist));
                     startActivity(searchGoogleArtist);
 
