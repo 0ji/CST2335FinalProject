@@ -123,7 +123,7 @@ public class SoccerFavorites extends AppCompatActivity {
                         dbAdapter.notifyDataSetChanged();
 
                     }).setNeutralButton(R.string.close,(click,arg)->{
-
+                dbAdapter.notifyDataSetChanged();
             }).setView(getLayoutInflater().inflate(R.layout.soccer_row_layout,null))
                     .create().show();
             dbAdapter.notifyDataSetChanged();
