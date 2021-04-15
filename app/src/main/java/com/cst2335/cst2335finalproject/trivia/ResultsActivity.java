@@ -24,7 +24,9 @@ import com.cst2335.cst2335finalproject.R;
 
 import java.util.ArrayList;
 
-
+/**
+ *  result activity class shows result from the game
+ */
 public class ResultsActivity extends GameActivity {
     public static final String COL_ID = "_id";
     public static final String QUESTION_SELECTED = "Question"; // name
@@ -40,14 +42,11 @@ public class ResultsActivity extends GameActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        /*amount = findViewById(R.id.numberOfQuestions);
-        difficulty = findViewById(R.id.difficulty);*/
+
         name_input = findViewById(R.id.name_input);
-       // TextView score_input = findViewById(R.id.score);
         SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp_user.edit();
         editor.putString("name", name_input.getText().toString());
-        //editor.putString("score", score_input.getText().toString());
         editor.commit();
         Log.i("ResultsActivity", "in onPause ");
 
@@ -69,8 +68,7 @@ public class ResultsActivity extends GameActivity {
 
         SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         name_input.setText(sp_user.getString("name", ""));
-        Toolbar tb = findViewById(R.id.myToolB);
-        // set action bar
+        Toolbar tb = findViewById(R.id.soccer_toolbar_main);
         setSupportActionBar(tb);
 
 
@@ -83,14 +81,14 @@ public class ResultsActivity extends GameActivity {
                 correctChar = ch;
         }
 
-        int correctCalculate = correctChar;
+        int correctCalculate = Character.getNumericValue(correctChar);
         int dividedby = Integer.parseInt(a);
         float finalScore = (correctCalculate * 100) / dividedby;
         String finalScoreString = finalScore + "%";
         score.setText(finalScoreString);
         unanswered_results.setText("Unanswered: "+sp_user.getString("unanswered", ""));
         correct_ans_results.setText("Correct: "+sp_user.getString("correct",""));
-        incorrect_ans_results.setText("Wrong: "+sp_user.getString("incorrect",""));
+        incorrect_ans_results.setText(sp_user.getString("incorrect",""));
 
         // these are the values we will insert into the database
         ContentValues dbValues = new ContentValues();

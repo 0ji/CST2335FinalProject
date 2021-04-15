@@ -31,6 +31,8 @@
                     android:layout_width="482dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="myOnClick"
+                    android:focusable="false"
 
                     android:text="answer" />
 
@@ -39,7 +41,8 @@
                     android:layout_width="487dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-
+                    android:onClick="myOnClick"
+                    android:focusable="false"
                     android:text="answer" />
 
                 <RadioButton
@@ -47,7 +50,8 @@
                     android:layout_width="487dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-
+                    android:onClick="myOnClick"
+                    android:focusable="false"
                     android:text="answer" />
 
                 <RadioButton
@@ -55,9 +59,10 @@
                     android:layout_width="487dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-
+                    android:onClick="myOnClick"
+                    android:focusable="false"
                     android:text="answer" />
 
         </RadioGroup>
-</LinearLayout>
+        </LinearLayout>
 </LinearLayout>
