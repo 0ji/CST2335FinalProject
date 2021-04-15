@@ -71,4 +71,49 @@
     <string name="soccer_howToUse3">- Soccer Icon is for heading to the soccer main</string>
     <string name="soccer_howToUse4">- Favorites button shows stored articles</string>
     <string name="soccer_howToUse5">- GO To WEB button shows the article of this</string>
+
+    <string name="search_car_brand_here">Search car brand here</string>
+    <string name="search">Search</string>
+    <string name="help">HELP</string>
+    <string name="database_view">DATABASE VIEW</string>
+    <string name="help_details">Enter a car model in the search field. Click search to bring up the list of cars. Select a car in the list to bring up car details, where you can add it to your database or shop for the car.</string>
+    <string name="help_title">Car database instructions</string>
+    <string name="help_positive">Understood</string>
+    <string name="back_to_car_view" translatable="false">Back</string>
+
+
+    <string name="songster_Heading">Search</string>
+    <string name="songster_artistName">Enter Artist:</string>
+    <string name="songster_enter_artist_hint">Enter Artist</string>
+    <string name="songster_search_button">Search</string>
+    <string name="songster_FavouriteList">Favourites</string>
+    <string name="songster_SongList">Results</string>
+    <string name="BackButton">Back</string>
+    <string name="songster">Songster</string>
+    <string name="SongId">Song id:</string>
+    <string name="ArtistId">Artist Id:</string>
+    <string name="ArtistName">Artist Name:</string>
+    <string name="SongTitle">Title:</string>
+    <string name="Songster_Save">Save</string>
+    <string name="Songster_Search">Search Song</string>
+    <string name="Songster_Search_Artist">Search Artist</string>
+    <string name="Songster_Delete">Delete</string>
+    <string name="favouriteList">Favourites</string>
+    <string name="Songster_menu_about">About</string>
+    <string name="Songster_menu_help">Help</string>
+    <string name="Songster_moreInfoAboutSong">Know more about this Artist?</string>
+    <string name="youSelected">You selected</string>
+    <string name="confirm">Yes</string>
+    <string name="decline">No</string>
+    <string name="nothingChanged">Nothing changed</string>
+    <string name="SongsterSearch_EnterValidName">Enter Artist</string>
+    <string name="SongsterSearch_AboutMenuItem">Search your favorite Songs</string>
+    <string name="SongsterSearch_HelpMenuItem">Search for Artist or Song base on entered keywords. Hold to add song onto Favorite List</string>
+    <string name="agree">OK</string>
+    <string name="SongterSearch_AboutApp">Created by Trung Nguyen</string>
+    <string name="duplicateMessage">Already saved</string>
+    <string name="ConfirmationMessageofSave">Saved</string>
+    <string name="AskingMessageToDelete">Are you sure?</string>
+    <string name="SongDetail_FavouriteListConfirmation_Add">Do you want to move this into your Favourite List?</string>
+    <string name="ConfirmationMessage_Of_Deletion">has been removed</string>
 </resources>
