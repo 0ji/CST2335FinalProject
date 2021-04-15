@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
 import com.cst2335.cst2335finalproject.songster.SongsterSearch;
+import com.cst2335.cst2335finalproject.trivia.TriviaActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -199,7 +200,7 @@ public class CarDBActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.itemTrivia:
                 message = "Launching trivia app";
-                nextActivity = new Intent(this, CarDBActivity.class);
+                nextActivity = new Intent(this, TriviaActivity.class);
                 break;
         }
 
@@ -237,7 +238,7 @@ public class CarDBActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.itemTrivia:
                 message = "Launching trivia app";
-                nextActivity = new Intent(this, CarDBActivity.class);
+                nextActivity = new Intent(this, TriviaActivity.class);
                 break;
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
