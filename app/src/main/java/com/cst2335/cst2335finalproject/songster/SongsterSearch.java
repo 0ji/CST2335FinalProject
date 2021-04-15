@@ -14,12 +14,19 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.cst2335.cst2335finalproject.R;
+import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
+import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
+import com.google.android.material.navigation.NavigationView;
 
-public class SongsterSearch extends AppCompatActivity {
+public class SongsterSearch extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     static final String ARTIST_KEYWORD="ARTISTNAME";
     private Button searchButton;
     private EditText userInput;
@@ -39,6 +46,19 @@ public class SongsterSearch extends AppCompatActivity {
         progressBar=findViewById(R.id.progressSearch);
         favButton=findViewById(R.id.favouriteSongListButton);
 
+        // create toolbar
+        Toolbar tBar = findViewById(R.id.toolbar2);
+        setSupportActionBar(tBar);
+        getSupportActionBar().setTitle("Song app");
+
+        //create navdrawer
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer, tBar, R.string.open, R.string.close);
+        toggle.syncState();
+
+        NavigationView navView = findViewById(R.id.navView);
+        navView.setNavigationItemSelectedListener(this);
 
 
         prefs=getSharedPreferences("SavedPref",MODE_PRIVATE);
@@ -99,6 +119,37 @@ public class SongsterSearch extends AppCompatActivity {
 
        return true;
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        String message = null;
+        Intent nextActivity = null;
+        switch(item.getItemId()) {
+            case R.id.itemCar:
+                message = "Launching car app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSoccer:
+                message = "Launching soccer app";
+                nextActivity = new Intent(this, SoccerMainActiv.class);
+                break;
+            case R.id.itemSong:
+                message = "Launching song app";
+                nextActivity = new Intent(this, SongsterSearch.class);
+                break;
+            case R.id.itemTrivia:
+                message = "Launching trivia app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+        }
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        startActivity(nextActivity);
+        return false;
     }
 
     @Override

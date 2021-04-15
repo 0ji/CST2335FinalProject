@@ -36,6 +36,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.cst2335.cst2335finalproject.MainActivity;
 import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
+import com.cst2335.cst2335finalproject.songster.SongsterSearch;
 import com.google.android.material.navigation.NavigationView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -219,6 +220,8 @@ public class SoccerMainActiv extends AppCompatActivity {
                 startActivity(intent1);
                 break;
             case R.id.itemSong:
+                Intent intent2 = new Intent(this, SongsterSearch.class);
+                startActivity(intent2);
                 break;
             case R.id.itemTrivia:
                 break;

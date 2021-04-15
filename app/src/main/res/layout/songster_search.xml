@@ -1,69 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:supportsRtl="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/songster_Heading"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        android:id="@+id/songsterHeading"
-        />
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_below="@+id/songsterHeading"
-        android:ems="20"
-        android:layout_marginTop="80dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:hint="@string/songster_enter_artist_hint"
-        android:textColor="@color/black"
-        android:id="@+id/textinput"
-        android:backgroundTint="@color/grey"
-        android:drawableStart="@drawable/search"
-        android:autofillHints=""
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        tools:openDrawer="start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:supportsRtl="true">
 
 
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:text="@string/songster_search_button"
-        android:id="@+id/searchButton"
-        android:backgroundTint="@color/teal_200"
-        android:layout_marginEnd="10dp"
-        android:textSize="20sp"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/searchButton"
-        android:id="@+id/favouriteSongListButton"
-        android:backgroundTint="@color/teal_200"
-        android:text="@string/songster_FavouriteList"
-        android:layout_marginStart="60dp"
-        android:textSize="20sp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/songsterHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/songster_Heading"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
-    <ProgressBar
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/searchButton"
-        android:visibility="invisible"
-        android:id="@+id/progressSearch"/>
+            <EditText
+                android:id="@+id/textinput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/songsterHeading"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="10dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/grey"
+                android:drawableStart="@drawable/search"
+                android:ems="20"
+                android:hint="@string/songster_enter_artist_hint"
+                android:inputType="text"
+                android:textColor="@color/black"
 
 
-</RelativeLayout>
+                />
+
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/teal_200"
+                android:gravity="center"
+                android:text="@string/songster_search_button"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/favouriteSongListButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchButton"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="@string/songster_FavouriteList"
+                android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/searchButton"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible" />
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            app:headerLayout="@layout/head_song"
+            app:menu="@menu/app_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true">
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</LinearLayout>
