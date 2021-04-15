@@ -175,9 +175,9 @@ public class GameActivity extends AppCompatActivity {
         correctByUser = 0;
         incorrectByUser = 0;
         // list to keep track for counter
-        tv_unanswered.setText(String.valueOf(unansweredByUser));
-        tv_correct.setText(String.valueOf(correctByUser));
-        tv_incorrect.setText(String.valueOf(incorrectByUser));
+        tv_unanswered.setText( String.valueOf(unansweredByUser));
+        tv_correct.setText("Correct: " +String.valueOf(correctByUser));
+        tv_incorrect.setText("Wrong: " +String.valueOf(incorrectByUser));
 
         answer1 = multiple_View.findViewById(R.id.Answer1);
         answer2 = multiple_View.findViewById(R.id.Answer2);

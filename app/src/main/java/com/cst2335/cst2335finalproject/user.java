@@ -4,10 +4,10 @@ import android.widget.TextView;
 
 public class user {
     String name;
-    int score;
+    String score;
     long id;
 
-    public user(String name, int score, long id) {
+    public user(String name, String score, long id) {
         this.name = name;
         this.score = score;
         this.id = id;
@@ -21,11 +21,11 @@ public class user {
         this.name = name;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(String score) {
         this.score = score;
     }
 

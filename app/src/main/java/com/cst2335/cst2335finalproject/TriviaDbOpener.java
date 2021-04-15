@@ -20,7 +20,7 @@ public class TriviaDbOpener extends SQLiteOpenHelper {
 
 
     protected  final static String DATABASE_NAME = "TriviaDB";
-    protected final static int VERSION_NUM = 1;
+    protected final static int VERSION_NUM = 2;
     public final static String TABLE_QUESTION_STATE = "QUESTION_STATE";
     public final static String TABLE_PLAYER = "tbl_Player";
     public final static String COL_PLAYER = "Player";
@@ -41,7 +41,7 @@ public class TriviaDbOpener extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_PLAYER + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_PLAYER + " text,"
-                + COL_SCORE  + " INTEGER);");
+                + COL_SCORE  + " text);");
      /*   db.execSQL("CREATE TABLE " + TABLE_QUESTION_STATE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_PLAYER + " text," + COL_SCORE  + " INTEGER, "
                 + COL_ID  + " INTEGER);");*/

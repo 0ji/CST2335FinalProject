@@ -58,7 +58,7 @@ public class ResultsActivity extends GameActivity {
         lv_results.setAdapter(listAdapter);
         Button add_button = findViewById(R.id.addUser);
         name_input = findViewById(R.id.name_input);
-        TextView score = findViewById(R.id.score);
+        TextView score = findViewById(R.id.high_score_titles);
         TextView user = findViewById(R.id.user);
         TextView unanswered_results = findViewById(R.id.unanswered_textv);
         TextView correct_ans_results = findViewById(R.id.correct_answer_textv);
@@ -66,10 +66,19 @@ public class ResultsActivity extends GameActivity {
 
         SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         name_input.setText(sp_user.getString("name", ""));
-        unanswered_results.setText(sp_user.getString("unanswered", ""));
-        correct_ans_results.setText(sp_user.getString("correct",""));
-        incorrect_ans_results.setText(sp_user.getString("incorrect","incorrect ans"+ ""));
+        unanswered_results.setText("Unanswered: "+sp_user.getString("unanswered", ""));
+        correct_ans_results.setText("Correct: "+sp_user.getString("correct",""));
+        incorrect_ans_results.setText("Wrong: "+sp_user.getString("incorrect",""));
 
+
+        SharedPreferences sp_trivia = getSharedPreferences("TriviaDetails", Context.MODE_PRIVATE);
+        a = sp_trivia.getString("amount", "");
+        String correct = sp_user.getString("correct", "");
+        int correctCalculate = Integer.parseInt(correct);
+        int dividedby = Integer.parseInt(a);
+        float finalScore = (correctCalculate * 100) / dividedby;
+        String finalScoreString = finalScore + "%";
+        score.setText(finalScoreString);
 
         // these are the values we will insert into the database
         ContentValues dbValues = new ContentValues();
@@ -90,7 +99,7 @@ public class ResultsActivity extends GameActivity {
             //String score_string =
             dbValues.put(TriviaDbOpener.COL_PLAYER, user_string);
             long newId = db.insert(TriviaDbOpener.TABLE_PLAYER, null, dbValues);
-            user newUser = new user (user_string, 0 , newId);
+            user newUser = new user (user_string, finalScoreString , newId);
             high_score_list.add(newUser);
             listAdapter.notifyDataSetChanged();
            // name_input.setText("");
