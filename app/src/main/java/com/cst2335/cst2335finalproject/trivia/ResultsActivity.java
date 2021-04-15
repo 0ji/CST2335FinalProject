@@ -68,7 +68,8 @@ public class ResultsActivity extends GameActivity {
 
         SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         name_input.setText(sp_user.getString("name", ""));
-        Toolbar tb = findViewById(R.id.soccer_toolbar_main);
+
+        Toolbar tb = findViewById(R.id.myToolB);
         setSupportActionBar(tb);
 
 

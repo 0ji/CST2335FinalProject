@@ -4,9 +4,8 @@
     android:layout_height="wrap_content"
     android:id="@+id/trivia"
     android:orientation="vertical"
-
-
     >
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/myToolB"

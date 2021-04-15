@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.cst2335.cst2335finalproject.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -356,9 +357,13 @@ public class GameActivity extends AppCompatActivity {
                             if (rb.getText().toString().equals(multipleCorrect)){
                                 unansweredByUser--;
                                 correctByUser++;
+                                Snackbar snackbar = Snackbar.make(group, "Correct!", Snackbar.LENGTH_LONG);
+                                snackbar.show();
                             } else {
                                 unansweredByUser--;
                                 incorrectByUser++;
+                                Snackbar snackbar = Snackbar.make(group, "Wrong!", Snackbar.LENGTH_LONG);
+                                snackbar.show();
                             }
                         }
                     });
@@ -379,17 +384,25 @@ public class GameActivity extends AppCompatActivity {
                                 if(rb.getText() == true_radio.getText()){
                                     unansweredByUser--;
                                     correctByUser++;
+                                    Snackbar snackbar = Snackbar.make(group, "Correct!", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
                                 } else {
                                     unansweredByUser--;
                                     incorrectByUser++;
+                                    Snackbar snackbar = Snackbar.make(group, "Wrong!", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
                                 }
                             } else if(thisRow.getCorrect_answer().equals("False")) {
                                 if(rb.getText() == false_radio.getText()) {
                                     unansweredByUser--;
                                     correctByUser++;
+                                    Snackbar snackbar = Snackbar.make(group, "Correct!", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
                                 } else {
                                     unansweredByUser--;
                                     incorrectByUser++;
+                                    Snackbar snackbar = Snackbar.make(group, "Wrong!", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
                                 }
                             }
                         }
