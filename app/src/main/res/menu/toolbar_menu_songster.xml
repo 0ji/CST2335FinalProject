@@ -1,45 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/songster_toolbar_menu"
-    android:title="Songster"
-    android:supportsRtl="true" >
-
-    <item
-        android:id="@+id/help"
-        android:title="@string/Songster_menu_help"
-        android:orderInCategory="5"
-        android:visible="true"
-        app:showAsAction="always"
-        android:icon="@drawable/about"
-        />
+    android:id="@+id/soccer_toolbar_menu"
+    android:title="Soccer"
+    android:orderInCategory="10">
 
     <item android:id="@+id/itemCar"
         android:title="Car app"
         android:icon="@drawable/car"
         android:orderInCategory="1"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/soccer_activity_main"
-        app:showAsAction="ifRoom"
-        android:title="soccer"
-        android:orderInCategory="2"
-        android:icon="@drawable/soccer_ball"
-        />
+        app:showAsAction="always"/>
     <item android:id="@+id/itemTrivia"
         android:title="Trivia app"
         android:icon="@drawable/trivia"
         android:orderInCategory="3"
-        app:showAsAction="ifRoom"/>
-
-
+        app:showAsAction="always"/>
+    <item android:id="@+id/itemSong"
+        android:title="Song app"
+        android:icon="@drawable/guitar"
+        android:orderInCategory="4"
+        app:showAsAction="always"/>
     <item
-        android:id="@+id/about"
-        android:title="@string/Songster_menu_about"
-        android:orderInCategory="6"
-        android:visible="true"
-        app:showAsAction="never"
-        android:icon="@drawable/about"
+        android:id="@+id/soccer_activity"
+        app:showAsAction="always"
+        android:title="soccer"
+        android:orderInCategory="2"
+        android:icon="@drawable/soccer_ball"
         />
+
 </menu>
