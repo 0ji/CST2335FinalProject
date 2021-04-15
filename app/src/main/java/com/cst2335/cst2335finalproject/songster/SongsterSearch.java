@@ -97,7 +97,7 @@ public class SongsterSearch extends AppCompatActivity implements NavigationView.
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.toolbar_menu_songster,menu);
+        inflater.inflate(R.menu.toolbar_menu_songster, menu);
         return true;
     }
     @Override
