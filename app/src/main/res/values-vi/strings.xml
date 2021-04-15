@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Songster</string>
+    <string name="songster_Heading">Tìm Kiếm</string>
+    <string name="songster_artistName">Nhập tên Ca Sĩ</string>
+    <string name="songster_enter_artist_hint">Nhập tên Ca Sĩ</string>
+    <string name="songster_search_button">Tìm Kiếm</string>
+    <string name="songster_FavouriteList">Yêu Thích</string>
+    <string name="songster_SongList">Kết quả tìm kiếm</string>
+    <string name="BackButton">Trở về</string>
+    <string name="songster">Songster</string>
+    <string name="SongId">ID Bài Nhạc:</string>
+    <string name="ArtistId">ID Ca Sĩ:</string>
+    <string name="ArtistName">Tên Ca Sĩ:</string>
+    <string name="SongTitle">Tựa đề:</string>
+    <string name="Songster_Save">Lưu</string>
+    <string name="Songster_Search">Tìm Kiếm Nhạc</string>
+    <string name="Songster_Search_Artist">Tìm Kiếm Ca Sĩ</string>
+    <string name="Songster_Delete">Xóa</string>
+    <string name="favouriteList">Yêu Thích</string>
+    <string name="Songster_menu_about">Nội dung</string>
+    <string name="Songster_menu_help">Giúp đỡ</string>
+    <string name="Songster_moreInfoAboutSong">Biết thêm về Ca sĩ?</string>
+    <string name="youSelected">Bạn đã chọn</string>
+    <string name="confirm">Yes</string>
+    <string name="decline">No</string>
+    <string name="nothingChanged">Không có gì thay đổi</string>
+    <string name="SongsterSearch_EnterValidName">Nhập tên Ca Sĩ</string>
+    <string name="SongsterSearch_AboutMenuItem">tìm kiến ca sĩ yêu thích</string>
+    <string name="SongsterSearch_HelpMenuItem">Search for Artist or Song base on entered keywords. Hold to add song onto Favorite List</string>
+    <string name="agree">OK</string>
+    <string name="SongterSearch_AboutApp">Songster app created by Trung Nguyen</string>
+    <string name="duplicateMessage">this Song is already saved</string>
+    <string name="ConfirmationMessageofSave">Your Favourite Song is saved</string>
+    <string name="AskingMessageToDelete">Are you sure you want to delete this song?</string>
+    <string name="SongDetail_FavouriteListConfirmation_Add">Do you want to save this to your Favourite List?</string>
+    <string name="ConfirmationMessage_Of_Deletion">has been removed from favourite</string>
+</resources>

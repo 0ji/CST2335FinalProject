@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335FinalProject">
-        <activity android:name=".carDB.CarEmptyFragmentView"></activity>
-        <activity android:name=".carDB.CarDBActivity">
 
-        </activity>
+
+        <activity android:name=".carDB.CarEmptyFragmentView" />
+        <activity android:name=".carDB.CarDBActivity" />
+
 
         <activity android:name=".soccer.SoccerDetailDBActivity" />
         <activity
@@ -24,16 +25,18 @@
         <activity
             android:name=".soccer.SoccerDetailActivity"
             android:label="@string/title_activity_soccer_detail" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".soccer.SoccerMainActiv"
-            android:label="@string/title_activity_soccer_main">
+            android:label="@string/title_activity_soccer_main" />
+
+
+        <activity android:name=".songster.FavouriteList" />
+        <activity android:name=".songster.FragmentPhoneActivity" />
+        <activity android:name=".songster.SongsterList" />
+        <activity android:name=".songster.SongsterSearch"/>
+
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
