@@ -1,6 +1,7 @@
 package com.cst2335.cst2335finalproject.trivia;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,7 +20,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.cst2335.cst2335finalproject.R;
 
@@ -87,18 +91,17 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        /*amount = findViewById(R.id.numberOfQuestions);
-        difficulty = findViewById(R.id.difficulty);*/
+
         TextView unanswered = findViewById(R.id.unanswered);
         TextView incorrect = findViewById(R.id.correct_answer);
         TextView correct = findViewById(R.id.incorrect_answer);
-        // TextView score_input = findViewById(R.id.score);
+
         SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp_user.edit();
         editor.putString("unanswered", unanswered.getText().toString());
         editor.putString("correct", correct.getText().toString());
         editor.putString("incorrect", incorrect.getText().toString());
-        //editor.putString("score", score_input.getText().toString());
+
         editor.commit();
         Log.i("ResultsActivity", "in onPause ");
     }
@@ -110,7 +113,8 @@ public class GameActivity extends AppCompatActivity {
 
         ProgressBar pb = findViewById(R.id.progress_bar);
         pb.setVisibility(View.VISIBLE);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolB);
+        setSupportActionBar(toolbar);
 
         // user sp to fill our url for API
         SharedPreferences sharedPreferences = getSharedPreferences("TriviaDetails", Context.MODE_PRIVATE);
@@ -130,27 +134,20 @@ public class GameActivity extends AppCompatActivity {
         View multiple_View = getLayoutInflater().inflate(R.layout.multiple_questions, null);
         multiple_group = multiple_View.findViewById(R.id.rMultipleGroup);
 
-        //  View counter = getLayoutInflater().inflate(R.layout.activity_counter, null);
-
-        TextView tv_unanswered = findViewById(R.id.unanswered);
-
-        // tv_unanswered.setText(String.valueOf(unanswered));
-
-        // assign screen view
+        // assign list view
         ListView lv_trivia = findViewById(R.id.triviaListView);
 
 
         // counter views
-        //TextView tv_unanswered = findViewById(R.id.unanswered);
-        // todo: see if you still need this here *************************************************************************************
         TextView tv_correct = findViewById(R.id.correct_answer);
         TextView tv_incorrect = findViewById(R.id.incorrect_answer);
+        TextView tv_unanswered = findViewById(R.id.unanswered);
 
         // set unaswered to intial size of list
         unansweredByUser = Integer.parseInt(a.toString());
-        // set correct and incorrect to 0 since no questions have been answered
         correctByUser = 0;
         incorrectByUser = 0;
+
         // list to keep track for counter
         tv_unanswered.setText( String.valueOf(unansweredByUser));
         tv_correct.setText("Correct: " +String.valueOf(correctByUser));
@@ -173,6 +170,7 @@ public class GameActivity extends AppCompatActivity {
         // trying to send results to next page
         Button submitB = findViewById(R.id.submit_button);
 
+        // send to results coiunter info when submitting
         Intent results_page = new Intent(this, ResultsActivity.class);
         submitB.setOnClickListener(v -> {
             results_page.putExtra("Amount un-asnwered", unansweredByUser);
@@ -181,14 +179,42 @@ public class GameActivity extends AppCompatActivity {
             startActivity(results_page);
         });
 
+
     }
 
+    /**
+     * onOptionItemSelected - helpw with navbar
+     * @param item
+     * @return
+     */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);//Look at your menu XML file. Put a case for every id in that file:
+
+        switch (item.getItemId()){
+            case R.id.itemid:
+                alert.setTitle("How to use Trivia API");
+                alert.setMessage("Please press the radio buttons the counter on the top left will keep track of how many question you have answered and if they are wrong or correct");
+                alert.setCancelable(false);
+                alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alert.show();
+                break;
+        }
+        return true;
+    }
+
+    /**
+     * Trvia results handles background task and parses json data
+     */
     public class TriviaResults extends AsyncTask<String, Integer, String> {
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            // this has to be done in ui thread
             listAdapter.notifyDataSetChanged();
         }
 
@@ -287,12 +313,10 @@ public class GameActivity extends AppCompatActivity {
             return question_list.get(position);
         }
 
-
         @Override
         public long getItemId(int position) {
             return question_list.get(position).getId();
         }
-
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -306,7 +330,6 @@ public class GameActivity extends AppCompatActivity {
             TextView tv_correct = findViewById(R.id.correct_answer);
             TextView tv_incorrect = findViewById(R.id.incorrect_answer);
             TextView tv_unanswered = findViewById(R.id.unanswered);
-
 
             if (is_multiple) {
                 View multiple = inflater.inflate(R.layout.multiple_questions, parent, false);
@@ -322,12 +345,15 @@ public class GameActivity extends AppCompatActivity {
                 answer3_tv.setText(incorrect_answer_list[0].trim());
                 answer2_tv.setText(incorrect_answer_list[1].trim());
                 answer1_tv.setText(incorrect_answer_list[2].trim());
-                
+                multiple_group = multiple.findViewById(R.id.rMultipleGroup);
+
+                // multiple group radio listener
                     multiple_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
                             RadioButton rb = multiple_group.findViewById(checkedId);
-                            if (rb == answer4_tv){
+                            String multipleCorrect = thisRow.getCorrect_answer();
+                            if (rb.getText().toString().equals(multipleCorrect)){
                                 unansweredByUser--;
                                 correctByUser++;
                             } else {
@@ -344,6 +370,7 @@ public class GameActivity extends AppCompatActivity {
                     boolean_group = trueOrFalse.findViewById(R.id.boolean_group);
                     true_radio = trueOrFalse.findViewById(R.id.trueRadio);
                     false_radio = trueOrFalse.findViewById(R.id.falseRadio);
+                    // boolean group radio listener
                     boolean_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -363,27 +390,19 @@ public class GameActivity extends AppCompatActivity {
                                 } else {
                                     unansweredByUser--;
                                     incorrectByUser++;
+                                }
                             }
-
-                            }
-
                         }
                     });
-
-
                 correctAns = thisRow.getCorrect_answer();
                 boolean_tv.setText(thisRow.getQuestion());
                 return trueOrFalse;
-
             }
-
         }
-
-
 
     public void myOnClick(View v) {
         Log.d("DEBUG", "CLICKED " + v.getId());
-        //unansweredByUser--;
+        //unansweredByUser--
         TextView tv_unanswered = findViewById(R.id.unanswered);
         TextView tv_correct_answers = findViewById(R.id.correct_answer);
         TextView tv_incorrect_answers = findViewById(R.id.incorrect_answer);
@@ -391,5 +410,4 @@ public class GameActivity extends AppCompatActivity {
         tv_correct_answers.setText(String.valueOf(correctByUser));
         tv_incorrect_answers.setText(String.valueOf(incorrectByUser));
     }
-        // TODO NEW CODE
 }

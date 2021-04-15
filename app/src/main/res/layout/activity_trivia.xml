@@ -5,8 +5,7 @@
     android:id="@+id/trivia"
     android:orientation="vertical"
     >
-
-
+    \
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/myToolB"
         android:layout_width="match_parent"
@@ -23,7 +22,6 @@
         android:text="@string/createGameString"
        />
 
-<!--    ONLY EDIT VIEW THAT CAN NOT BE EMPTY-->
     <TextView
         android:id="@+id/nqLabel"
         android:textSize="18dp"
@@ -33,6 +31,7 @@
         android:layout_height="wrap_content"
         android:text="@string/questionLabel"
         android:labelFor="@id/numberOfQuestions" />
+
     <EditText
         android:id="@+id/numberOfQuestions"
         android:layout_gravity="center"
@@ -44,6 +43,7 @@
         android:layout_below="@+id/nqLabel"
         android:autofillHints="@+id/help_hint">
     </EditText>
+
     <TextView
         android:id="@+id/typeLabel"
         android:textSize="18dp"
@@ -53,6 +53,7 @@
         android:layout_below="@id/numberOfQuestions"
         android:text="@string/typeLabel"
         android:labelFor="@id/type" />
+
     <EditText
         android:id="@+id/type"
         android:layout_gravity="center"
@@ -64,6 +65,7 @@
         android:layout_below="@+id/typeLabel"
         android:autofillHints="@+id/help_hint">
     </EditText>
+
     <TextView
         android:id="@+id/difficultyLabel"
         android:textAlignment="center"
@@ -73,6 +75,7 @@
         android:layout_below="@id/type"
         android:text="@string/difficultyLabel"
         android:labelFor="@id/difficulty" />
+
     <EditText
         android:id="@+id/difficulty"
         android:textAlignment="center"
@@ -84,6 +87,7 @@
         android:layout_below="@+id/difficultyLabel"
         android:autofillHints="@+id/help_hint">
     </EditText>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -92,8 +96,6 @@
         android:text="@string/createGameString"
         />
 
-
- <!--Can change the text of the button -->
     <ProgressBar
         android:visibility="visible"
         android:id="@+id/progress_bar"
@@ -102,6 +104,5 @@
         android:layout_height="50dp"
         style="?android:attr/progressBarStyleHorizontal"
         />
-
 
 </RelativeLayout>
