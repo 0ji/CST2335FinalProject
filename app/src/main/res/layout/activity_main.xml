@@ -1,25 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/trivia"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/goToTrivia"
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="164dp"
-        android:text="Go to trivia"></Button>
+        android:layout_height="wrap_content"
+        android:id="@+id/soccer_toolbar_main"/>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/soccer_drawer_layout_main"
+        android:layout_below="@id/soccer_toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/goToTrivia"
-        android:visibility="visible" />
+                <ImageButton
+                    android:id="@+id/goToTrivia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/trivia_image_button2" />
+
+                <ImageButton
+                    android:id="@+id/goToSongster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goToTrivia"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/songster_image_button2" />
+
+                <ImageButton
+                    android:id="@+id/goToCarDB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goToSongster"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/car_image_button2" />
+                <ImageButton
+                    android:id="@+id/goToSoccer"
+                    android:layout_below="@+id/goToCarDB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/soccer_image_button2"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+            </RelativeLayout>
+        </ScrollView>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:id="@+id/soccer_nav_view"
+            app:headerLayout="@layout/head_main"
+            app:menu="@menu/soccer_nav_actions" />
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 
-</LinearLayout>
+
+
+</RelativeLayout>

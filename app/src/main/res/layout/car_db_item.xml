@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!--        android:text="itemID"-->
+
+    <TextView
+        android:id="@+id/carModel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#6AC3BBBB" />
+    <!--        android:text="carModel"-->
+
+    <!--        android:text="carID" -->
+
+    <TextView
+        android:id="@+id/carMake"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#6AC3BBBB" />
+    <!--        android:text="carMake" -->
+
+    <!--        android:text="carModel" -->
+</LinearLayout>
