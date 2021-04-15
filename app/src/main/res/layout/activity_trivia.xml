@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/trivia"
+    android:orientation="vertical"
+    >
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/triviaInput"
+        android:textSize="22dp"
+        android:layout_below="@+id/myToolB"
+        android:layout_marginBottom="@dimen/cardview_default_elevation"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/createGameString"
+       />
+
+<!--    ONLY EDIT VIEW THAT CAN NOT BE EMPTY-->
+    <TextView
+        android:id="@+id/nqLabel"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        android:layout_below="@+id/triviaInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/questionLabel"
+        android:labelFor="@id/numberOfQuestions" />
+    <EditText
+        android:id="@+id/numberOfQuestions"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:hint="@string/questionHint"
+        android:inputType="number"
+        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/nqLabel"
+        android:autofillHints="@+id/help_hint">
+    </EditText>
+    <TextView
+        android:id="@+id/typeLabel"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/numberOfQuestions"
+        android:text="@string/typeLabel"
+        android:labelFor="@id/type" />
+    <EditText
+        android:id="@+id/type"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:hint="@string/typeHint"
+        android:inputType=""
+        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/typeLabel"
+        android:autofillHints="@+id/help_hint">
+    </EditText>
+    <TextView
+        android:id="@+id/difficultyLabel"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:textSize="18dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/type"
+        android:text="@string/difficultyLabel"
+        android:labelFor="@id/difficulty" />
+    <EditText
+        android:id="@+id/difficulty"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:hint="@string/difficultyHint"
+        android:inputType="text"
+        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/difficultyLabel"
+        android:autofillHints="@+id/help_hint">
+    </EditText>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/createGame"
+        android:layout_below="@id/difficulty"
+        android:text="@string/createGameString"
+        />
+
+
+ <!--Can change the text of the button -->
+    <ProgressBar
+        android:visibility="visible"
+        android:id="@+id/progress_bar"
+        android:layout_below="@id/createGame"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        />
+
+
+</RelativeLayout>
