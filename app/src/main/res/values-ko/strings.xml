@@ -58,4 +58,47 @@
     <string name="help_positive">알겠습니다</string>
     <string name="back_to_car_view" translatable="false">뒤로</string>
 
+    <string name="difficultyLabel">난이도를 입력하세요:</string>
+    <string name="typeLabel">타입을 입력하세요:</string>
+    <string name="questionLabel">문제 개수를 입력하세요: </string>
+    <string name="questionHint">개의 문제</string>
+    <string name="typeHint">양자택일, 다양함</string>
+    <string name="difficultyHint">쉬움, 중간, 어려움</string>
+    <string name="createGameString"> 당신의 게임 제작</string>
+    <string name="goToTrivia">트리비아 게임</string>
+
+    <string name="songster_Heading">검색</string>
+    <string name="songster_artistName">아티스트 입력:</string>
+    <string name="songster_enter_artist_hint">아티스트 입력</string>
+    <string name="songster_search_button">검색</string>
+    <string name="songster_FavouriteList">쵀애들</string>
+    <string name="songster_SongList">결과들</string>
+    <string name="BackButton">뒤로</string>
+    <string name="songster">송스타</string>
+    <string name="SongId">송 아이디:</string>
+    <string name="ArtistId">아티스트 아이디:</string>
+    <string name="ArtistName">아티스트 이름:</string>
+    <string name="SongTitle">타이틀:</string>
+    <string name="Songster_Save">저장</string>
+    <string name="Songster_Search">노래 검색</string>
+    <string name="Songster_Search_Artist">아티스트 검색</string>
+    <string name="Songster_Delete">지우기</string>
+    <string name="favouriteList">쵀애들</string>
+    <string name="Songster_menu_about">정보</string>
+    <string name="Songster_menu_help">도움</string>
+    <string name="Songster_moreInfoAboutSong">아티스트에 관해 더 많은 정보?</string>
+    <string name="youSelected">당신의 선택은</string>
+    <string name="confirm">네</string>
+    <string name="decline">아니요</string>
+    <string name="nothingChanged">변화 없음</string>
+    <string name="SongsterSearch_EnterValidName">아티스트 입력</string>
+    <string name="SongsterSearch_AboutMenuItem">최애 노래 검색</string>
+    <string name="SongsterSearch_HelpMenuItem">키워드로 아티스트 또는 노래검색. 길게 눌러 노래 저장</string>
+    <string name="agree">알겠음</string>
+    <string name="SongterSearch_AboutApp">제작자 Trung Nguyen</string>
+    <string name="duplicateMessage">이미 저장됨</string>
+    <string name="ConfirmationMessageofSave">저장됨</string>
+    <string name="AskingMessageToDelete">확실해요?</string>
+    <string name="SongDetail_FavouriteListConfirmation_Add">이거를 최애노래로 옮길거에요?</string>
+    <string name="ConfirmationMessage_Of_Deletion">지워졌습니다.</string>
 </resources>

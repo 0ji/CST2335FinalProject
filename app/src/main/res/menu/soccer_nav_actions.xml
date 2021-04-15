@@ -20,14 +20,15 @@
             android:icon="@drawable/soccer_icon"
             android:title="@string/soccer_nav_GoToSoccerPage"/>
         <item
+            android:id="@+id/soccer_goToSong"
+            android:title="Go To SongStar"
+            android:icon="@drawable/guitar"/>
+        <item
             android:id="@+id/soccer_previous"
             android:title="@string/soccer_previous"
             android:icon="@drawable/back_nav"
             />
-        <item
-            android:id="@+id/soccer_goToSong"
-            android:title="Go To SongStar"
-            android:icon="@drawable/guitar"/>
+
 
     </group>
 </menu>

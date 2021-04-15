@@ -34,4 +34,73 @@
     <string name="AskingMessageToDelete">Are you sure you want to delete this song?</string>
     <string name="SongDetail_FavouriteListConfirmation_Add">Do you want to save this to your Favourite List?</string>
     <string name="ConfirmationMessage_Of_Deletion">has been removed from favourite</string>
+
+    <string name="difficultyLabel">Please enter your difficulty:</string>
+    <string name="typeLabel">Please enter the Type:</string>
+    <string name="questionLabel">Enter the # of questions: </string>
+    <string name="questionHint"># of questions</string>
+    <string name="typeHint">boolean, multiple</string>
+    <string name="difficultyHint">easy, medium, hard</string>
+    <string name="createGameString"> create your game</string>
+    <string name="goToTrivia">TRIVIA GAME</string>
+
+    <string name="title_activity_soccer_main">Soc</string>
+    <string name="title_activity_soccer_detail">Soc</string>
+    <string name="title_activity_soccer_favorites">Soc</string>
+
+    <string name="hello_world">Hello Square World!</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="main_soccer_button">Soccer</string>
+    <string name="soccer_detail_SAVE">SAVE</string>
+    <string name="soccer_detail_GOTOWEB">GO TO WEB</string>
+    <string name="soccer_detail_db_BackToList">Back To List</string>
+    <string name="soccer_detail_db_GOTOWEB">GO TO WEB</string>
+    <string name="soccer_favorite_SoccerArticles">Soccer Articles</string>
+    <string name="soccer_main_button_Favorites">Favorites</string>
+    <string name="soccer_fragment_ID">ID=</string>
+    <string name="soccer_fragment_Link">Link=</string>
+    <string name="soccer_fragment_Description">Descrption=</string>
+    <string name="soccer_fragment_Date">Date=</string>
+    <string name="soccer_fragment_Title">Title</string>
+    <string name="soccer_rating_submit">Submit</string>
+    <string name="soccer_rating_SoccerArticles">Rating App</string>
+    <string name="soccer_nav_GoToMainPage">Go To Main</string>
+    <string name="soccer_nav_GoToTrivia">Go To Trivia</string>
+    <string name="soccer_nav_GoToCarDB">Go To CarDB</string>
+    <string name="soccer_nav_GoToSoccerPage">Go To Soccer</string>
+    <string name="soccer_toolbar_Search">Search</string>
+    <string name="soccer_toolbar_About">Help</string>
+    <string name="soccer_rating_main">Rating App</string>
+    <string name="soccer_main_pg_15">Making a connection ...</string>
+    <string name="soccer_main_pg_25">Start ...</string>
+    <string name="soccer_main_pg_45">Extracting data ...</string>
+    <string name="soccer_main_pg_70">Loading images ...</string>
+    <string name="soccer_save_button">Saved!</string>
+    <string name="soccer_undo_button">Favorite</string>
+    <string name="soccer_previous">Go To Previous</string>
+    <string name="soccer_db_delete">Do you want to delete this?</string>
+    <string name="soccer_db_id">The selected row is=</string>
+    <string name="soccer_db_id2">The database id is=</string>
+    <string name="soccer_confirm">Okay</string>
+    <string name="soccer_howToUse">How To Use</string>
+    <string name="soccer_howToUse1">- Click one of items in list to check Articles</string>
+    <string name="soccer_howToUse2">- Soccer Articles button heads to Soccer Main</string>
+    <string name="soccer_howToUse3">- Soccer Icon is for heading to the soccer main</string>
+    <string name="soccer_howToUse4">- Favorites button shows stored articles</string>
+    <string name="soccer_howToUse5">- GO To WEB button shows the article of this</string>
+
+
+
+
+
+    <string name="search_car_brand_here">Search car brand here</string>
+    <string name="search">Search</string>
+    <string name="help">HELP</string>
+    <string name="database_view">DATABASE VIEW</string>
+    <string name="help_details">Enter a car model in the search field. Click search to bring up the list of cars. Select a car in the list to bring up car details, where you can add it to your database or shop for the car.</string>
+    <string name="help_title">Car database instructions</string>
+    <string name="help_positive">Understood</string>
 </resources>
