@@ -22,19 +22,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageButton
-                    android:id="@+id/goToTrivia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/trivia_image_button2" />
 
                 <ImageButton
                     android:id="@+id/goToSongster"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/goToTrivia"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/songster_image_button2" />
@@ -55,6 +47,14 @@
                     android:src="@drawable/soccer_image_button2"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"/>
+                <ImageButton
+                    android:id="@+id/goToTrivia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/trivia_image_button2"
+                    android:layout_below="@+id/goToSoccer"/>
             </RelativeLayout>
         </ScrollView>
         <com.google.android.material.navigation.NavigationView
