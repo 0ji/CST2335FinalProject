@@ -116,6 +116,9 @@ public class SoccerFavorites extends AppCompatActivity {
             drawer.closeDrawer(GravityCompat.START);
             return true;
         });
+        /**
+         * goToSoccerList makes a user head to SoccerMainActivity
+         * */
         goToSoccerList = (Button) findViewById(R.id.goToSoccerList);
         goToSoccerList.setOnClickListener(c->{Intent intent = new Intent(this, SoccerMainActiv.class); startActivity(intent);});
         ListView myList = findViewById(R.id.list_item_db);
