@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             //changePage(triviamain.class);
         });
 
-        Button triviaSelection = findViewById(R.id.goToTrivia);
+        ImageButton triviaSelection = findViewById(R.id.goToTrivia);
 
         triviaSelection.setOnClickListener(v -> {
             Intent goToTrivia = new Intent(this, TriviaActivity.class);
