@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.songster.SongsterSearch;
 import com.cst2335.cst2335finalproject.trivia.MainActivity;
@@ -81,24 +82,32 @@ public class SoccerFavorites extends AppCompatActivity {
             int id = item.getItemId();
             switch (id) {
                 case R.id.soccer_goToMain:
+                    Toast.makeText(this,"Main",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.soccer_goToTrivia:
+                    Toast.makeText(this,"Trivia",Toast.LENGTH_SHORT).show();
                     Intent intent2 = new Intent(this, TriviaActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.soccer_goToCarDB:
+                    Toast.makeText(this,"CarDB",Toast.LENGTH_SHORT).show();
                     Intent intent3 = new Intent(this, CarDBActivity.class);
                     startActivity(intent3);
                     break;
                 case R.id.soccer_goToSoccerMain:
+                    Toast.makeText(this,"Soccer",Toast.LENGTH_SHORT).show();
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
+                    break;
                 case R.id.soccer_goToSong:
+                    Toast.makeText(this,"SongStar",Toast.LENGTH_SHORT).show();
                     Intent intent5 = new Intent(this, SongsterSearch.class);
                     startActivity(intent5);
+                    break;
                 case R.id.soccer_previous:
+                    Toast.makeText(this,"Previous",Toast.LENGTH_SHORT).show();
                     Intent intent6 = new Intent(this, MainActivity.class);
                     setResult(500, intent6);
                     finish();
@@ -107,6 +116,9 @@ public class SoccerFavorites extends AppCompatActivity {
             drawer.closeDrawer(GravityCompat.START);
             return true;
         });
+        /**
+         * goToSoccerList makes a user head to SoccerMainActivity
+         * */
         goToSoccerList = (Button) findViewById(R.id.goToSoccerList);
         goToSoccerList.setOnClickListener(c->{Intent intent = new Intent(this, SoccerMainActiv.class); startActivity(intent);});
         ListView myList = findViewById(R.id.list_item_db);
