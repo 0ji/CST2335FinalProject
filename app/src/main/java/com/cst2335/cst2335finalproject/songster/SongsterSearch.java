@@ -104,17 +104,6 @@ public class SongsterSearch extends AppCompatActivity implements NavigationView.
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
        switch(item.getItemId()){
-           case R.id.about:
-
-                       alertDialog.setTitle("Songster app by Trung Nguyen  V5.0").setMessage(R.string.SongsterSearch_AboutMenuItem)
-                       .setPositiveButton(R.string.agree,null).create().show();
-                       break;
-           case R.id.help:
-
-               alertDialog.setMessage(R.string.SongsterSearch_HelpMenuItem)
-                       .setPositiveButton(R.string.agree,null).create().show();
-               break;
-
            case R.id.soccer_activity_main:
                Intent intent = new Intent(this, SoccerMainActiv.class);
                startActivity(intent);
