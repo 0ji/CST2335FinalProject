@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- *  @author Elaiza Rivera
+ *  @author Akshay Gokani
  * TriviaDBOpener to open and set uesry for database
  */
 public class TriviaDbOpener extends SQLiteOpenHelper {
