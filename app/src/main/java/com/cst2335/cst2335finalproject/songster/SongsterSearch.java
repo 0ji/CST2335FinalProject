@@ -97,33 +97,42 @@ public class SongsterSearch extends AppCompatActivity implements NavigationView.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.app_menu, menu);
+        inflater.inflate(R.menu.songsters_menu, menu);
         return true;
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
         String message = null;
         Intent nextActivity = null;
         switch(item.getItemId()) {
+            case R.id.about:
+                alertDialog.setMessage(R.string.SongsterSearch_HelpMenuItem)
+                        .setPositiveButton(R.string.agree,null).create().show();
+                break;
             case R.id.itemCar:
                 message = "Launching car app";
                 nextActivity = new Intent(this, CarDBActivity.class);
+                startActivity(nextActivity);
                 break;
             case R.id.itemSoccer:
                 message = "Launching soccer app";
                 nextActivity = new Intent(this, SoccerMainActiv.class);
+                startActivity(nextActivity);
                 break;
             case R.id.itemSong:
                 message = "Launching song app";
                 nextActivity = new Intent(this, SongsterSearch.class);
+                startActivity(nextActivity);
                 break;
             case R.id.itemTrivia:
                 message = "Launching trivia app";
                 nextActivity = new Intent(this, CarDBActivity.class);
+                startActivity(nextActivity);
                 break;
+
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        startActivity(nextActivity);
         return true;
     }
 
