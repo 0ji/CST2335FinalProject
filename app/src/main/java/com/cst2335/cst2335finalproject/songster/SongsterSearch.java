@@ -115,6 +115,20 @@ public class SongsterSearch extends AppCompatActivity implements NavigationView.
                        .setPositiveButton(R.string.agree,null).create().show();
                break;
 
+           case R.id.soccer_activity_main:
+               Intent intent = new Intent(this, SoccerMainActiv.class);
+               startActivity(intent);
+               break;
+           case R.id.itemCar:
+               Intent intent1 = new Intent(this, CarDBActivity.class);
+               startActivity(intent1);
+               break;
+           case R.id.itemSong:
+               Intent intent2 = new Intent(this, SongsterSearch.class);
+               startActivity(intent2);
+               break;
+           case R.id.itemTrivia:
+               break;
        }
 
        return true;
