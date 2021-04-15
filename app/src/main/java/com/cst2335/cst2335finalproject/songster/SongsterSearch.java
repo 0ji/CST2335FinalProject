@@ -24,6 +24,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
+import com.cst2335.cst2335finalproject.trivia.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class SongsterSearch extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -95,33 +96,35 @@ public class SongsterSearch extends AppCompatActivity implements NavigationView.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.toolbar_menu_songster, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.app_menu, menu);
         return true;
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
-       switch(item.getItemId()){
-           case R.id.soccer_activity_main:
-               Intent intent = new Intent(this, SoccerMainActiv.class);
-               startActivity(intent);
-               break;
-           case R.id.itemCar:
-               Intent intent1 = new Intent(this, CarDBActivity.class);
-               startActivity(intent1);
-               break;
-           case R.id.itemSong:
-               Intent intent2 = new Intent(this, SongsterSearch.class);
-               startActivity(intent2);
-               break;
-           case R.id.itemTrivia:
-               break;
-       }
-
-       return true;
-
+        String message = null;
+        Intent nextActivity = null;
+        switch(item.getItemId()) {
+            case R.id.itemCar:
+                message = "Launching car app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+            case R.id.itemSoccer:
+                message = "Launching soccer app";
+                nextActivity = new Intent(this, SoccerMainActiv.class);
+                break;
+            case R.id.itemSong:
+                message = "Launching song app";
+                nextActivity = new Intent(this, SongsterSearch.class);
+                break;
+            case R.id.itemTrivia:
+                message = "Launching trivia app";
+                nextActivity = new Intent(this, CarDBActivity.class);
+                break;
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        startActivity(nextActivity);
+        return true;
     }
 
     @Override
