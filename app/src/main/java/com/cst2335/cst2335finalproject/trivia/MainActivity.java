@@ -1,26 +1,23 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.trivia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
 import com.cst2335.cst2335finalproject.songster.SongsterSearch;

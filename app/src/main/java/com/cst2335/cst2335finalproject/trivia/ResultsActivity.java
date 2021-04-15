@@ -1,4 +1,4 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.trivia;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.cst2335.cst2335finalproject.R;
 
 import java.util.ArrayList;
 

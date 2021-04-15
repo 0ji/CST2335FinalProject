@@ -1,4 +1,4 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.trivia;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.cst2335.cst2335finalproject.R;
 
 
 public class TriviaActivity extends AppCompatActivity {

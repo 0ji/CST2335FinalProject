@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.cst2335.cst2335finalproject.MainActivity;
+import com.cst2335.cst2335finalproject.trivia.MainActivity;
 import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.google.android.material.navigation.NavigationView;

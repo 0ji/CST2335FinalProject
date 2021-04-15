@@ -1,4 +1,4 @@
-package com.cst2335.cst2335finalproject;
+package com.cst2335.cst2335finalproject.trivia;
 
 import android.app.Activity;
 import android.content.ContentValues;

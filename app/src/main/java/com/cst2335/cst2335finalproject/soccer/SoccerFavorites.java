@@ -29,7 +29,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.cst2335.cst2335finalproject.MainActivity;
+import com.cst2335.cst2335finalproject.trivia.MainActivity;
 import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.google.android.material.navigation.NavigationView;

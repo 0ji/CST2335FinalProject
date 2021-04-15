@@ -14,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335FinalProject">
-        <activity android:name=".ResultsActivity"></activity>
-        <activity android:name=".GameActivity" />
-        <activity android:name=".TriviaActivity" />
+        <activity android:name=".trivia.ResultsActivity"></activity>
+        <activity android:name=".trivia.GameActivity" />
+        <activity android:name=".trivia.TriviaActivity" />
 
 
         <activity android:name=".carDB.CarEmptyFragmentView" />
@@ -41,7 +41,7 @@
         <activity android:name=".songster.SongsterSearch"/>
 
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".trivia.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
