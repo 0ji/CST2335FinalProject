@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,9 +17,34 @@
         <activity android:name=".ResultsActivity"></activity>
         <activity android:name=".GameActivity" />
         <activity android:name=".TriviaActivity" />
+
+
+        <activity android:name=".carDB.CarEmptyFragmentView" />
+        <activity android:name=".carDB.CarDBActivity" />
+
+
+        <activity android:name=".soccer.SoccerDetailDBActivity" />
+        <activity
+            android:name=".soccer.SoccerFavorites"
+            android:label="@string/title_activity_soccer_favorites" />
+        <activity
+            android:name=".soccer.SoccerDetailActivity"
+            android:label="@string/title_activity_soccer_detail" />
+        <activity
+            android:name=".soccer.SoccerMainActiv"
+            android:label="@string/title_activity_soccer_main" />
+
+
+        <activity android:name=".songster.FavouriteList" />
+        <activity android:name=".songster.FragmentPhoneActivity" />
+        <activity android:name=".songster.SongsterList" />
+        <activity android:name=".songster.SongsterSearch"/>
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

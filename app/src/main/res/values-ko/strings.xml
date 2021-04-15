@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST2335 최종 과제</string>
+    <string name="title_activity_soccer_main">축구 기사들</string>
+    <string name="title_activity_soccer_detail">축구 기사</string>
+    <string name="title_activity_soccer_favorites">최애 축구기사</string>
+    <string name="hello_world">안녕 네모 세상!</string>
+    <string name="hello_blank_fragment">안녕 빈 공간이야</string>
+    <string name="open">열기</string>
+    <string name="close">닫기</string>
+    <string name="main_soccer_button">축구</string>
+    <string name="soccer_detail_SAVE">저장</string>
+    <string name="soccer_detail_GOTOWEB">웹으로 가기</string>
+    <string name="soccer_detail_db_BackToList">돌아가기</string>
+    <string name="soccer_detail_db_GOTOWEB">웹으로 가기</string>
+    <string name="soccer_favorite_SoccerArticles">축구 기사로</string>
+    <string name="soccer_main_button_Favorites">최애 기사들</string>
+    <string name="soccer_fragment_ID">아이디</string>
+    <string name="soccer_fragment_Link">링크</string>
+    <string name="soccer_fragment_Description">설명</string>
+    <string name="soccer_fragment_Date">날짜</string>
+    <string name="soccer_fragment_Title">제목</string>
+    <string name="soccer_rating_submit">제출</string>
+    <string name="soccer_rating_SoccerArticles">앱 평가</string>
+    <string name="soccer_nav_GoToMainPage">메인으로</string>
+    <string name="soccer_nav_GoToTrivia">트리비아</string>
+    <string name="soccer_nav_GoToCarDB">차 데이터</string>
+    <string name="soccer_nav_GoToSoccerPage">축구 기사</string>
+    <string name="soccer_toolbar_Search">검색</string>
+    <string name="soccer_toolbar_About">정보</string>
+    <string name="soccer_rating_main">앱 평가</string>
+    <string name="soccer_main_pg_15">연결 만들기 ...</string>
+    <string name="soccer_main_pg_25">시작 ...</string>
+    <string name="soccer_main_pg_45">데이터 추출 ...</string>
+    <string name="soccer_main_pg_70">이미지 로딩 ...</string>
+    <string name="soccer_save_button">저장</string>
+    <string name="soccer_undo_button">취소</string>
+    <string name="soccer_previous">이전 페이지로</string>
+    <string name="soccer_db_delete">지울 겁니까?</string>
+    <string name="soccer_db_id">이 아이템의 행 아이디=</string>
+    <string name="soccer_db_id2">이 아이템의 데이터 아이디=</string>
+    <string name="soccer_confirm">확인</string>
+    <string name="soccer_howToUse">사용법</string>
+    <string name="soccer_howToUse1">- 아이템 중 하나를 클릭해보세요</string>
+    <string name="soccer_howToUse2">- 축구 기사 리스트로 갈 수 있습니다.</string>
+    <string name="soccer_howToUse3">- 축구 아이콘은 축구 메인으로 갑니다.</string>
+    <string name="soccer_howToUse4">- 최애 기사 버튼은 데이터베이스로</string>
+    <string name="soccer_howToUse5">- 웹 페이지 버튼은 기사 전문으로 갑니다.</string>
+
+    <string name="search_car_brand_here">차 브랜드 검색</string>
+    <string name="search">검색</string>
+    <string name="help">도움</string>
+    <string name="database_view">데이터베이스</string>
+    <string name="help_details">
+        차 모델을 입력하고, 클릭 버튼을 눌러 차 리스트를 받으세요. 리스트 안에 차를 선택해서 세부정보를 확인해요, 차 정보를 저장하고 쇼핑할 수 있습니다.
+    </string>
+    <string name="help_title">차 데이터베이스 설명</string>
+    <string name="help_positive">알겠습니다</string>
+    <string name="back_to_car_view" translatable="false">뒤로</string>
+
+</resources>

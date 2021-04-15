@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".soccer.SoccerFavorites">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/soccer_toolbar_db"/>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/soccer_drawer_layout_db"
+        android:layout_below="@id/soccer_toolbar_db"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/soccer_headlineImage_db"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/soccer_headlineImage_db"
+                android:layout_above="@+id/goToSoccerList"
+                >
+
+                <ListView
+                    android:id="@+id/list_item_db"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    />
+            </RelativeLayout>
+            <Button
+                android:id="@+id/goToSoccerList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@string/soccer_favorite_SoccerArticles"/>
+
+        </RelativeLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:id="@+id/soccer_nav_view_db"
+            app:menu="@menu/soccer_nav_actions"
+            app:headerLayout="@layout/soccer_nav_head_layout"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</RelativeLayout>

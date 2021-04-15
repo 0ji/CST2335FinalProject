@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOCCER ARTICLES"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:id="@+id/soccer_nav_title"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VERSION 1 BY JIN"
+        android:textSize="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/soccer_nav_title"
+        android:id="@+id/soccer_nav_version"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/soccer_image_button2"
+        android:layout_below="@+id/soccer_nav_version"
+        android:id="@+id/soccer_icon"
+        android:adjustViewBounds="true"
+        />
+</RelativeLayout>
