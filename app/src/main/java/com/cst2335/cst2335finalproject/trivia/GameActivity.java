@@ -353,17 +353,16 @@ public class GameActivity extends AppCompatActivity {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
                             RadioButton rb = multiple_group.findViewById(checkedId);
+                            Snackbar snackbar = Snackbar.make(group, "you picked" + rb.getText().toString(), Snackbar.LENGTH_LONG);
+                            snackbar.show();
                             String multipleCorrect = thisRow.getCorrect_answer();
                             if (rb.getText().toString().equals(multipleCorrect)){
                                 unansweredByUser--;
                                 correctByUser++;
-                                Snackbar snackbar = Snackbar.make(group, "Correct!", Snackbar.LENGTH_LONG);
-                                snackbar.show();
                             } else {
                                 unansweredByUser--;
                                 incorrectByUser++;
-                                Snackbar snackbar = Snackbar.make(group, "Wrong!", Snackbar.LENGTH_LONG);
-                                snackbar.show();
+
                             }
                         }
                     });
