@@ -35,6 +35,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
+import com.cst2335.cst2335finalproject.songster.SongsterSearch;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -194,7 +195,7 @@ public class CarDBActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.itemSong:
                 message = "Launching song app";
-                nextActivity = new Intent(this, CarDBActivity.class);
+                nextActivity = new Intent(this, SongsterSearch.class);
                 break;
             case R.id.itemTrivia:
                 message = "Launching trivia app";
@@ -232,7 +233,7 @@ public class CarDBActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.itemSong:
                 message = "Launching song app";
-                nextActivity = new Intent(this, CarDBActivity.class);
+                nextActivity = new Intent(this, SongsterSearch.class);
                 break;
             case R.id.itemTrivia:
                 message = "Launching trivia app";

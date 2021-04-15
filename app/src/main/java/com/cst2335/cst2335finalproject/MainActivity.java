@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.cst2335.cst2335finalproject.soccer.SoccerMainActiv;
+import com.cst2335.cst2335finalproject.songster.SongsterSearch;
 import com.google.android.material.navigation.NavigationView;
 
 /**
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
      * */
     ImageButton goToSoccer;
     ImageButton goToCarDB;
+    ImageButton goToSongster;
+    ImageButton goToTrivia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         goToCarDB.setOnClickListener(v->{
             changePage(CarDBActivity.class);
         });
+        goToSongster = (ImageButton) findViewById(R.id.goToSongster);
+        goToSongster.setOnClickListener(v->{
+            changePage(SongsterSearch.class);
+        });
+        goToTrivia = (ImageButton) findViewById(R.id.goToTrivia);
+        goToTrivia.setOnClickListener(v->{
+            //changePage(triviamain.class);
+        });
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.soccer_toolbar_main);
         setSupportActionBar(toolbar);
@@ -65,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
             switch (id) {
                 case R.id.soccer_goToMain:
-                    Intent intent = new Intent(this, MainActivity.class);
+                    Intent intent = new Intent(this, SongsterSearch.class);
                     startActivity(intent);
                     break;
                 case R.id.soccer_goToTrivia:
@@ -145,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 changePage(CarDBActivity.class);
                 break;
             case R.id.itemSong:
+                changePage(SongsterSearch.class);
                 break;
             case R.id.itemTrivia:
                 break;
