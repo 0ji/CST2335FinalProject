@@ -38,6 +38,7 @@ public class ResultsActivity extends GameActivity {
     HighScoreListAdapter listAdapter = new HighScoreListAdapter();
     private ArrayList<user> high_score_list = new ArrayList<>();
     EditText name_input;
+    int correctCalculate;
 
     @Override
     protected void onPause() {
@@ -76,20 +77,25 @@ public class ResultsActivity extends GameActivity {
         SharedPreferences sp_trivia = getSharedPreferences("TriviaDetails", Context.MODE_PRIVATE);
         a = sp_trivia.getString("amount", "");
         String correct = sp_user.getString("correct", "");
+        if(is_multiple){
         char correctChar = 0;
         for (char ch : correct.toCharArray()){
             if(Character.isDigit(ch))
                 correctChar = ch;
+           correctCalculate = Character.getNumericValue(correctChar);
+
+        }
+        } else{
+            correctCalculate = Integer.parseInt(correct);
         }
 
-        int correctCalculate = Character.getNumericValue(correctChar);
         int dividedby = Integer.parseInt(a);
         float finalScore = (correctCalculate * 100) / dividedby;
         String finalScoreString = finalScore + "%";
         score.setText(finalScoreString);
         unanswered_results.setText("Unanswered: "+sp_user.getString("unanswered", ""));
         correct_ans_results.setText("Correct: "+sp_user.getString("correct",""));
-        incorrect_ans_results.setText(sp_user.getString("incorrect",""));
+        incorrect_ans_results.setText("Wrong: " +sp_user.getString("incorrect",""));
 
         // these are the values we will insert into the database
         ContentValues dbValues = new ContentValues();
