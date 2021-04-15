@@ -180,8 +180,12 @@ public class SoccerFavorites extends AppCompatActivity {
                 startActivity(intent1);
                 break;
             case R.id.itemSong:
+                Intent intent2 = new Intent(this, SongsterSearch.class);
+                startActivity(intent2);
                 break;
             case R.id.itemTrivia:
+                Intent intent3 = new Intent(this, TriviaActivity.class);
+                startActivity(intent3);
                 break;
         }
         return true;//super.onOptionsItemSelected(item);
