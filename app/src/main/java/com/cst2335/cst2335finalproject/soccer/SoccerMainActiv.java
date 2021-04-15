@@ -37,6 +37,7 @@ import com.cst2335.cst2335finalproject.trivia.MainActivity;
 import com.cst2335.cst2335finalproject.R;
 import com.cst2335.cst2335finalproject.carDB.CarDBActivity;
 import com.cst2335.cst2335finalproject.songster.SongsterSearch;
+import com.cst2335.cst2335finalproject.trivia.TriviaActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -136,7 +137,7 @@ public class SoccerMainActiv extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.soccer_goToTrivia:
-                    Intent intent2 = new Intent(this, MainActivity.class);
+                    Intent intent2 = new Intent(this, TriviaActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.soccer_goToCarDB:
@@ -146,9 +147,12 @@ public class SoccerMainActiv extends AppCompatActivity {
                 case R.id.soccer_goToSoccerMain:
                     Intent intent4 = new Intent(this, SoccerMainActiv.class);
                     startActivity(intent4);
+                case R.id.soccer_goToSong:
+                    Intent intent5 = new Intent(this, SongsterSearch.class);
+                    startActivity(intent5);
                 case R.id.soccer_previous:
-                    Intent intent5 = new Intent(this, MainActivity.class);
-                    setResult(500, intent5);
+                    Intent intent6 = new Intent(this, MainActivity.class);
+                    setResult(500, intent6);
                     finish();
                     break;
             }
