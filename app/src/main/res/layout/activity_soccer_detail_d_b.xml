@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".soccer.SoccerDetailDBActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/soccer_toolbar_db_detail"/>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/soccer_drawer_layout_db_detail"
+        android:layout_below="@id/soccer_toolbar_db_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/soccerDB_headImage"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                />
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/frame_db"
+                android:layout_below="@+id/soccerDB_headImage"
+                android:layout_above="@+id/soccer_urlButton_db">
+
+            </FrameLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:text="@string/soccer_detail_db_BackToList"
+                android:id="@+id/soccer_backToDBList"
+                android:layout_toLeftOf="@id/strut_db"
+                />
+            <TextView
+                android:id="@+id/strut_db"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text=" "/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/soccer_urlButton_db"
+                android:layout_toRightOf="@+id/strut_db"
+                android:text="@string/soccer_detail_db_GOTOWEB"
+                />
+        </RelativeLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:id="@+id/soccer_nav_view_db_detail"
+            app:menu="@menu/soccer_nav_actions"
+            app:headerLayout="@layout/soccer_nav_head_layout"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</RelativeLayout>

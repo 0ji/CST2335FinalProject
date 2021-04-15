@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@+id/activityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="casual"
+        android:text="CST2335 Final App Project"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activityAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityTitle"
+        android:fontFamily="casual"
+        android:text="Authors: Trung Nguyen, Akshay Gokani, Gwanjin Chun, Akshay Gokani, Koji Dino"
+        android:textColor="#CC2929"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activityVersionNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityAuthor"
+        android:fontFamily="casual"
+        android:text="Version 1.0.0"
+        android:textColor="#1C81CF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</RelativeLayout>

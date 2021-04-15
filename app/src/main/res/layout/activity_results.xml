@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/trivia"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
+        android:id="@+id/header_title"
+        android:longClickable="true"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/counter_titles"
+            android:layout_width="139dp"
+            android:layout_height="75dp"
+            android:text="Your Score for this round"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/high_score_titles"
+            android:layout_width="259dp"
+            android:layout_height="75dp"
+            android:text="High Scores"
+            android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/counter_layout"
+        android:layout_below="@+id/header_title"
+        android:layout_width="137dp"
+        android:layout_height="225dp"
+        android:longClickable="true"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/unanswered_textv"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="Unaswered Questions"
+
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/correct_answer_textv"
+            android:layout_width="137dp"
+            android:layout_height="75dp"
+            android:text="Correct Answer"
+
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/incorrect_answer_textv"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:text="Incorrect Answer"
+
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/results_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_below="@+id/header_title"
+        android:layout_toEndOf="@id/counter_layout">
+
+    </ListView>
+
+    <EditText
+        android:id="@+id/name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/counter_layout">
+        Enter your name:</EditText>
+
+    <Button
+        android:id="@+id/addUser"
+        android:layout_width="474dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_input"
+        android:text="Add User" />
+
+</RelativeLayout>

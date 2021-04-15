@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST2335 최종 과제</string>
+    <string name="title_activity_soccer_main">축구 기사들</string>
+    <string name="title_activity_soccer_detail">축구 기사</string>
+    <string name="title_activity_soccer_favorites">최애 축구기사</string>
+    <string name="hello_world">안녕 네모 세상!</string>
+    <string name="hello_blank_fragment">안녕 빈 공간이야</string>
+    <string name="open">열기</string>
+    <string name="close">닫기</string>
+    <string name="main_soccer_button">축구</string>
+    <string name="soccer_detail_SAVE">저장</string>
+    <string name="soccer_detail_GOTOWEB">웹으로 가기</string>
+    <string name="soccer_detail_db_BackToList">돌아가기</string>
+    <string name="soccer_detail_db_GOTOWEB">웹으로 가기</string>
+    <string name="soccer_favorite_SoccerArticles">축구 기사로</string>
+    <string name="soccer_main_button_Favorites">최애 기사들</string>
+    <string name="soccer_fragment_ID">아이디</string>
+    <string name="soccer_fragment_Link">링크</string>
+    <string name="soccer_fragment_Description">설명</string>
+    <string name="soccer_fragment_Date">날짜</string>
+    <string name="soccer_fragment_Title">제목</string>
+    <string name="soccer_rating_submit">제출</string>
+    <string name="soccer_rating_SoccerArticles">앱 평가</string>
+    <string name="soccer_nav_GoToMainPage">메인으로</string>
+    <string name="soccer_nav_GoToTrivia">트리비아</string>
+    <string name="soccer_nav_GoToCarDB">차 데이터</string>
+    <string name="soccer_nav_GoToSoccerPage">축구 기사</string>
+    <string name="soccer_toolbar_Search">검색</string>
+    <string name="soccer_toolbar_About">정보</string>
+    <string name="soccer_rating_main">앱 평가</string>
+    <string name="soccer_main_pg_15">연결 만들기 ...</string>
+    <string name="soccer_main_pg_25">시작 ...</string>
+    <string name="soccer_main_pg_45">데이터 추출 ...</string>
+    <string name="soccer_main_pg_70">이미지 로딩 ...</string>
+    <string name="soccer_save_button">저장</string>
+    <string name="soccer_undo_button">취소</string>
+    <string name="soccer_previous">이전 페이지로</string>
+    <string name="soccer_db_delete">지울 겁니까?</string>
+    <string name="soccer_db_id">이 아이템의 행 아이디=</string>
+    <string name="soccer_db_id2">이 아이템의 데이터 아이디=</string>
+    <string name="soccer_confirm">확인</string>
+    <string name="soccer_howToUse">사용법</string>
+    <string name="soccer_howToUse1">- 아이템 중 하나를 클릭해보세요</string>
+    <string name="soccer_howToUse2">- 축구 기사 리스트로 갈 수 있습니다.</string>
+    <string name="soccer_howToUse3">- 축구 아이콘은 축구 메인으로 갑니다.</string>
+    <string name="soccer_howToUse4">- 최애 기사 버튼은 데이터베이스로</string>
+    <string name="soccer_howToUse5">- 웹 페이지 버튼은 기사 전문으로 갑니다.</string>
+
+    <string name="search_car_brand_here">차 브랜드 검색</string>
+    <string name="search">검색</string>
+    <string name="help">도움</string>
+    <string name="database_view">데이터베이스</string>
+    <string name="help_details">
+        차 모델을 입력하고, 클릭 버튼을 눌러 차 리스트를 받으세요. 리스트 안에 차를 선택해서 세부정보를 확인해요, 차 정보를 저장하고 쇼핑할 수 있습니다.
+    </string>
+    <string name="help_title">차 데이터베이스 설명</string>
+    <string name="help_positive">알겠습니다</string>
+    <string name="back_to_car_view" translatable="false">뒤로</string>
+
+    <string name="difficultyLabel">난이도를 입력하세요:</string>
+    <string name="typeLabel">타입을 입력하세요:</string>
+    <string name="questionLabel">문제 개수를 입력하세요: </string>
+    <string name="questionHint">개의 문제</string>
+    <string name="typeHint">양자택일, 다양함</string>
+    <string name="difficultyHint">쉬움, 중간, 어려움</string>
+    <string name="createGameString"> 당신의 게임 제작</string>
+    <string name="goToTrivia">트리비아 게임</string>
+
+    <string name="songster_Heading">검색</string>
+    <string name="songster_artistName">아티스트 입력:</string>
+    <string name="songster_enter_artist_hint">아티스트 입력</string>
+    <string name="songster_search_button">검색</string>
+    <string name="songster_FavouriteList">쵀애들</string>
+    <string name="songster_SongList">결과들</string>
+    <string name="BackButton">뒤로</string>
+    <string name="songster">송스타</string>
+    <string name="SongId">송 아이디:</string>
+    <string name="ArtistId">아티스트 아이디:</string>
+    <string name="ArtistName">아티스트 이름:</string>
+    <string name="SongTitle">타이틀:</string>
+    <string name="Songster_Save">저장</string>
+    <string name="Songster_Search">노래 검색</string>
+    <string name="Songster_Search_Artist">아티스트 검색</string>
+    <string name="Songster_Delete">지우기</string>
+    <string name="favouriteList">쵀애들</string>
+    <string name="Songster_menu_about">정보</string>
+    <string name="Songster_menu_help">도움</string>
+    <string name="Songster_moreInfoAboutSong">아티스트에 관해 더 많은 정보?</string>
+    <string name="youSelected">당신의 선택은</string>
+    <string name="confirm">네</string>
+    <string name="decline">아니요</string>
+    <string name="nothingChanged">변화 없음</string>
+    <string name="SongsterSearch_EnterValidName">아티스트 입력</string>
+    <string name="SongsterSearch_AboutMenuItem">최애 노래 검색</string>
+    <string name="SongsterSearch_HelpMenuItem">키워드로 아티스트 또는 노래검색. 길게 눌러 노래 저장</string>
+    <string name="agree">알겠음</string>
+    <string name="SongterSearch_AboutApp">제작자 Trung Nguyen</string>
+    <string name="duplicateMessage">이미 저장됨</string>
+    <string name="ConfirmationMessageofSave">저장됨</string>
+    <string name="AskingMessageToDelete">확실해요?</string>
+    <string name="SongDetail_FavouriteListConfirmation_Add">이거를 최애노래로 옮길거에요?</string>
+    <string name="ConfirmationMessage_Of_Deletion">지워졌습니다.</string>
+</resources>

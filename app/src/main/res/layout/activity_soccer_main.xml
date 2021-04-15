@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/soccer_mainLayout">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/soccer_toolbar"/>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/soccer_drawer_layout"
+        android:layout_below="@id/soccer_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/soccer_headlineImage"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressStatus"
+                android:layout_below="@+id/pgBar"
+                android:visibility="invisible"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/soccer_headlineImage"
+                android:layout_above="@+id/goToFavorite">
+
+                <ListView
+                    android:id="@+id/list_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    />
+            </RelativeLayout>
+            <Button
+                android:id="@+id/goToFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@string/soccer_main_button_Favorites"/>
+            <ProgressBar
+                android:id="@+id/pgBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:visibility="invisible"
+                android:layout_below="@+id/soccer_headlineImage"
+                />
+        </RelativeLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:id="@+id/soccer_nav_view"
+            app:menu="@menu/soccer_nav_actions"
+            app:headerLayout="@layout/soccer_nav_head_layout"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</RelativeLayout>

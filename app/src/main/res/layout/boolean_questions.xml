@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:longClickable="true"
+    android:layout_width="match_parent"
+    android:weightSum="2"
+    android:layout_height="fill_parent"
+    android:id="@+id/booleanLayout"
+    android:focusable="false"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:id="@+id/question_boolean"
+        android:text="Question is here "
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:descendantFocusability="blocksDescendants">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/boolean_group">
+
+            <RadioButton
+                android:id="@+id/trueRadio"
+                android:layout_width="300dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:onClick="myOnClick"
+                android:focusable="false"
+
+                android:text="True" />
+            <!--android:onClick-->
+            <RadioButton
+                android:id="@+id/falseRadio"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="76dp"
+                android:layout_weight="0.5"
+                android:onClick="myOnClick"
+                android:text="False" />
+
+        </RadioGroup>
+    </LinearLayout>
+</LinearLayout>

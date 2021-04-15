@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cst2335.cst2335finalproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +14,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335FinalProject">
-        <activity android:name=".MainActivity">
+        <activity android:name=".trivia.ResultsActivity"></activity>
+        <activity android:name=".trivia.GameActivity" />
+        <activity android:name=".trivia.TriviaActivity" />
+
+
+        <activity android:name=".carDB.CarEmptyFragmentView" />
+        <activity android:name=".carDB.CarDBActivity" />
+
+
+        <activity android:name=".soccer.SoccerDetailDBActivity" />
+        <activity
+            android:name=".soccer.SoccerFavorites"
+            android:label="@string/title_activity_soccer_favorites" />
+        <activity
+            android:name=".soccer.SoccerDetailActivity"
+            android:label="@string/title_activity_soccer_detail" />
+        <activity
+            android:name=".soccer.SoccerMainActiv"
+            android:label="@string/title_activity_soccer_main" />
+
+
+        <activity android:name=".songster.FavouriteList" />
+        <activity android:name=".songster.FragmentPhoneActivity" />
+        <activity android:name=".songster.SongsterList" />
+        <activity android:name=".songster.SongsterSearch"/>
+
+
+        <activity android:name=".trivia.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

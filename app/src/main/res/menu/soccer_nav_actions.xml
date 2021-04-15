@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/soccer_goToMain"
+            android:icon="@drawable/main_nav"
+            android:title="@string/soccer_nav_GoToMainPage"/>
+        <item
+            android:id="@+id/soccer_goToTrivia"
+            android:icon="@drawable/trivia_nav"
+            android:title="@string/soccer_nav_GoToTrivia"/>
+        <item
+            android:id="@+id/soccer_goToCarDB"
+            android:icon="@drawable/car_nav"
+            android:title="@string/soccer_nav_GoToCarDB"/>
+        <item
+            android:id="@+id/soccer_goToSoccerMain"
+            android:icon="@drawable/soccer_icon"
+            android:title="@string/soccer_nav_GoToSoccerPage"/>
+        <item
+            android:id="@+id/soccer_goToSong"
+            android:title="Go To SongStar"
+            android:icon="@drawable/guitar"/>
+        <item
+            android:id="@+id/soccer_previous"
+            android:title="@string/soccer_previous"
+            android:icon="@drawable/back_nav"
+            />
+
+
+    </group>
+</menu>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/game"
+    android:orientation="vertical"
+    android:focusable="false"
+
+    >
+    <ProgressBar
+        android:visibility="invisible"
+        android:id="@+id/progress_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        />
+
+    <!--<Button
+        android:id="@+id/prev_button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/triviaListView"
+        android:text="prev"/>
+    &lt;!&ndash;android:layout_toEndOf="@id/message_input"
+    &ndash;&gt;-->
+    <ListView
+        android:id="@+id/triviaListView"
+        android:layout_width="500dp"
+        android:layout_height="600dp"
+        android:layout_above="@id/submit_button"
+        android:layout_below="@id/progress_bar"
+        android:layout_toEndOf="@id/unanswered"
+        android:layout_marginTop="0dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:text="submit" />
+
+    <TextView
+        android:id="@+id/unanswered"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/progress_bar"
+        android:textAlignment="center"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/correct_answer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/unanswered"
+        android:textAlignment="center"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/incorrect_answer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/correct_answer"
+        android:textAlignment="center"
+        android:textSize="10sp" />
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/incorrect_answer"
+        android:layout_toLeftOf="@id/triviaListView">
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
