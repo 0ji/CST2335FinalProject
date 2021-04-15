@@ -1,6 +1,7 @@
 package com.cst2335.cst2335finalproject.trivia;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,7 +20,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.cst2335.cst2335finalproject.R;
 
@@ -110,6 +114,8 @@ public class GameActivity extends AppCompatActivity {
 
         ProgressBar pb = findViewById(R.id.progress_bar);
         pb.setVisibility(View.VISIBLE);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.soccer_toolbar_main);
+        setSupportActionBar(toolbar);
 
 
         // user sp to fill our url for API
@@ -181,7 +187,31 @@ public class GameActivity extends AppCompatActivity {
             startActivity(results_page);
         });
 
+
     }
+    // TODO NEW CODE
+    // on optionItemSelected for the toolbar
+    public boolean onOptionsItemSelected(MenuItem item) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);//Look at your menu XML file. Put a case for every id in that file:
+
+        switch (item.getItemId()){
+            case R.id.itemid:
+                alert.setTitle("How to use Trivia API");
+                // todo: change message to help with yours **************************************************&&&&&&&&&&&&&&&&&&&&&&&&&*************************^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                alert.setMessage("Please enter the number of question you want, difficulty and the type of questions (Please use the exact words that have been hinted at in the views)." +
+                        "\n\nStart quiz by clicking START TRIVIA button");
+                alert.setCancelable(false);
+                alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alert.show();
+                break;
+        }
+        return true;
+    }//Look at your menu XML file. Put a case for every id in that file:
 
     public class TriviaResults extends AsyncTask<String, Integer, String> {
 
@@ -327,7 +357,7 @@ public class GameActivity extends AppCompatActivity {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
                             RadioButton rb = multiple_group.findViewById(checkedId);
-                            if (rb == answer4_tv){
+                            if (rb.getId()== answer4_tv.getId()){
                                 unansweredByUser--;
                                 correctByUser++;
                             } else {
@@ -391,5 +421,5 @@ public class GameActivity extends AppCompatActivity {
         tv_correct_answers.setText(String.valueOf(correctByUser));
         tv_incorrect_answers.setText(String.valueOf(incorrectByUser));
     }
-        // TODO NEW CODE
+
 }

@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 
 import com.cst2335.cst2335finalproject.R;
 
@@ -68,19 +69,28 @@ public class ResultsActivity extends GameActivity {
 
         SharedPreferences sp_user = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
         name_input.setText(sp_user.getString("name", ""));
-        unanswered_results.setText("Unanswered: "+sp_user.getString("unanswered", ""));
-        correct_ans_results.setText("Correct: "+sp_user.getString("correct",""));
-        incorrect_ans_results.setText("Wrong: "+sp_user.getString("incorrect",""));
+        Toolbar tb = findViewById(R.id.myToolB);
+        // set action bar
+        setSupportActionBar(tb);
 
 
         SharedPreferences sp_trivia = getSharedPreferences("TriviaDetails", Context.MODE_PRIVATE);
         a = sp_trivia.getString("amount", "");
         String correct = sp_user.getString("correct", "");
-        int correctCalculate = Integer.parseInt(correct);
+        char correctChar = 0;
+        for (char ch : correct.toCharArray()){
+            if(Character.isDigit(ch))
+                correctChar = ch;
+        }
+
+        int correctCalculate = correctChar;
         int dividedby = Integer.parseInt(a);
         float finalScore = (correctCalculate * 100) / dividedby;
         String finalScoreString = finalScore + "%";
         score.setText(finalScoreString);
+        unanswered_results.setText("Unanswered: "+sp_user.getString("unanswered", ""));
+        correct_ans_results.setText("Correct: "+sp_user.getString("correct",""));
+        incorrect_ans_results.setText("Wrong: "+sp_user.getString("incorrect",""));
 
         // these are the values we will insert into the database
         ContentValues dbValues = new ContentValues();

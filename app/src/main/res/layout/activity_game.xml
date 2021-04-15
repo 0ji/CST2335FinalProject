@@ -8,11 +8,18 @@
     android:focusable="false"
 
     >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ProgressBar
         android:visibility="invisible"
         android:id="@+id/progress_bar"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
+        android:layout_below="@+id/myToolB"
         style="?android:attr/progressBarStyleHorizontal"
         />
 
