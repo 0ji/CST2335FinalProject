@@ -390,10 +390,8 @@ public class GameActivity extends AppCompatActivity {
                                 } else {
                                     unansweredByUser--;
                                     incorrectByUser++;
+                                }
                             }
-
-                            }
-
                         }
                     });
                 correctAns = thisRow.getCorrect_answer();
@@ -404,7 +402,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void myOnClick(View v) {
         Log.d("DEBUG", "CLICKED " + v.getId());
-        //unansweredByUser--;
+        //unansweredByUser--
         TextView tv_unanswered = findViewById(R.id.unanswered);
         TextView tv_correct_answers = findViewById(R.id.correct_answer);
         TextView tv_incorrect_answers = findViewById(R.id.incorrect_answer);
