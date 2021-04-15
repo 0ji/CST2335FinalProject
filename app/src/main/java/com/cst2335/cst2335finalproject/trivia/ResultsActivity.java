@@ -1,7 +1,5 @@
 package com.cst2335.cst2335finalproject.trivia;
 
-import androidx.appcompat.app.AlertDialog;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.cst2335.cst2335finalproject.R;
 
@@ -100,6 +100,7 @@ public class ResultsActivity extends GameActivity {
             // todo : Change the score so that it takes question.size() and divides but the amount that the user got correct * 100 so that it becomes a percentage
             //String score_string =
             dbValues.put(TriviaDbOpener.COL_PLAYER, user_string);
+            dbValues.put(TriviaDbOpener.COL_SCORE, finalScoreString);
             long newId = db.insert(TriviaDbOpener.TABLE_PLAYER, null, dbValues);
             user newUser = new user (user_string, finalScoreString , newId);
             high_score_list.add(newUser);

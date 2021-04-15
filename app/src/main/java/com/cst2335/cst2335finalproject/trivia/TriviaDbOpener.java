@@ -1,16 +1,10 @@
 package com.cst2335.cst2335finalproject.trivia;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import androidx.annotation.Nullable;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  *  @author Elaiza Rivera
@@ -20,7 +14,7 @@ public class TriviaDbOpener extends SQLiteOpenHelper {
 
 
     protected  final static String DATABASE_NAME = "TriviaDB";
-    protected final static int VERSION_NUM = 2;
+    protected final static int VERSION_NUM = 3;
     public final static String TABLE_QUESTION_STATE = "QUESTION_STATE";
     public final static String TABLE_PLAYER = "tbl_Player";
     public final static String COL_PLAYER = "Player";

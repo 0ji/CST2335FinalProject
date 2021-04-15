@@ -1,7 +1,5 @@
 package com.cst2335.cst2335finalproject.trivia;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-
-import android.widget.RadioButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cst2335.cst2335finalproject.R;
 
@@ -318,34 +317,25 @@ public class GameActivity extends AppCompatActivity {
                 RadioButton answer3_tv = multiple.findViewById(R.id.Answer3);
                 RadioButton answer4_tv = multiple.findViewById(R.id.Answer4);
                 multiple_tv.setText(thisRow.getQuestion());
-
-
                 String[] incorrect_answer_list = thisRow.getIncorrect_answers().split(",");
-
-
-
-                   /* if (random == 0) {*/
-                        answer4_tv.setText(thisRow.getCorrect_answer());
-                        answer3_tv.setText(incorrect_answer_list[0].trim());
-                        answer2_tv.setText(incorrect_answer_list[1].trim());
-                        answer1_tv.setText(incorrect_answer_list[2].trim());
-                  /*  } else if (random == 1) {
-                        answer1_tv.setText(thisRow.getCorrect_answer());
-                        answer3_tv.setText(incorrect_answer_list[0].trim());
-                        answer2_tv.setText(incorrect_answer_list[1].trim());
-                        answer4_tv.setText(incorrect_answer_list[2].trim());
-                    } else if (random == 2) {
-                        answer2_tv.setText(thisRow.getCorrect_answer());
-                        answer3_tv.setText(incorrect_answer_list[0].trim());
-                        answer4_tv.setText(incorrect_answer_list[1].trim());
-                        answer1_tv.setText(incorrect_answer_list[2].trim());
-                    } else {
-                        answer4_tv.setText(thisRow.getCorrect_answer());
-                        answer3_tv.setText(incorrect_answer_list[0].trim());
-                        answer2_tv.setText(incorrect_answer_list[1].trim());
-                        answer1_tv.setText(incorrect_answer_list[2].trim());
-                    }*/
-                    // saves the correctAnswer to correctAns
+                answer4_tv.setText(thisRow.getCorrect_answer());
+                answer3_tv.setText(incorrect_answer_list[0].trim());
+                answer2_tv.setText(incorrect_answer_list[1].trim());
+                answer1_tv.setText(incorrect_answer_list[2].trim());
+                
+                    multiple_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                            RadioButton rb = multiple_group.findViewById(checkedId);
+                            if (rb == answer4_tv){
+                                unansweredByUser--;
+                                correctByUser++;
+                            } else {
+                                unansweredByUser--;
+                                incorrectByUser++;
+                            }
+                        }
+                    });
                     correctAns = thisRow.getCorrect_answer();
                     return multiple;
                 } else
